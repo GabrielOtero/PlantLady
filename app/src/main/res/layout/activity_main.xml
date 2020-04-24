@@ -97,23 +97,21 @@
         <Button
             android:id="@+id/quizz_btn"
             style="@style/PrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/main_activity_button_margin_horizontal"
-            android:layout_marginRight="@dimen/main_activity_button_margin_horizontal"
+            android:layout_width="240dp"
+            android:layout_height="56dp"
             android:layout_marginBottom="@dimen/main_activity_button_margin_vertical"
             android:text="@string/button_take_quizz"
+            android:layout_gravity="center"
             android:textAllCaps="true" />
 
         <Button
             android:id="@+id/explore_btn"
             style="@style/SecondaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/main_activity_button_margin_horizontal"
+            android:layout_width="240dp"
+            android:layout_height="56dp"
             android:layout_marginTop="@dimen/main_activity_button_margin_vertical"
-            android:layout_marginRight="@dimen/main_activity_button_margin_horizontal"
             android:text="@string/button_explore"
+            android:layout_gravity="center"
             android:textAllCaps="true" />
 
     </LinearLayout>
