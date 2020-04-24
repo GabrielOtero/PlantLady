@@ -1,4 +1,4 @@
-package com.example.ladyplant
+package br.com.ladyplant
 
 import org.junit.Test
 

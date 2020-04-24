@@ -20,12 +20,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksandvariablefont_wght"
-        android:textSize="@dimen/main_activity_subtitle_fontSize"
         android:text="@string/main_activity_subtitle"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:translationY="@dimen/main_activity_subtitle_translationY"
         android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/main_activity_subtitle_fontSize"
+        android:textStyle="bold"
+        android:translationY="@dimen/main_activity_subtitle_translationY"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo" />
@@ -88,8 +88,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/main_activity_buttons_view_margin_top"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -102,20 +102,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_activity_button_margin_horizontal"
             android:layout_marginRight="@dimen/main_activity_button_margin_horizontal"
+            android:layout_marginBottom="@dimen/main_activity_button_margin_vertical"
             android:text="@string/button_take_quizz"
-            android:textAllCaps="true"
-            android:layout_marginBottom="@dimen/main_activity_button_margin_vertical"/>
+            android:textAllCaps="true" />
 
         <Button
             android:id="@+id/explore_btn"
             style="@style/SecondaryButton"
-            android:layout_marginTop="@dimen/main_activity_button_margin_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_activity_button_margin_horizontal"
+            android:layout_marginTop="@dimen/main_activity_button_margin_vertical"
             android:layout_marginRight="@dimen/main_activity_button_margin_horizontal"
-            android:textAllCaps="true"
-            android:text="@string/button_explore"/>
+            android:text="@string/button_explore"
+            android:textAllCaps="true" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
