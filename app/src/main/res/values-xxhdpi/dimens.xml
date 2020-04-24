@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="main_activity_plant4_translationX">-25dp</dimen>
-    <dimen name="main_activity_plant3_constraintCircleAngle">140</dimen>
-    <dimen name="main_activity_plant3_constraintCircleRadius">60dp</dimen>
-
-    <dimen name="main_activity_plant2_constraintCircleAngle">250</dimen>
-    <dimen name="main_activity_plant2_constraintCircleRadius">70dp</dimen>
-
-    <dimen name="main_activity_plant5_constraintCircleAngle">193</dimen>
-    <dimen name="main_activity_plant5_constraintCircleRadius">90dp</dimen>
+    <dimen name="explore_activity_padding_top">40dp</dimen>
 </resources>

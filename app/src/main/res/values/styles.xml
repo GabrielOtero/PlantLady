@@ -25,5 +25,24 @@
         <item name="android:fontFamily">@font/quicksandvariablefont_wght</item>
         <item name="android:textSize">@dimen/main_activity_subtitle_fontSize</item>
     </style>
+
+    <style name="Subtitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/quicksandvariablefont_wght</item>
+        <item name="android:textSize">@dimen/main_activity_subtitle_fontSize</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="scrollbar_shape_style">
+        <item name="android:scrollbarAlwaysDrawHorizontalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/thumb</item>
+        <item name="android:scrollbarTrackHorizontal">@drawable/track</item>
+        <item name="android:scrollbarSize">6dp</item>
+    </style>
+
 </resources>
 
