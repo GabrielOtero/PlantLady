@@ -7,7 +7,7 @@
 
     <stroke
         android:width="0.5dp"
-        android:color="@color/grey_E7E7E7"/>
+        android:color="@color/green_C5D8D9"/>
 
     <padding
         android:left="1dp"
@@ -15,6 +15,6 @@
         android:top="1dp"
         android:bottom="1dp"/>
 
-    <solid android:color="@android:color/white"/>
+    <solid android:color="@color/green_C5D8D9"/>
 
 </shape>

@@ -42,13 +42,33 @@ class QuizViewAdapter : RecyclerView.Adapter<QuizViewHolder>() {
 
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
         holder.question.text = questions[position].title
+        bindOptions(position, holder)
+    }
+
+    private fun bindOptions(position: Int, holder: QuizViewHolder) {
         holder.btnsContainer.removeAllViews()
-        for (element in questions[position].options) {
+        for (optIdx in questions[position].options.indices) {
             val btnTag = Button(holder.parent.context, null, R.attr.quizOptionButton)
 
-            btnTag.setOnClickListener { mRecyclerView.scrollNext() }
+            questions[position].answer?.let {
+                if (optIdx == it) {
+                    btnTag.setBackgroundResource(R.drawable.quizz_option_selected_shape)
+                }
+            }
+
+            btnTag.setOnClickListener {
+                questions[position].answer = optIdx
+                bindOptions(position, holder)
+                btnTag.setBackgroundResource(R.drawable.quizz_option_selected_shape)
+                mRecyclerView.scrollNext()
+            }
             if (position == questions.size - 1) {
-                btnTag.setOnClickListener { Log.d("QUIZZ", "END") }
+                btnTag.setOnClickListener {
+                    questions[position].answer = optIdx
+                    bindOptions(position, holder)
+                    btnTag.setBackgroundResource(R.drawable.quizz_option_selected_shape)
+                    Log.d("QUIZZ", "END")
+                }
             }
 
             btnTag.setTypeface(null, Typeface.NORMAL)
@@ -59,7 +79,8 @@ class QuizViewAdapter : RecyclerView.Adapter<QuizViewHolder>() {
             )
 
             layoutParams.setMargins(0, 24.toDp(), 0, 0)
-            btnTag.text = element
+            btnTag.setPadding(24.toDp(), 0, 24.toDp(), 0)
+            btnTag.text = questions[position].options[optIdx]
             holder.btnsContainer.addView(btnTag, layoutParams)
         }
     }
