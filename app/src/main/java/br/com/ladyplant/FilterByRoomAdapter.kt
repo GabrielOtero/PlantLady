@@ -3,9 +3,11 @@ package br.com.ladyplant
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FilterByRoomAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FilterByRoomAdapter: RecyclerView.Adapter<ByRoomViewHolder>() {
 
     var rooms: MutableList<ByRoomFilter> = mutableListOf()
         set(value) {
@@ -13,17 +15,30 @@ class FilterByRoomAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ByRoomViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_by_room_filter, parent, false)
-        return ByTypeViewHolder(view)
+        return ByRoomViewHolder(view)
     }
 
-    override fun getItemCount() = 4
+    override fun getItemCount() = rooms.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ByRoomViewHolder, position: Int) {
+        rooms[position].apply {
+            when (type) {
+                RoomType.LIVING -> holder.img.setImageResource(R.drawable.ic_filter_by_room_livingroom)
+                RoomType.BED -> holder.img.setImageResource(R.drawable.ic_filter_by_room_bedroom)
+                RoomType.DINNING -> holder.img.setImageResource(R.drawable.ic_filter_by_room_diningroom)
+                RoomType.BATH -> holder.img.setImageResource(R.drawable.ic_filter_by_room_bathroom)
+                else -> holder.img.setImageResource(R.drawable.ic_filter_by_type_cactus)
+            }
+            holder.desc.text = description
+        }
     }
 
 }
 
-class ByRoomViewHolder(view: View) : RecyclerView.ViewHolder(view)
+class ByRoomViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    var desc: TextView = itemView.findViewById(R.id.desc)
+    var img: ImageView = itemView.findViewById(R.id.img)
+}
