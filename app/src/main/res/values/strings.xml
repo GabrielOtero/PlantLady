@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">Lady Plant</string>
+    <string name="app_name">Plant Lady</string>
     <string name="main_activity_subtitle">FIND YOUR PERFECT PLANT</string>
     <string name="explore_activity_title">explore</string>
-    <string name="button_take_quizz">TAKE THE QUIZZ</string>
-    <string name="button_explore">EXPLORE</string>
+    <string name="button_take_quizz">Find it now</string>
+    <string name="button_explore">explore</string>
     <string name="explore_activity_subtitle">and find your next plant</string>
     <string name="explore_activity_search_hint">Let\'s find the perfect one for you</string>
+    <string name="quiz_activity_question_count">question %1$d / 7</string>
 </resources>
 

@@ -4,7 +4,9 @@
 
     <corners
         android:topLeftRadius="@dimen/corner_background_radius"
-        android:topRightRadius="@dimen/corner_background_radius"/>
+        android:topRightRadius="@dimen/corner_background_radius"
+        android:bottomLeftRadius="@dimen/corner_background_radius"
+        android:bottomRightRadius="@dimen/corner_background_radius"/>
 
     <padding
         android:left="1dp"

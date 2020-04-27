@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FilterByRoomAdapter: RecyclerView.Adapter<ByRoomViewHolder>() {
+class FilterByRoomAdapter : RecyclerView.Adapter<ByRoomViewHolder>() {
 
     var rooms: MutableList<ByRoomFilter> = mutableListOf()
         set(value) {
@@ -38,7 +38,7 @@ class FilterByRoomAdapter: RecyclerView.Adapter<ByRoomViewHolder>() {
 
 }
 
-class ByRoomViewHolder(view: View) : RecyclerView.ViewHolder(view){
+class ByRoomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var desc: TextView = itemView.findViewById(R.id.desc)
     var img: ImageView = itemView.findViewById(R.id.img)
 }

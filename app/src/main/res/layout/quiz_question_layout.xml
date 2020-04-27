@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/quiz_activity_margin"
+    android:layout_marginTop="88dp"
+    android:layout_marginRight="@dimen/quiz_activity_margin"
+    android:layout_marginBottom="112dp"
+    android:background="@drawable/quizz_container_background"
+    android:padding="24dp"
+    tools:showIn="@layout/activity_quiz">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/question"
+            style="@style/QuizQuestionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let's begin! What kind of climante are you?" />
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/QuizOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Tropical"
+            android:textAllCaps="false" />
+
+        <Button
+            style="@style/QuizOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Cold"
+            android:textAllCaps="false" />
+
+        <Button
+            style="@style/QuizOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Dry"
+            android:textAllCaps="false" />
+
+        <Button
+            style="@style/QuizOptionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Mild"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

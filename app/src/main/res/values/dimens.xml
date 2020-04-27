@@ -19,4 +19,6 @@
     <dimen name="main_activity_plant5_constraintCircleRadius">90dp</dimen>
 
     <dimen name="explore_activity_padding_top">40dp</dimen>
+    <dimen name="corner_background_radius">35dp</dimen>
+    <dimen name="quiz_activity_margin">24dp</dimen>
 </resources>
