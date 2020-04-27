@@ -8,7 +8,7 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:paddingTop="@dimen/explore_activity_padding_top"
-    tools:context=".ExploreActivity">
+    tools:context=".explore.ExploreActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

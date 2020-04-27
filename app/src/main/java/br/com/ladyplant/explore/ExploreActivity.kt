@@ -1,4 +1,4 @@
-package br.com.ladyplant
+package br.com.ladyplant.explore
 
 import android.os.Bundle
 import android.view.View
@@ -6,14 +6,15 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_explore.by_room_list
-import kotlinx.android.synthetic.main.activity_explore.by_type_list
+import br.com.ladyplant.model.PlantType
+import br.com.ladyplant.R
+import br.com.ladyplant.model.RoomType
+import br.com.ladyplant.model.ByRoomFilter
+import br.com.ladyplant.model.ByTypeFilter
 import kotlinx.android.synthetic.main.activity_explore.*
 
 
 class ExploreActivity : AppCompatActivity(), View.OnClickListener, View.OnScrollChangeListener {
-    private var byTypeAdapter: FilterByTypeAdapter = FilterByTypeAdapter()
-    private var byRoomAdapter: FilterByRoomAdapter = FilterByRoomAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +30,11 @@ class ExploreActivity : AppCompatActivity(), View.OnClickListener, View.OnScroll
         when (v) {
             arrow_up -> {
                 pre_filter_container.fullScroll(View.FOCUS_DOWN)
-                showHideView(viewToShow = arrow_down, viewToHide= arrow_up)
+                showHideView(viewToShow = arrow_down, viewToHide = arrow_up)
             }
             arrow_down -> {
                 pre_filter_container.fullScroll(View.FOCUS_UP)
-                showHideView(viewToShow = arrow_up, viewToHide= arrow_down)
+                showHideView(viewToShow = arrow_up, viewToHide = arrow_down)
             }
         }
     }
@@ -45,9 +46,9 @@ class ExploreActivity : AppCompatActivity(), View.OnClickListener, View.OnScroll
         oldScrollX: Int,
         oldScrollY: Int
     ) {
-        showHideView(viewToShow = arrow_down, viewToHide= arrow_up)
+        showHideView(viewToShow = arrow_down, viewToHide = arrow_up)
         if (scrollY == 0) {
-            showHideView(viewToShow = arrow_up, viewToHide= arrow_down)
+            showHideView(viewToShow = arrow_up, viewToHide = arrow_down)
         }
     }
 
@@ -57,12 +58,12 @@ class ExploreActivity : AppCompatActivity(), View.OnClickListener, View.OnScroll
     }
 
     private fun initRecyclersView() {
-        byTypeAdapter = FilterByTypeAdapter()
+        var byTypeAdapter = FilterByTypeAdapter()
         by_type_list.adapter = byTypeAdapter
         by_type_list.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
 
-        byRoomAdapter = FilterByRoomAdapter()
+        var byRoomAdapter = FilterByRoomAdapter()
         by_room_list.adapter = byRoomAdapter
         by_room_list.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)

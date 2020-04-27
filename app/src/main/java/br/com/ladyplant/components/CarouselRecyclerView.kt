@@ -5,8 +5,12 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class CarouselRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
+class CarouselRecyclerView(
+    context: Context,
+    attrs: AttributeSet
+) : RecyclerView(context, attrs) {
     var position: Int = 0
+    var onPositionChange : ((Int) -> Unit)? = null
 
     init {
         this.layoutManager =
@@ -14,14 +18,22 @@ class CarouselRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView
                 context,
                 LinearLayoutManager.HORIZONTAL,
                 false
-            ) { newPosition -> position = newPosition }
+            ) { newPosition ->
+                position = newPosition
+                onPositionChange?.let { it(newPosition) }
+            }
     }
 
-    fun scrollNext(){
+    fun onPositionChangeCallback(callback: ((Int) -> Unit)?) {
+        onPositionChange = callback
+    }
+
+
+    fun scrollNext() {
         smoothScrollToPosition(position + 1)
     }
 
-    fun scrollPrevious(){
+    fun scrollPrevious() {
         smoothScrollToPosition(position - 1)
     }
 }

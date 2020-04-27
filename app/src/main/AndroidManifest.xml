@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".quiz.QuizActivity"></activity>
         <activity
-            android:name=".ExploreActivity"
+            android:name=".explore.ExploreActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
         <activity android:name=".MainActivity" />
         <activity

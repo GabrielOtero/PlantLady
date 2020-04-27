@@ -1,4 +1,4 @@
-package br.com.ladyplant
+package br.com.ladyplant.explore
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import br.com.ladyplant.model.PlantType
+import br.com.ladyplant.R
+import br.com.ladyplant.model.ByTypeFilter
 
 class FilterByTypeAdapter : RecyclerView.Adapter<ByTypeViewHolder>() {
 
@@ -30,7 +33,6 @@ class FilterByTypeAdapter : RecyclerView.Adapter<ByTypeViewHolder>() {
                 PlantType.LIANAS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_lianas)
                 PlantType.PALMS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_palms)
                 PlantType.FRUITS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_fruits)
-                else -> holder.img.setImageResource(R.drawable.ic_filter_by_type_cactus)
             }
             holder.desc.text = description
         }

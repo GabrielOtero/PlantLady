@@ -1,4 +1,4 @@
-package br.com.ladyplant
+package br.com.ladyplant.model
 
 enum class RoomType {
     LIVING,

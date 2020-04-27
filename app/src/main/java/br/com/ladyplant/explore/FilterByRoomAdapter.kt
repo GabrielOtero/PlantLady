@@ -1,4 +1,4 @@
-package br.com.ladyplant
+package br.com.ladyplant.explore
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import br.com.ladyplant.R
+import br.com.ladyplant.model.RoomType
+import br.com.ladyplant.model.ByRoomFilter
 
 class FilterByRoomAdapter : RecyclerView.Adapter<ByRoomViewHolder>() {
 
@@ -30,7 +33,6 @@ class FilterByRoomAdapter : RecyclerView.Adapter<ByRoomViewHolder>() {
                 RoomType.BED -> holder.img.setImageResource(R.drawable.ic_filter_by_room_bedroom)
                 RoomType.DINNING -> holder.img.setImageResource(R.drawable.ic_filter_by_room_diningroom)
                 RoomType.BATH -> holder.img.setImageResource(R.drawable.ic_filter_by_room_bathroom)
-                else -> holder.img.setImageResource(R.drawable.ic_filter_by_type_cactus)
             }
             holder.desc.text = description
         }

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="quizOptionButton">@style/QuizOptionButton</item>
+
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
@@ -53,12 +55,17 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="QuizOptionButton">
+    <style name="QuizOptionButton" parent="@style/Widget.AppCompat.Button">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:stateListAnimator">@null</item>
         <item name="android:background">@drawable/quizz_option_shape</item>
         <item name="android:fontFamily">@font/quicksandvariablefont_wght</item>
         <item name="android:textSize">@dimen/main_activity_subtitle_fontSize</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 </resources>
