@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import br.com.ladyplant.R
 import br.com.ladyplant.components.toDp
@@ -14,9 +15,8 @@ import br.com.ladyplant.model.Question
 import kotlinx.android.synthetic.main.layout_quiz_question.*
 
 class QuestionFragment(
-    private val questions: List<Question>,
-    private val questionIdx: Int,
-    var onOptionSelected: () -> Unit
+    private val question: Question,
+    var onOptionSelected: ((optIdx: Int) -> Unit)? = null
 ) : Fragment() {
 
     override fun onCreateView(
@@ -32,48 +32,47 @@ class QuestionFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rebind()
+        bind()
     }
 
-    private fun rebind() {
-        question_title.text = questions[questionIdx].title
+    private fun bind() {
+        question_title.text = question.title
         buttons_container.removeAllViews()
-        for (optIdx in questions[questionIdx].options.indices) {
-            val btnTag = Button(context, null, R.attr.quizOptionButton)
+        for (optIdx in question.options.indices) {
+            val btnOpt = Button(context, null, R.attr.quizOptionButton)
 
-            questions[questionIdx].answer?.let {
-                if (optIdx == it) {
-                    btnTag.setBackgroundResource(R.drawable.quizz_option_selected_shape)
+            question.answer?.let {
+                if (it == optIdx) {
+                    btnOpt.setBackgroundResource(R.drawable.quiz_option_selected_shape)
                 }
             }
 
-            if (questionIdx == questions.size - 1) {
-                btnTag.setOnClickListener {
-                    onOptionSelected()
-                    questions[questionIdx].answer = optIdx
-                    rebind()
-                    btnTag.setBackgroundResource(R.drawable.quizz_option_selected_shape)
-                }
-            } else {
-                btnTag.setOnClickListener {
-                    onOptionSelected()
-                    questions[questionIdx].answer = optIdx
-                    rebind()
-                    btnTag.setBackgroundResource(R.drawable.quizz_option_selected_shape)
-                }
-            }
-
-            btnTag.setTypeface(null, Typeface.NORMAL)
+            btnOpt.setTypeface(null, Typeface.NORMAL)
 
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
 
+            btnOpt.setOnClickListener {
+                onOptionSelected?.let { it(optIdx) }
+                setSelectedOpt(btnOpt)
+            }
+
             layoutParams.setMargins(0, 24.toDp(), 0, 0)
-            btnTag.setPadding(24.toDp(), 0, 24.toDp(), 0)
-            btnTag.text = questions[questionIdx].options[optIdx]
-            buttons_container.addView(btnTag, layoutParams)
+            btnOpt.setPadding(24.toDp(), 0, 24.toDp(), 0)
+            btnOpt.text = question.options[optIdx]
+            buttons_container.addView(btnOpt, layoutParams)
         }
+    }
+
+    private fun setSelectedOpt(btn: Button) {
+        for (child in buttons_container.children) {
+            child.setBackgroundResource(R.drawable.quiz_option_shape)
+            child.setPadding(24.toDp(), 0, 24.toDp(), 0)
+        }
+
+        btn.setBackgroundResource(R.drawable.quiz_option_selected_shape)
+        btn.setPadding(24.toDp(), 0, 24.toDp(), 0)
     }
 }

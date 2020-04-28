@@ -8,7 +8,7 @@ import br.com.ladyplant.model.Question
 
 class QuizViewAdapter(
     fm: FragmentManager?,
-    private val onOptionSelected: () -> Unit
+    private val onQuesionAnswered: (questionIdx: Int) -> Unit
 ) : FragmentStatePagerAdapter(fm) {
 
     var questions: MutableList<Question> = mutableListOf()
@@ -18,9 +18,12 @@ class QuizViewAdapter(
         }
 
     override fun getItem(position: Int): Fragment {
-        return QuestionFragment(questions, position) {
-            onOptionSelected()
-        }
+        val question = questions[position]
+
+        return QuestionFragment(question, onOptionSelected = { optIdx ->
+            onQuesionAnswered(position)
+            question.answer = optIdx
+        })
     }
 
     override fun getCount(): Int {

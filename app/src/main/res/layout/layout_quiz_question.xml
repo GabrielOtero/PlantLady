@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/quiz_activity_margin"
         android:layout_marginRight="@dimen/quiz_activity_margin"
-        android:background="@drawable/quizz_container_background"
+        android:background="@drawable/quiz_container_background"
         android:padding="24dp">
 
         <LinearLayout

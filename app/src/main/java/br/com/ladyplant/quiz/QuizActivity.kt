@@ -22,19 +22,19 @@ class QuizActivity : AppCompatActivity() {
             super.onBackPressed()
         } else {
             quiz_view.goPrevious()
-            question_count.text = getString(R.string.quiz_activity_question_count_param, quiz_view.position)
         }
     }
 
     private fun initRecyclerView() {
-        var byTypeAdapter = QuizViewAdapter(supportFragmentManager){
-            quiz_view.goNext()
-            question_count.text = getString(R.string.quiz_activity_question_count_param, quiz_view.position)
-        }
-        quiz_view.adapter = byTypeAdapter
+        quiz_view.adapter =
+            QuizViewAdapter(supportFragmentManager, onQuesionAnswered = { quiz_view.goNext() })
 
-        //MOCK ?
-        byTypeAdapter.questions = mutableListOf(
+        quiz_view.onPositionChange = { newPos ->
+            question_count.text = getString(R.string.quiz_activity_question_count_param, newPos + 1)
+        }
+
+        //MOCK
+        quiz_view.adapter?.questions = mutableListOf(
             Question(
                 "Let’s begin! What kind of climate are you in?",
                 listOf("Tropical", "Cold", "Dry", "Mild")
