@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/quiz_activity_margin"
-    android:layout_marginTop="116dp"
-    android:layout_marginRight="@dimen/quiz_activity_margin"
-    android:layout_marginBottom="116dp"
-    android:background="@drawable/quizz_container_background"
-    android:padding="24dp">
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/question_container"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/question"
-            style="@style/QuizQuestionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Let's begin! What kind of climante are you?"
-            android:textStyle="bold" />
+        android:layout_marginLeft="@dimen/quiz_activity_margin"
+        android:layout_marginRight="@dimen/quiz_activity_margin"
+        android:background="@drawable/quizz_container_background"
+        android:padding="24dp">
 
         <LinearLayout
-            android:id="@+id/buttons_container"
+            android:id="@+id/question_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
             android:orientation="vertical">
-            <!--                <Button-->
-            <!--                    android:id="@+id/btn1"-->
-            <!--                    style="@style/QuizOptionButton"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Tropical" />-->
-        </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/question_title"
+                style="@style/QuizQuestionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let's begin! What kind of climante are you?"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/buttons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn1"
+                    style="@style/QuizOptionButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tropical" />
+
+                <Button
+                    style="@style/QuizOptionButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tropical" />
+
+                <Button
+                    style="@style/QuizOptionButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tropical" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

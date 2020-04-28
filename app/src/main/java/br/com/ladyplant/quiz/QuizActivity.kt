@@ -18,19 +18,20 @@ class QuizActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (quiz_view.position == 0) {
+        if (quiz_view.currentItem == 0) {
             super.onBackPressed()
         } else {
-            quiz_view.scrollPrevious()
+            quiz_view.goPrevious()
+            question_count.text = getString(R.string.quiz_activity_question_count_param, quiz_view.position)
         }
     }
 
     private fun initRecyclerView() {
-        var byTypeAdapter = QuizViewAdapter()
-        quiz_view.adapter = byTypeAdapter
-        quiz_view.onPositionChangeCallback {
-            question_count.text = getString(R.string.quiz_activity_question_count_param, it + 1)
+        var byTypeAdapter = QuizViewAdapter(supportFragmentManager){
+            quiz_view.goNext()
+            question_count.text = getString(R.string.quiz_activity_question_count_param, quiz_view.position)
         }
+        quiz_view.adapter = byTypeAdapter
 
         //MOCK ?
         byTypeAdapter.questions = mutableListOf(
