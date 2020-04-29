@@ -1,8 +1,10 @@
 package br.com.ladyplant.quiz
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.ladyplant.R
+import br.com.ladyplant.details.DetailActivity
 import br.com.ladyplant.model.Question
 import kotlinx.android.synthetic.main.activity_quiz.*
 
@@ -26,15 +28,8 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        quiz_view.adapter =
-            QuizViewAdapter(supportFragmentManager, onQuesionAnswered = { quiz_view.goNext() })
-
-        quiz_view.onPositionChange = { newPos ->
-            question_count.text = getString(R.string.quiz_activity_question_count_param, newPos + 1)
-        }
-
         //MOCK
-        quiz_view.adapter?.questions = mutableListOf(
+        val questions = mutableListOf(
             Question(
                 "Let’s begin! What kind of climate are you in?",
                 listOf("Tropical", "Cold", "Dry", "Mild")
@@ -87,5 +82,20 @@ class QuizActivity : AppCompatActivity() {
             )
         )
         ////
+
+        quiz_view.adapter =
+            QuizViewAdapter(supportFragmentManager, onQuesionAnswered = { questionIdx ->
+                if (questionIdx == questions.size - 1) {
+                    startActivity(Intent(this, DetailActivity::class.java))
+                } else {
+                    quiz_view.goNext()
+                }
+            })
+
+        quiz_view.onPositionChange = { newPos ->
+            question_count.text = getString(R.string.quiz_activity_question_count_param, newPos + 1)
+        }
+
+        quiz_view.adapter?.questions = questions
     }
 }
