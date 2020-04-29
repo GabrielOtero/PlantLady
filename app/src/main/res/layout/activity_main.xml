@@ -17,10 +17,10 @@
 
     <TextView
         android:id="@+id/find"
+        style="@style/Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_activity_subtitle"
-        style="@style/Subtitle"
         android:translationY="@dimen/main_activity_subtitle_translationY"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -95,19 +95,18 @@
             style="@style/PrimaryButton"
             android:layout_width="240dp"
             android:layout_height="56dp"
-            android:layout_marginBottom="@dimen/main_activity_button_margin_vertical"
-            android:text="@string/main_activity_button_take_quiz"
             android:layout_gravity="center"
-            android:textAllCaps="true" />
+            android:layout_marginBottom="@dimen/main_activity_button_margin_vertical"
+            android:text="@string/main_activity_button_take_quiz" />
 
         <Button
             android:id="@+id/explore_btn"
             style="@style/SecondaryButton"
             android:layout_width="240dp"
             android:layout_height="56dp"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/main_activity_button_margin_vertical"
             android:text="@string/main_activity_button_explore"
-            android:layout_gravity="center"
             android:textAllCaps="true" />
 
     </LinearLayout>

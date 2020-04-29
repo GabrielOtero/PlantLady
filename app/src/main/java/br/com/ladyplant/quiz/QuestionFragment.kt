@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import br.com.ladyplant.R
 import br.com.ladyplant.components.toDp
 import br.com.ladyplant.model.Question
+import io.github.inflationx.calligraphy3.CalligraphyUtils
 import kotlinx.android.synthetic.main.layout_quiz_question.*
 
 class QuestionFragment(
@@ -58,7 +59,10 @@ class QuestionFragment(
                 onOptionSelected?.let { it(optIdx) }
                 setSelectedOpt(btnOpt)
             }
-
+            CalligraphyUtils.applyFontToTextView(
+                btnOpt,
+                Typeface.createFromAsset(context?.assets, "fonts/quicksandvariablefont_wght.ttf")
+            )
             layoutParams.setMargins(0, 24.toDp(), 0, 0)
             btnOpt.setPadding(24.toDp(), 0, 24.toDp(), 0)
             btnOpt.text = question.options[optIdx]
@@ -66,12 +70,13 @@ class QuestionFragment(
         }
     }
 
+
     private fun setSelectedOpt(btn: Button) {
-        buttons_container?.let{
+        buttons_container?.let {
             for (child in it.children) {
-            child.setBackgroundResource(R.drawable.quiz_option_shape)
-            child.setPadding(24.toDp(), 0, 24.toDp(), 0)
-        }
+                child.setBackgroundResource(R.drawable.quiz_option_shape)
+                child.setPadding(24.toDp(), 0, 24.toDp(), 0)
+            }
 
             btn.setBackgroundResource(R.drawable.quiz_option_selected_shape)
             btn.setPadding(24.toDp(), 0, 24.toDp(), 0)

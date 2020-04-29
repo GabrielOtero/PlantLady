@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.ladyplant.model.PlantType
+import br.com.ladyplant.BaseActivity
 import br.com.ladyplant.R
-import br.com.ladyplant.model.RoomType
 import br.com.ladyplant.model.ByRoomFilter
 import br.com.ladyplant.model.ByTypeFilter
+import br.com.ladyplant.model.PlantType
+import br.com.ladyplant.model.RoomType
 import kotlinx.android.synthetic.main.activity_explore.*
 
 
-class ExploreActivity : AppCompatActivity(), View.OnClickListener, View.OnScrollChangeListener {
+class ExploreActivity : BaseActivity(), View.OnClickListener, View.OnScrollChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

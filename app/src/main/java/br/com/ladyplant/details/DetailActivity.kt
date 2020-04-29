@@ -1,10 +1,10 @@
 package br.com.ladyplant.details
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.ladyplant.BaseActivity
 import br.com.ladyplant.R
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

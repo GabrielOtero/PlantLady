@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="explore_activity_padding_top">40dp</dimen>
+    <dimen name="activity_padding_top">40dp</dimen>
 </resources>

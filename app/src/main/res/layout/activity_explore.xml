@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    android:paddingTop="@dimen/explore_activity_padding_top"
+    android:paddingTop="@dimen/activity_padding_top"
     tools:context=".explore.ExploreActivity">
 
     <LinearLayout
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            style="@style/ScreenTitle"
+            android:textAppearance="@style/ScreenTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/explore_activity_title" />
@@ -34,18 +34,13 @@
             android:text="@string/explore_activity_subtitle" />
 
         <EditText
+            style="@style/EditText"
             android:id="@+id/search_plant"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/edit_text_background"
-            android:drawableRight="@drawable/ic_mdi_search"
-            android:ellipsize="end"
-            android:fontFamily="@font/quicksandvariablefont_wght"
-            android:gravity="center|left"
-            android:hint="@string/explore_activity_search_hint"
-            android:maxLines="1"
-            android:textSize="14sp">
+            android:drawableEnd="@drawable/ic_mdi_search"
+            android:hint="@string/explore_activity_search_hint">
 
         </EditText>
     </LinearLayout>
@@ -88,16 +83,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/PreFilterTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksandvariablefont_wght"
-                    android:paddingLeft="@dimen/explore_activity_margin"
+                    android:paddingStart="@dimen/explore_activity_margin"
+                    android:paddingEnd="@dimen/explore_activity_margin"
                     android:text="by type"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-                <!--style="@style/PreFilterTitle"-->
+                    tools:ignore="MissingPrefix" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/by_type_list"
                     style="@style/scrollbarShapeStyle"
@@ -115,16 +108,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/PreFilterTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksandvariablefont_wght"
-                    android:paddingLeft="@dimen/explore_activity_margin"
-                    android:text="by room"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-                <!--style="@style/PreFilterTitle"-->
+                    android:paddingStart="@dimen/explore_activity_margin"
+                    android:paddingEnd="@dimen/explore_activity_margin"
+                    android:text="by room" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/by_room_list"

@@ -2,14 +2,14 @@ package br.com.ladyplant.quiz
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import br.com.ladyplant.BaseActivity
 import br.com.ladyplant.R
 import br.com.ladyplant.details.DetailActivity
 import br.com.ladyplant.model.Question
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

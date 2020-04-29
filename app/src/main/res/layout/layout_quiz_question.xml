@@ -25,8 +25,7 @@
                 style="@style/QuizQuestionTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Let's begin! What kind of climante are you?"
-                android:textStyle="bold" />
+                android:text="Let's begin! What kind of climante are you?" />
 
             <LinearLayout
                 android:id="@+id/buttons_container"
