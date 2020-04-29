@@ -6,183 +6,172 @@
     android:layout_height="match_parent"
     tools:context="br.com.ladyplant.details.DetailActivity">
 
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="24dp">
+            app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
-                android:id="@+id/your_plant_is_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/result_activity_your_plant_title"
-                android:textAppearance="@style/yourPlantIs" />
+        <TextView
+            android:id="@+id/your_plant_is_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/result_activity_your_plant_title"
+            android:textAppearance="@style/yourPlantIs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/your_plant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/result_activity_your_plant"
-                android:textAppearance="@style/youPlantDesc" />
+        <TextView
+            android:id="@+id/your_plant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/result_activity_your_plant"
+            android:textAppearance="@style/youPlantDesc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/your_plant_is_title" />
 
-            <TextView
-                android:id="@+id/echinocactu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/result_activity_your_plant_family"
-                android:textAppearance="@style/youPlantFamilyDesc" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/your_plant_is_family"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/result_activity_your_plant_family"
+            android:textAppearance="@style/youPlantFamilyDesc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/your_plant" />
 
         <ImageView
             android:id="@+id/your_plant_image"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_marginTop="32dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_your_plant_ic" />
+            android:src="@drawable/ic_your_plant_ic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/your_plant_is_family" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/origin_title"
+            style="@style/DetailSubtitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingBottom="24dp">
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="origin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/your_plant_image" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:orientation="horizontal"
-                android:weightSum="100">
+        <TextView
+            android:id="@+id/origin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="mexico"
+            app:layout_constraintEnd_toEndOf="@id/middle_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/origin_title" />
 
-                <LinearLayout
-                    android:id="@+id/origin_container"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:orientation="vertical"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/poisonous_container"
-                    app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/poisonous_title"
+            style="@style/DetailSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="poisonous"
+            app:layout_constraintStart_toStartOf="@id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@id/your_plant_image" />
 
-                    <TextView
-                        style="@style/DetailSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="origin" />
+        <TextView
+            android:id="@+id/poisonous"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="No but has thorns"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@id/poisonous_title" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="mexico" />
-                </LinearLayout>
+        <TextView
+            android:id="@+id/light_title"
+            style="@style/DetailSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poisonous" />
 
+        <TextView
+            android:id="@+id/light"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Plenty of sunshine"
+            app:layout_constraintEnd_toEndOf="@id/middle_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/light_title" />
 
-                <LinearLayout
-                    android:id="@+id/poisonous_container"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:orientation="vertical"
-                    app:layout_constraintLeft_toRightOf="@id/origin_container"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/water_title"
+            style="@style/DetailSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="water"
+            app:layout_constraintStart_toStartOf="@id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@id/poisonous" />
 
-                    <TextView
-                        style="@style/DetailSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="poisonous" />
+        <TextView
+            android:id="@+id/water"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="Once a week of when the soil is very dry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@id/water_title" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="No but has thorns" />
-                </LinearLayout>
-            </LinearLayout>
+        <TextView
+            android:id="@+id/detail_title"
+            style="@style/DetailSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="overview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/water" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:orientation="horizontal"
-                android:weightSum="100">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:orientation="vertical"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/poisonous_container"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        style="@style/DetailSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="light" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Plenty of sunshine" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:orientation="vertical"
-                    app:layout_constraintLeft_toRightOf="@id/origin_container"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        style="@style/DetailSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="water" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Oce a week of when the soil is very dry" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/DetailSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="overview" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="This cactus is widely cultivated as an ornamental plant for planting in containers, desert habitat gardens, rock gardens, and in conservatories." />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="This cactus is widely cultivated as an ornamental plant for planting in containers, desert habitat gardens, rock gardens, and in conservatories."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

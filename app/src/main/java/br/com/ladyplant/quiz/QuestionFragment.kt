@@ -67,12 +67,15 @@ class QuestionFragment(
     }
 
     private fun setSelectedOpt(btn: Button) {
-        for (child in buttons_container.children) {
+        buttons_container?.let{
+            for (child in it.children) {
             child.setBackgroundResource(R.drawable.quiz_option_shape)
             child.setPadding(24.toDp(), 0, 24.toDp(), 0)
         }
 
-        btn.setBackgroundResource(R.drawable.quiz_option_selected_shape)
-        btn.setPadding(24.toDp(), 0, 24.toDp(), 0)
+            btn.setBackgroundResource(R.drawable.quiz_option_selected_shape)
+            btn.setPadding(24.toDp(), 0, 24.toDp(), 0)
+        }
+
     }
 }
