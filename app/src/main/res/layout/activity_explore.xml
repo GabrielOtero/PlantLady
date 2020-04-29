@@ -45,7 +45,7 @@
         </EditText>
     </LinearLayout>
 
-    <ScrollView
+    <br.com.ladyplant.components.DragOverScrollView
         android:id="@+id/pre_filter_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -126,7 +126,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </br.com.ladyplant.components.DragOverScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
