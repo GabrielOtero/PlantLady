@@ -2,8 +2,10 @@ package br.com.ladyplant.quiz
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import br.com.ladyplant.BaseActivity
 import br.com.ladyplant.R
+import br.com.ladyplant.components.toDp
 import br.com.ladyplant.details.DetailActivity
 import br.com.ladyplant.model.Question
 import kotlinx.android.synthetic.main.activity_quiz.*
@@ -94,6 +96,12 @@ class QuizActivity : BaseActivity() {
 
         quiz_view.onPositionChange = { newPos ->
             question_count.text = getString(R.string.quiz_activity_question_count_param, newPos + 1)
+            val param = LinearLayout.LayoutParams(
+                0.toDp(),
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                (12.5 * (newPos + 1)).toFloat()
+            )
+            current_progress.layoutParams = param
         }
 
         quiz_view.adapter?.questions = questions
