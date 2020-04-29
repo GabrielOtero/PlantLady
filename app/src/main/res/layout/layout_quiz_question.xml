@@ -8,10 +8,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/quiz_activity_margin"
-        android:layout_marginRight="@dimen/quiz_activity_margin"
+        android:layout_marginLeft="@dimen/quiz_question_margin"
+        android:layout_marginRight="@dimen/quiz_question_margin"
         android:background="@drawable/quiz_container_background"
-        android:padding="24dp">
+        android:padding="@dimen/quiz_question_scroll_padding">
 
         <LinearLayout
             android:id="@+id/question_container"

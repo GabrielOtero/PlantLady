@@ -18,14 +18,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <br.com.ladyplant.components.CarouselRecyclerView-->
-    <!--        android:id="@+id/quiz_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintRight_toRightOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
     <br.com.ladyplant.components.QuizViewPager
         android:id="@+id/quiz_view"
         android:layout_width="match_parent"
@@ -81,7 +73,7 @@
         android:id="@+id/back_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/quiz_activity_margin"
+        android:layout_marginLeft="@dimen/quiz_question_margin"
         android:src="@drawable/ic_arrow_back_white_24dp"
         app:layout_constraintBottom_toBottomOf="@id/question_count"
         app:layout_constraintLeft_toLeftOf="parent"
