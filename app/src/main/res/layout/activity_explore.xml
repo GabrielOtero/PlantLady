@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,71 +11,63 @@
     android:paddingTop="@dimen/activity_padding_top"
     tools:context=".explore.ExploreActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginBottom="@dimen/explore_activity_margin"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/explore_activity_margin"
-        android:paddingRight="@dimen/explore_activity_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/explore_activity_margin"
+            android:layout_marginEnd="@dimen/explore_activity_margin"
+            android:text="@string/explore_activity_title"
             android:textAppearance="@style/ScreenTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/explore_activity_title" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/subtitle"
             style="@style/Subtitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/explore_activity_subtitle" />
+            android:layout_marginStart="@dimen/explore_activity_margin"
+            android:layout_marginTop="@dimen/subtitle_margin_top"
+            android:layout_marginEnd="@dimen/explore_activity_margin"
+            android:text="@string/explore_activity_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
         <EditText
-            style="@style/EditText"
             android:id="@+id/search_plant"
-            android:layout_width="match_parent"
+            style="@style/EditText"
+            android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_marginStart="@dimen/explore_activity_margin"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/explore_activity_margin"
             android:drawableEnd="@drawable/ic_mdi_search"
-            android:hint="@string/explore_activity_search_hint">
+            android:hint="@string/explore_activity_search_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitle">
 
         </EditText>
-    </LinearLayout>
 
-    <br.com.ladyplant.components.DragOverScrollView
-        android:id="@+id/pre_filter_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/explore_activity_pre_filter_margin_top"
-            android:background="@drawable/explore_background"
+            android:background="@drawable/white_upper_corners_background"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/explore_activity_pre_filter_padding_bottom">
-
-            <ImageView
-                android:id="@+id/arrow_up"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/explore_activity_margin"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_arrow_drop_up_black_24dp" />
-
-            <ImageView
-                android:id="@+id/arrow_down"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/explore_activity_margin"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_arrow_drop_down_black_24dp"
-                android:visibility="gone" />
+            android:paddingTop="@dimen/explore_activity_margin"
+            android:paddingBottom="@dimen/explore_activity_pre_filter_padding_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_plant">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,7 +119,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </br.com.ladyplant.components.DragOverScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -6,8 +6,8 @@ import android.widget.LinearLayout
 import br.com.ladyplant.BaseActivity
 import br.com.ladyplant.R
 import br.com.ladyplant.components.toDp
-import br.com.ladyplant.details.DetailActivity
 import br.com.ladyplant.model.Question
+import br.com.ladyplant.result.QuizResultListActivity
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 
@@ -88,7 +88,8 @@ class QuizActivity : BaseActivity() {
         quiz_view.adapter =
             QuizViewAdapter(supportFragmentManager, onQuesionAnswered = { questionIdx ->
                 if (questionIdx == questions.size - 1) {
-                    startActivity(Intent(this, DetailActivity::class.java))
+                    startActivity(Intent(this, QuizResultListActivity::class.java))
+                    finish()
                 } else {
                     quiz_view.goNext()
                 }

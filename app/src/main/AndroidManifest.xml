@@ -5,14 +5,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".PlantLadyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".PlantLadyApp"
         android:theme="@style/AppTheme">
-        <activity android:name=".details.DetailActivity"></activity>
+        <activity android:name=".result.QuizResultListActivity"/>
+        <activity android:name=".result.ByTypeResultListActivity"/>
+        <activity android:name=".result.ByRoomResultListActivity"/>
+        <activity android:name=".details.DetailActivity" />
         <activity android:name=".quiz.QuizActivity" />
         <activity
             android:name=".explore.ExploreActivity"

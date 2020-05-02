@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/quiz_question_margin"
         android:layout_marginRight="@dimen/quiz_question_margin"
-        android:background="@drawable/quiz_container_background"
+        android:background="@drawable/white_full_corners_background"
         android:padding="@dimen/quiz_question_scroll_padding">
 
         <LinearLayout
