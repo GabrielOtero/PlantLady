@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:paddingStart="@dimen/explore_activity_margin"
-    android:paddingEnd="@dimen/explore_activity_margin"
     tools:context="br.com.ladyplant.result.QuizResultListActivity">
 
     <TextView
         android:id="@+id/result_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_padding_top"
+        android:paddingStart="@dimen/explore_activity_margin"
+        android:paddingEnd="@dimen/explore_activity_margin"
         android:text="@string/quiz_result_activity_title"
         android:textAppearance="@style/ScreenTitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +25,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/subtitle_margin_top"
+        android:paddingStart="@dimen/explore_activity_margin"
+        android:paddingEnd="@dimen/explore_activity_margin"
         android:text="@string/quiz_result_activity_subtitle"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,32 +38,36 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
+        android:paddingStart="@dimen/explore_activity_margin"
+        android:paddingEnd="@dimen/explore_activity_margin"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result_subtitle"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/result_subtitle" />
 
     <ImageView
         android:id="@+id/empty_state_img"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_empty_state"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/empty_state_msg"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:visibility="gone"
+        android:gravity="center"
+        android:paddingStart="@dimen/explore_activity_margin"
+        android:paddingEnd="@dimen/explore_activity_margin"
         android:text="@string/activity_result_empty_state_message"
         android:textAppearance="@style/EmptyStateMessage"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/empty_state_img" />

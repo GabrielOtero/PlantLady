@@ -5,7 +5,7 @@
 
     <dimen name="main_activity_plant4_translationX">-25dp</dimen>
     <dimen name="main_activity_subtitle_translationY">-5dp</dimen>
-    <dimen name="main_activity_subtitle_fontSize">14sp</dimen>
+    <dimen name="main_activity_subtitle_fontSize">16sp</dimen>
     <dimen name="main_activity_button_margin_horizontal">64dp</dimen>
     <dimen name="main_activity_button_margin_vertical">8dp</dimen>
     <dimen name="main_activity_buttons_view_margin_top">16dp</dimen>
@@ -16,7 +16,7 @@
     <dimen name="main_activity_plant5_constraintCircleAngle">180</dimen>
     <dimen name="main_activity_plant5_constraintCircleRadius">90dp</dimen>
 
-    <dimen name="activity_padding_top">40dp</dimen>
+    <dimen name="activity_padding_top">16dp</dimen>
     <dimen name="explore_activity_margin">24dp</dimen>
     <dimen name="explore_activity_pre_filter_margin_top">24dp</dimen>
     <dimen name="explore_activity_font_size_title">30sp</dimen>
@@ -34,7 +34,7 @@
     <dimen name="explore_activity_pre_filter_container_margin_bottom">10dp</dimen>
     <dimen name="explore_activity_pre_filter_recycler_margin_top">10dp</dimen>
     <dimen name="detail_activity_padding_top">40dp</dimen>
-    <dimen name="subtitle_margin_top">8dp</dimen>
+    <dimen name="subtitle_margin_top">4dp</dimen>
 
 
 </resources>

@@ -17,7 +17,7 @@ class QuizActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        initRecyclerView()
+        initPageView()
         back_arrow.setOnClickListener { onBackPressed() }
     }
 
@@ -29,7 +29,7 @@ class QuizActivity : BaseActivity() {
         }
     }
 
-    private fun initRecyclerView() {
+    private fun initPageView() {
         //MOCK
         val questions = mutableListOf(
             Question(
@@ -39,7 +39,7 @@ class QuizActivity : BaseActivity() {
             Question(
                 "What are your gardening skills? Be honest, there's no judgment here.",
                 listOf(
-                    "I cant't keep a dirty alive",
+                    "I can't keep dirt alive",
                     "Somewhere close to good",
                     "I definetly have a green thumb"
                 )

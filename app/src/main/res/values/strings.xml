@@ -17,13 +17,18 @@
     <string name="result_activity_your_plant_family">(Echinocactus grusonii)</string>
 
     <string name="quiz_result_activity_subtitle">HERE ARE SOME OPTIONS FOR YOU</string>
-    <string name="quiz_result_activity_title">result</string>
+    <string name="quiz_result_activity_title">results</string>
 
     <string name="or_take_the_quiz_again"><u>Or take the quiz again</u></string>
 
     <string name="by_type_result_list_activity_subtitle">plants by type - %1$s</string>
     <string name="by_room_result_list_activity_subtitle">plants by room - %1$s</string>
     <string name="activity_result_empty_state_message">"Ops… seems like we\n didn’t find anything"</string>
+    <string name="detail_activity_origin_desc_title">origin</string>
+    <string name="detail_activity_poisonous_desc_title">toxic</string>
+    <string name="detail_activity_overview_desc_title">overview</string>
+    <string name="detail_activity_water_desc_title">water</string>
+    <string name="detail_activity_light_desc_title">light</string>
 
 </resources>
 

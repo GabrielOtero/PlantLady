@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/question_count"
-        style="@style/Subtitle"
+        style="@style/QuizSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

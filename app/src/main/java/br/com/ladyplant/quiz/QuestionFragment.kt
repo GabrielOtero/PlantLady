@@ -61,7 +61,7 @@ class QuestionFragment(
             }
             CalligraphyUtils.applyFontToTextView(
                 btnOpt,
-                Typeface.createFromAsset(context?.assets, "fonts/quicksandvariablefont_wght.ttf")
+                Typeface.createFromAsset(context?.assets, "fonts/Quicksand-Regular.ttf")
             )
             layoutParams.setMargins(0, 24.toDp(), 0, 0)
             btnOpt.setPadding(24.toDp(), 0, 24.toDp(), 0)

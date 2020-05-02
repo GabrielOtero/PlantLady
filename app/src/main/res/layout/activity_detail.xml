@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
-            android:text="origin"
+            android:text="@string/detail_activity_origin_desc_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/your_plant_image" />
 
@@ -95,7 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
-            android:text="poisonous"
+            android:text="@string/detail_activity_poisonous_desc_title"
             app:layout_constraintStart_toStartOf="@id/middle_guideline"
             app:layout_constraintTop_toBottomOf="@id/your_plant_image" />
 
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
-            android:text="light"
+            android:text="@string/detail_activity_light_desc_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poisonous" />
 
@@ -140,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
-            android:text="water"
+            android:text="@string/detail_activity_water_desc_title"
             app:layout_constraintStart_toStartOf="@id/middle_guideline"
             app:layout_constraintTop_toBottomOf="@id/poisonous" />
 
@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
-            android:text="overview"
+            android:text="@string/detail_activity_overview_desc_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/water" />
 

@@ -36,7 +36,7 @@ abstract class BaseResultListActivity : BaseActivity() {
     private fun initRecyclerView() {
         var resultAdapter = ResultAdapter(this)
         result_list.adapter = resultAdapter
-        val verticalSpacingItemDecorator = VerticalSpacingItemDecorator(16)
+        val verticalSpacingItemDecorator = VerticalSpacingItemDecorator(32)
         result_list.addItemDecoration(verticalSpacingItemDecorator)
         result_list.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
