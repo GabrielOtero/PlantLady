@@ -2,7 +2,7 @@ package br.com.ladyplant.result
 
 import br.com.ladyplant.R
 import br.com.ladyplant.model.Constants
-import br.com.ladyplant.model.PlantResultWrapper
+import br.com.ladyplant.model.ItemResult
 
 class ByRoomResultListActivity : BaseResultListActivity() {
 
@@ -14,7 +14,7 @@ class ByRoomResultListActivity : BaseResultListActivity() {
         )
     }
 
-    override fun items(): List<PlantResultWrapper> {
+    override fun items(): List<ItemResult> {
         return mutableListOf()
     }
 }

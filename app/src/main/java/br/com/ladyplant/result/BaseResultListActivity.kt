@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.ladyplant.BaseActivity
 import br.com.ladyplant.R
 import br.com.ladyplant.components.VerticalSpacingItemDecorator
-import br.com.ladyplant.model.PlantResultWrapper
+import br.com.ladyplant.model.HeaderResult
+import br.com.ladyplant.model.ItemResult
 import kotlinx.android.synthetic.main.activity_result.*
 
 abstract class BaseResultListActivity : BaseActivity() {
@@ -16,20 +17,21 @@ abstract class BaseResultListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        result_title.text = title()
-        result_subtitle.text = subTitle()
+        //TODO
+//        result_title.text = title()
+//        result_subtitle.text = subTitle()
 
         initRecyclerView()
+        val headerList = items().toMutableList()
+        headerList.add(0, HeaderResult(title(), subTitle()))
+        (result_list.adapter as ResultAdapter).results = headerList
 
-        if (items().isNotEmpty()) {
-            (result_list.adapter as ResultAdapter).results = items()
+        if (items().size > 1) {
             empty_state_img.visibility = GONE
             empty_state_msg.visibility = GONE
-            result_list.visibility = VISIBLE
-        }else {
+        } else {
             empty_state_img.visibility = VISIBLE
             empty_state_msg.visibility = VISIBLE
-            result_list.visibility = GONE
         }
     }
 
@@ -44,5 +46,5 @@ abstract class BaseResultListActivity : BaseActivity() {
 
     abstract fun title(): String
     abstract fun subTitle(): String
-    abstract fun items(): List<PlantResultWrapper>
+    abstract fun items(): List<ItemResult>
 }

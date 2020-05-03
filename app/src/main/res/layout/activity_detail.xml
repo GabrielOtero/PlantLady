@@ -105,8 +105,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/detail_activity_details_margin_top"
             android:layout_marginEnd="@dimen/detail_activity_margin_lateral"
-            android:textAppearance="@style/DetailDescription"
             android:text="No but has thorns"
+            android:textAppearance="@style/DetailDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/middle_guideline"
             app:layout_constraintTop_toBottomOf="@id/poisonous_title" />
@@ -128,9 +128,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_margin_top"
+            android:layout_marginEnd="@dimen/detail_activity_margin_lateral"
             android:text="Plenty of sunshine"
             android:textAppearance="@style/DetailDescription"
-            app:layout_constraintEnd_toEndOf="@id/middle_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/light_title" />
 
@@ -139,21 +140,23 @@
             style="@style/DetailSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
             android:text="@string/detail_activity_water_desc_title"
-            app:layout_constraintStart_toStartOf="@id/middle_guideline"
-            app:layout_constraintTop_toBottomOf="@id/poisonous" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/light" />
 
         <TextView
             android:id="@+id/water"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_margin_top"
             android:layout_marginEnd="@dimen/detail_activity_margin_lateral"
-            android:textAppearance="@style/DetailDescription"
             android:text="Once a week of when the soil is very dry"
+            android:textAppearance="@style/DetailDescription"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/middle_guideline"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/water_title" />
 
         <TextView
@@ -170,11 +173,11 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/DetailDescription"
             android:layout_marginStart="@dimen/detail_activity_margin_lateral"
             android:layout_marginTop="@dimen/detail_activity_details_margin_top"
             android:layout_marginEnd="@dimen/detail_activity_margin_lateral"
             android:text="This cactus is widely cultivated as an ornamental plant for planting in containers, desert habitat gardens, rock gardens, and in conservatories."
+            android:textAppearance="@style/DetailDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detail_title" />

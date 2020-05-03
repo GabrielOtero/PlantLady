@@ -3,7 +3,7 @@ package br.com.ladyplant.result
 import br.com.ladyplant.R
 import br.com.ladyplant.model.Constants
 import br.com.ladyplant.model.Plant
-import br.com.ladyplant.model.PlantResultWrapper
+import br.com.ladyplant.model.ItemResult
 import br.com.ladyplant.model.ResultType
 
 class ByTypeResultListActivity : BaseResultListActivity() {
@@ -16,15 +16,16 @@ class ByTypeResultListActivity : BaseResultListActivity() {
         )
     }
 
-    override fun items(): List<PlantResultWrapper> {
+    override fun items(): List<ItemResult> {
+        val description = getString(R.string.or_take_the_quiz_to_find_your_plant)
         return mutableListOf(
-            PlantResultWrapper(Plant()),
-            PlantResultWrapper(Plant()),
-            PlantResultWrapper(Plant()),
-            PlantResultWrapper(Plant()),
-            PlantResultWrapper(Plant()),
-            PlantResultWrapper(Plant()),
-            PlantResultWrapper(Plant(), ResultType.TAKE_QUIZ_AGAIN)
+            ItemResult(),
+            ItemResult(),
+            ItemResult(),
+            ItemResult(),
+            ItemResult(),
+            ItemResult(),
+            ItemResult(description, ResultType.TAKE_QUIZ_AGAIN)
         )
     }
 }

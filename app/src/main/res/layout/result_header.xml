@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:paddingBottom="@dimen/result_activity_header_result_padding_bottom"
+    tools:context=".result.BaseResultListActivity">
+
+    <TextView
+        android:id="@+id/result_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_result_activity_title"
+        android:textAppearance="@style/ScreenTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/result_subtitle"
+        style="@style/Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/subtitle_margin_top"
+        android:text="@string/quiz_result_activity_subtitle"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

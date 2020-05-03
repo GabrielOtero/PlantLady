@@ -20,7 +20,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/plant_name"
+        android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
