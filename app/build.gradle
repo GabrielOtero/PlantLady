@@ -9,6 +9,14 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/gabriel/Desktop/my-release-key.keystore')
+            storePassword '321mudar'
+            keyAlias = 'alias_name'
+            keyPassword '321mudar'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -18,6 +26,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
     compileOptions {
         sourceCompatibility = 1.8
