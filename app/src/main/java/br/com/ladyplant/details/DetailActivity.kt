@@ -21,7 +21,7 @@ class DetailActivity : BaseActivity() {
 
     private val observer = Observer<Resource<Plant>> {
         when (it.status) {
-            Status.SUCCESS -> asd(it.data!!)
+            Status.SUCCESS -> showPlant(it.data!!)
             Status.ERROR -> showError(it.message!!)
             Status.LOADING -> showLoading()
         }
@@ -46,11 +46,8 @@ class DetailActivity : BaseActivity() {
         Log.d(TAG, message)
     }
 
-    private fun showLoading() {
-        Log.d(TAG, "loading")
-    }
-
-    private fun asd(plant: Plant) {
+    private fun showPlant(plant: Plant) {
+        hideLoading()
         Log.d(TAG, plant.toString())
     }
 

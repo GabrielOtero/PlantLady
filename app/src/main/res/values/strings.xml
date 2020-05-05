@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Plant Lady</string>
 
+    <string name="log_show_loading">Show Loading</string>
+    <string name="log_hide_loading">Hide Loading</string>
+
     <string name="main_activity_subtitle">FIND YOUR PERFECT PLANT</string>
     <string name="main_activity_button_take_quiz">Find it now</string>
     <string name="main_activity_button_explore">explore</string>
@@ -32,6 +35,7 @@
     <string name="detail_activity_overview_desc_title">overview</string>
     <string name="detail_activity_water_desc_title">water</string>
     <string name="detail_activity_light_desc_title">light</string>
+
 
 
 </resources>
