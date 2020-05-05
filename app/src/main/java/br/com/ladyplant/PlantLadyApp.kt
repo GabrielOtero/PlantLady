@@ -1,7 +1,7 @@
 package br.com.ladyplant
 
 import android.app.Application
-import br.com.ladyplant.di.plantLadyModule
+import br.com.ladyplant.domain.di.plantLadyModule
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump

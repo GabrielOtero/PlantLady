@@ -16,17 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".result.QuizResultListActivity"/>
-        <activity android:name=".result.ByTypeResultListActivity"/>
-        <activity android:name=".result.ByRoomResultListActivity"/>
-        <activity android:name=".details.DetailActivity" />
-        <activity android:name=".quiz.QuizActivity" />
+        <activity android:name="br.com.ladyplant.view.result.QuizResultListActivity"/>
+        <activity android:name="br.com.ladyplant.view.result.ByTypeResultListActivity"/>
+        <activity android:name="br.com.ladyplant.view.result.ByRoomResultListActivity"/>
+        <activity android:name="br.com.ladyplant.view.details.DetailActivity" />
+        <activity android:name="br.com.ladyplant.view.quiz.QuizActivity" />
         <activity
-            android:name=".explore.ExploreActivity"
+            android:name="br.com.ladyplant.view.explore.ExploreActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".view.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

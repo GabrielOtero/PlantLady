@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:paddingBottom="@dimen/result_activity_header_result_padding_bottom"
-    tools:context=".result.BaseResultListActivity">
+    tools:context=".view.result.BaseResultListActivity">
 
     <TextView
         android:id="@+id/result_title"

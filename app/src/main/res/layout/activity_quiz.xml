@@ -38,7 +38,7 @@
             android:background="@drawable/progress_bar_quiz_progress" />
     </LinearLayout>
 
-    <br.com.ladyplant.components.QuizViewPager
+    <br.com.ladyplant.view.components.QuizViewPager
         android:id="@+id/quiz_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
