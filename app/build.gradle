@@ -34,18 +34,22 @@ android {
             minifyEnabled true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "API_END_POINT", "\"https://yardman-qa.herokuapp.com/\""
+            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-qa.herokuapp.com/images/plant/\""
         }
         debug {
             minifyEnabled false
             debuggable true
             applicationIdSuffix ".qa"
+
+            buildConfigField "String", "API_END_POINT", "\"https://yardman-qa.herokuapp.com/\""
+            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-qa.herokuapp.com/images/plant/\""
         }
     }
 }
 
 dependencies {
-
-
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

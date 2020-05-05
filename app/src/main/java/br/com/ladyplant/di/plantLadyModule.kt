@@ -1,5 +1,6 @@
 package br.com.ladyplant.di
 
+import br.com.ladyplant.BuildConfig.API_END_POINT
 import br.com.ladyplant.details.DetailViewModel
 import br.com.ladyplant.repository.PlantLadyApi
 import br.com.ladyplant.repository.PlantRepository
@@ -22,7 +23,7 @@ val plantLadyModule = module {
 
     single(named(KOIN_RETROFIT)) {
         Retrofit.Builder()
-            .baseUrl("https://yardman-qa.herokuapp.com/")
+            .baseUrl(API_END_POINT)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

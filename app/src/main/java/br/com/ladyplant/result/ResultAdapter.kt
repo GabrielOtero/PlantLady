@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ladyplant.R
 import br.com.ladyplant.details.DetailActivity
+import br.com.ladyplant.model.Constants
 import br.com.ladyplant.model.HeaderResult
 import br.com.ladyplant.model.ItemResult
 import br.com.ladyplant.model.ResultType
@@ -70,7 +71,9 @@ class ResultAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.Vi
             }
             ResultType.PLANT -> {
                 (holder as ResultViewHolder).cardContainer.setOnClickListener {
-                    startActivity(context, Intent(this.context, DetailActivity::class.java), null)
+                    val intent = Intent(this.context, DetailActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_PLANT_ID, 1)
+                    startActivity(context, intent, null)
                 }
             }
             ResultType.TAKE_QUIZ_AGAIN -> {

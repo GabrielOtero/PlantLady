@@ -16,8 +16,8 @@
     <string name="quiz_activity_question_count">&#160;question 1 / 7&#160;</string>
 
     <string name="result_activity_your_plant_title">your plant is</string>
-    <string name="result_activity_your_plant">golden barrel cactus</string>
-    <string name="result_activity_your_plant_family">(Echinocactus grusonii)</string>
+    <string name="result_activity_your_plant">Lorem ipsum dolor sit amet</string>
+    <string name="result_activity_your_plant_family">(%1$s)</string>
 
     <string name="quiz_result_activity_subtitle">HERE ARE SOME OPTIONS FOR YOU</string>
     <string name="quiz_result_activity_title">results</string>

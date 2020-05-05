@@ -17,10 +17,6 @@ abstract class BaseResultListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        //TODO
-//        result_title.text = title()
-//        result_subtitle.text = subTitle()
-
         initRecyclerView()
         val headerList = items().toMutableList()
         headerList.add(0, HeaderResult(title(), subTitle()))

@@ -10,7 +10,7 @@ class ByRoomResultListActivity : BaseResultListActivity() {
     override fun subTitle(): String {
         return getString(
             R.string.by_room_result_list_activity_subtitle,
-            intent.extras?.getString(Constants.FILTER_NAME).toString()
+            intent.extras?.getString(Constants.EXTRA_FILTER_NAME).toString()
         )
     }
 

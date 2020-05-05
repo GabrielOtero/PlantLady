@@ -45,7 +45,7 @@ class FilterByTypeAdapter(val context: Context) : RecyclerView.Adapter<ByTypeVie
 
         holder.card.setOnClickListener {
             val intent = Intent(this.context, ByTypeResultListActivity::class.java)
-            intent.putExtra(Constants.FILTER_NAME, types[position].description)
+            intent.putExtra(Constants.EXTRA_FILTER_NAME, types[position].description)
             ContextCompat.startActivity(context, intent, null)
         }
     }
