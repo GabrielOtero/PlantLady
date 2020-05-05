@@ -57,14 +57,15 @@
 
         <ImageView
             android:id="@+id/your_plant_image"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="250dp"
             android:layout_marginTop="@dimen/detail_activity_image_margin_top"
             android:src="@drawable/ic_your_plant_ic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/origin_title"
             app:layout_constraintTop_toBottomOf="@id/your_plant_is_family" />
-
 
         <TextView
             android:id="@+id/origin_title"

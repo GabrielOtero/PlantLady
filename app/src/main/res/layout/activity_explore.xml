@@ -66,6 +66,7 @@
             android:paddingBottom="@dimen/explore_activity_pre_filter_padding_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_plant">
 
             <LinearLayout
