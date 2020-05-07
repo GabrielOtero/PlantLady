@@ -30,18 +30,24 @@ abstract class BaseResultListActivity : BaseActivity() {
     }
 
     fun setItems(items: List<ItemResult>) {
+        showEmptyState(items.isEmpty())
+
         val listWithHeader = items.toMutableList()
         listWithHeader.add(0, HeaderResult(title(), subTitle()))
-        (result_list.adapter as ResultAdapter).results = listWithHeader
 
-        if (items.size > 1) {
-            empty_state_img.visibility = GONE
-            empty_state_msg.visibility = GONE
-        } else {
+        (result_list.adapter as ResultAdapter).results = listWithHeader
+        hideLoading()
+    }
+
+    private fun showEmptyState(show: Boolean) {
+        if (show) {
             empty_state_img.visibility = VISIBLE
             empty_state_msg.visibility = VISIBLE
+        } else {
+            empty_state_img.visibility = GONE
+            empty_state_msg.visibility = GONE
         }
-        hideLoading()
+
     }
 
     abstract fun title(): String

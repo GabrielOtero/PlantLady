@@ -6,7 +6,8 @@ import br.com.ladyplant.data.repository.PlantLadyApi
 import br.com.ladyplant.data.repository.PlantRepository
 import br.com.ladyplant.data.repository.PlantRepositoryImpl
 import br.com.ladyplant.data.repository.ResponseHandler
-import br.com.ladyplant.view.result.ResultListViewModel
+import br.com.ladyplant.view.result.byRoom.ByRoomResultListViewModel
+import br.com.ladyplant.view.result.byType.ByTypeResultListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -23,7 +24,11 @@ val plantLadyModule = module {
     }
 
     viewModel {
-        ResultListViewModel(get<PlantRepository>())
+        ByRoomResultListViewModel(get<PlantRepository>())
+    }
+
+    viewModel {
+        ByTypeResultListViewModel(get<PlantRepository>())
     }
 
     single(named(KOIN_RETROFIT)) {

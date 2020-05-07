@@ -1,9 +1,10 @@
-package br.com.ladyplant.view.result
+package br.com.ladyplant.view.result.quiz
 
 import android.os.Bundle
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.ItemResult
 import br.com.ladyplant.domain.model.ResultType
+import br.com.ladyplant.view.result.BaseResultListActivity
 
 class QuizResultListActivity : BaseResultListActivity() {
 
@@ -17,7 +18,11 @@ class QuizResultListActivity : BaseResultListActivity() {
                 ItemResult(1),
                 ItemResult(2),
                 ItemResult(3),
-                ItemResult(0, getString(R.string.or_take_the_quiz_again), ResultType.TAKE_QUIZ_AGAIN)
+                ItemResult(
+                    0,
+                    getString(R.string.or_take_the_quiz_again),
+                    ResultType.TAKE_QUIZ_AGAIN
+                )
             )
         )
     }

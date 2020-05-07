@@ -1,4 +1,4 @@
-package br.com.ladyplant.view.result
+package br.com.ladyplant.view.result.byRoom
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -10,11 +10,12 @@ import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.ItemResult
 import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.domain.model.ResultType
+import br.com.ladyplant.view.result.BaseResultListActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ByRoomResultListActivity : BaseResultListActivity() {
 
-    private val viewModel by viewModel<ResultListViewModel>()
+    private val viewModel by viewModel<ByRoomResultListViewModel>()
 
     override fun title() = getString(R.string.explore_activity_title)
     override fun subTitle(): String {
@@ -32,19 +33,13 @@ class ByRoomResultListActivity : BaseResultListActivity() {
 
     private val observer = Observer<Resource<List<Plant>>> {
         when (it.status) {
-            Status.SUCCESS -> setItems(addLastItem(it))
+            Status.SUCCESS -> {
+                val items = ItemResultMapper().transform(it.data).toMutableList()
+                if(items.size > 0) items.add(ItemResult(0, getString(R.string.or_take_the_quiz_to_find_your_plant), ResultType.TAKE_QUIZ_AGAIN))
+                setItems(items)
+            }
             Status.ERROR -> showError(it.message)
             Status.LOADING -> showLoading()
         }
     }
-
-    private fun addLastItem(result: Resource<List<Plant>>): List<ItemResult> {
-        val description = getString(R.string.or_take_the_quiz_to_find_your_plant)
-
-        val resultWithLastItem = ItemResultMapper().transform(result.data).toMutableList()
-        resultWithLastItem.add(ItemResult(0, description, ResultType.TAKE_QUIZ_AGAIN))
-
-        return resultWithLastItem
-    }
-
 }

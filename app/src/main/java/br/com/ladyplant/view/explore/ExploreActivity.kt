@@ -2,8 +2,8 @@ package br.com.ladyplant.view.explore
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.ladyplant.domain.base.BaseActivity
 import br.com.ladyplant.R
+import br.com.ladyplant.domain.base.BaseActivity
 import br.com.ladyplant.domain.model.ByRoomFilter
 import br.com.ladyplant.domain.model.ByTypeFilter
 import br.com.ladyplant.domain.model.PlantType
@@ -34,17 +34,16 @@ class ExploreActivity : BaseActivity() {
 
         //MOCK
         byTypeAdapter.types = mutableListOf(
-            ByTypeFilter("cactus", PlantType.CACTUS),
-            ByTypeFilter("lianas", PlantType.LIANAS),
-            ByTypeFilter("palms", PlantType.PALMS),
-            ByTypeFilter("fruits", PlantType.FRUITS),
-            ByTypeFilter("cactus", PlantType.CACTUS)
+            ByTypeFilter(1, "cactus", PlantType.CACTUS),
+            ByTypeFilter(2, "lianas", PlantType.LIANAS),
+            ByTypeFilter(3, "palms", PlantType.PALMS),
+            ByTypeFilter(4, "fruits", PlantType.FRUITS)
         )
 
         byRoomAdapter.rooms = mutableListOf(
-            ByRoomFilter(1,"living room", RoomType.LIVING),
+            ByRoomFilter(1, "living room", RoomType.LIVING),
             ByRoomFilter(2, "bedroom", RoomType.BED),
-            ByRoomFilter(3,"bathroom", RoomType.BATH),
+            ByRoomFilter(3, "bathroom", RoomType.BATH),
             ByRoomFilter(4, "kitchen", RoomType.DINNING)
         )
         /////

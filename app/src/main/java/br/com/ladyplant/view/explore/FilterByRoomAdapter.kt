@@ -14,7 +14,7 @@ import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.ByRoomFilter
 import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.RoomType
-import br.com.ladyplant.view.result.ByRoomResultListActivity
+import br.com.ladyplant.view.result.byRoom.ByRoomResultListActivity
 
 class FilterByRoomAdapter(val context: Context) : RecyclerView.Adapter<ByRoomViewHolder>() {
 

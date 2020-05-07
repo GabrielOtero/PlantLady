@@ -14,7 +14,7 @@ import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.ByTypeFilter
 import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.PlantType
-import br.com.ladyplant.view.result.ByTypeResultListActivity
+import br.com.ladyplant.view.result.byType.ByTypeResultListActivity
 
 class FilterByTypeAdapter(val context: Context) : RecyclerView.Adapter<ByTypeViewHolder>() {
 
@@ -46,6 +46,7 @@ class FilterByTypeAdapter(val context: Context) : RecyclerView.Adapter<ByTypeVie
         holder.card.setOnClickListener {
             val intent = Intent(this.context, ByTypeResultListActivity::class.java)
             intent.putExtra(Constants.EXTRA_FILTER_NAME, types[position].description)
+            intent.putExtra(Constants.EXTRA_FILTER_ID, types[position].id)
             ContextCompat.startActivity(context, intent, null)
         }
     }

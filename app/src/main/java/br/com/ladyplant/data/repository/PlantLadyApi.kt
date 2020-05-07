@@ -10,4 +10,7 @@ interface PlantLadyApi {
 
     @GET("plant/room/{id}")
     suspend fun getPlantsByRoom(@Path("id") idRoom: Int): List<PlantDto>
+
+    @GET("plant/type/{id}")
+    suspend fun getPlantsByType(@Path("id")idType: Int): List<PlantDto>
 }

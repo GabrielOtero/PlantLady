@@ -7,7 +7,7 @@ import br.com.ladyplant.domain.base.BaseActivity
 import br.com.ladyplant.R
 import br.com.ladyplant.view.components.toDp
 import br.com.ladyplant.domain.model.Question
-import br.com.ladyplant.view.result.QuizResultListActivity
+import br.com.ladyplant.view.result.quiz.QuizResultListActivity
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 

@@ -1,4 +1,4 @@
-package br.com.ladyplant.view.result
+package br.com.ladyplant.view.result.byRoom
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import br.com.ladyplant.data.repository.PlantRepository
 import br.com.ladyplant.data.repository.Resource
 import kotlinx.coroutines.Dispatchers
 
-class ResultListViewModel(private val repository: PlantRepository) : ViewModel() {
+class ByRoomResultListViewModel(private val repository: PlantRepository) : ViewModel() {
     private val room = MutableLiveData<Int>()
 
     fun onViewCreated(roomId: Int) {

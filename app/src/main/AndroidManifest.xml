@@ -16,9 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="br.com.ladyplant.view.result.QuizResultListActivity"/>
-        <activity android:name="br.com.ladyplant.view.result.ByTypeResultListActivity"/>
-        <activity android:name="br.com.ladyplant.view.result.ByRoomResultListActivity"/>
+        <activity android:name="br.com.ladyplant.view.result.quiz.QuizResultListActivity"/>
+        <activity android:name="br.com.ladyplant.view.result.byType.ByTypeResultListActivity"/>
+        <activity android:name="br.com.ladyplant.view.result.byRoom.ByRoomResultListActivity"/>
         <activity android:name="br.com.ladyplant.view.details.DetailActivity" />
         <activity android:name="br.com.ladyplant.view.quiz.QuizActivity" />
         <activity
