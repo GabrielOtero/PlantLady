@@ -26,6 +26,9 @@
             android:name="br.com.ladyplant.view.result.byRoom.ByRoomResultListActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="br.com.ladyplant.view.result.byText.ByTextResultListActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="br.com.ladyplant.view.details.DetailActivity"
             android:screenOrientation="portrait" />
         <activity

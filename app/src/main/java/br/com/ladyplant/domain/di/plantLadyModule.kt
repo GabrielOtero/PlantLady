@@ -7,7 +7,9 @@ import br.com.ladyplant.data.repository.PlantRepository
 import br.com.ladyplant.data.repository.PlantRepositoryImpl
 import br.com.ladyplant.data.repository.ResponseHandler
 import br.com.ladyplant.view.details.DetailViewModel
+import br.com.ladyplant.view.explore.ExploreViewModel
 import br.com.ladyplant.view.result.byRoom.ByRoomResultListViewModel
+import br.com.ladyplant.view.result.byText.ByTextResultListViewModel
 import br.com.ladyplant.view.result.byType.ByTypeResultListViewModel
 import br.com.ladyplant.view.result.quiz.QuizResultViewModel
 import okhttp3.OkHttpClient
@@ -28,6 +30,10 @@ val plantLadyModule = module {
     }
 
     viewModel {
+        ByTextResultListViewModel(get<PlantRepository>())
+    }
+
+    viewModel {
         ByRoomResultListViewModel(get<PlantRepository>())
     }
 
@@ -37,6 +43,10 @@ val plantLadyModule = module {
 
     viewModel {
         ByTypeResultListViewModel(get<PlantRepository>())
+    }
+
+    viewModel {
+        ExploreViewModel(get<PlantRepository>())
     }
 
     single(named(KOIN_RETROFIT)) {

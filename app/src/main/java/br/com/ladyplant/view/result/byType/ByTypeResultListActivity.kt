@@ -11,7 +11,6 @@ import br.com.ladyplant.domain.model.ItemResult
 import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.domain.model.ResultType
 import br.com.ladyplant.view.result.BaseResultListActivity
-import br.com.ladyplant.view.result.byRoom.ByRoomResultListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ByTypeResultListActivity : BaseResultListActivity() {

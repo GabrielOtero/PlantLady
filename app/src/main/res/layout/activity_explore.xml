@@ -49,6 +49,9 @@
             android:layout_marginEnd="@dimen/explore_activity_margin"
             android:drawableEnd="@drawable/ic_mdi_search"
             android:hint="@string/explore_activity_search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType=
+                "textCapSentences|textAutoCorrect"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subtitle">
@@ -64,9 +67,9 @@
             android:orientation="vertical"
             android:paddingTop="@dimen/explore_activity_margin"
             android:paddingBottom="@dimen/explore_activity_pre_filter_padding_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_plant">
 
             <LinearLayout

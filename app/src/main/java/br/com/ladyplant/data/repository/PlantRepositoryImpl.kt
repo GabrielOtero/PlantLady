@@ -50,4 +50,13 @@ class PlantRepositoryImpl(
             responseHandler.handleException(e)
         }
     }
+
+    override suspend fun getPlantsByText(text: String): Resource<List<Plant>> {
+        return try {
+            val response = api.getPlantByText(text)
+            return responseHandler.handleSuccess(PlantMapper().transform(response))
+        } catch (e: Exception) {
+            responseHandler.handleException(e)
+        }
+    }
 }

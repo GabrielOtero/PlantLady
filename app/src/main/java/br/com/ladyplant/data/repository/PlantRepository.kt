@@ -16,4 +16,6 @@ interface PlantRepository {
         idPurpose: Int,
         idEatable: Int
     ): Resource<List<Plant>>
+
+    suspend fun getPlantsByText(text: String): Resource<List<Plant>>
 }

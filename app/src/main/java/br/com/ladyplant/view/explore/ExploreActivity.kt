@@ -1,33 +1,54 @@
 package br.com.ladyplant.view.explore
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.base.BaseActivity
-import br.com.ladyplant.domain.model.ByRoomFilter
-import br.com.ladyplant.domain.model.ByTypeFilter
-import br.com.ladyplant.domain.model.PlantType
-import br.com.ladyplant.domain.model.RoomType
+import br.com.ladyplant.domain.model.*
+import br.com.ladyplant.view.result.byText.ByTextResultListActivity
 import kotlinx.android.synthetic.main.activity_explore.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ExploreActivity : BaseActivity() {
+class ExploreActivity : BaseActivity(), TextView.OnEditorActionListener {
+
+    private val viewModel by viewModel<ExploreViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_explore)
 
         initRecyclersView()
+        search_plant.setOnEditorActionListener(this)
+    }
 
+    override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            goToTextResultList()
+            return true
+        }
+        return false
+    }
+
+    private fun goToTextResultList() {
+        if (search_plant.text.toString().isNotEmpty()) {
+            val intent = Intent(this, ByTextResultListActivity::class.java)
+            intent.putExtra(Constants.EXTRA_FILTER_TEXT, search_plant.text.toString())
+            startActivity(intent)
+        }
     }
 
     private fun initRecyclersView() {
-        var byTypeAdapter = FilterByTypeAdapter(this)
+        val byTypeAdapter = FilterByTypeAdapter(this)
         by_type_list.adapter = byTypeAdapter
         by_type_list.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
 
-        var byRoomAdapter = FilterByRoomAdapter(this)
+        val byRoomAdapter = FilterByRoomAdapter(this)
         by_room_list.adapter = byRoomAdapter
         by_room_list.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)

@@ -27,6 +27,7 @@
 
     <string name="by_type_result_list_activity_subtitle">plants by type - %1$s</string>
     <string name="by_room_result_list_activity_subtitle">plants by room - %1$s</string>
+    <string name="by_text_result_list_activity_subtitle">here are results for \"%1$s\"</string>
 
     <string name="activity_result_empty_state_message">"Ops… seems like we\n didn’t find anything"</string>
 

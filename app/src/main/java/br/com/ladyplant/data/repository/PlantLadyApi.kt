@@ -25,4 +25,7 @@ interface PlantLadyApi {
         @Query("idPurpose") idPurpose: Int,
         @Query("idEatable") idEatable: Int
     ): List<PlantDto>
+
+    @GET("plant")
+    suspend fun getPlantByText(@Query("desc")text: String): List<PlantDto>
 }
