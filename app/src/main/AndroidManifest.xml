@@ -3,7 +3,7 @@
     package="br.com.ladyplant">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -16,17 +16,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="br.com.ladyplant.view.result.quiz.QuizResultListActivity"/>
-        <activity android:name="br.com.ladyplant.view.result.byType.ByTypeResultListActivity"/>
-        <activity android:name="br.com.ladyplant.view.result.byRoom.ByRoomResultListActivity"/>
-        <activity android:name="br.com.ladyplant.view.details.DetailActivity" />
-        <activity android:name="br.com.ladyplant.view.quiz.QuizActivity" />
+        <activity
+            android:name="br.com.ladyplant.view.result.quiz.QuizResultListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="br.com.ladyplant.view.result.byType.ByTypeResultListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="br.com.ladyplant.view.result.byRoom.ByRoomResultListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="br.com.ladyplant.view.details.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="br.com.ladyplant.view.quiz.QuizActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="br.com.ladyplant.view.explore.ExploreActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
-        <activity android:name=".view.MainActivity" />
+        <activity
+            android:name=".view.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

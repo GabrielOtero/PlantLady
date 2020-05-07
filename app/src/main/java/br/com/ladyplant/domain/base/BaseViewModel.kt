@@ -25,3 +25,13 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope, KoinComponent {
         viewModelJob.cancel()
     }
 }
+
+//
+//CoroutineScope(coroutineContext).launch {
+//    val plantsByType = repository.getPlantsByType(1)
+//    when(plantsByType){
+//        Status.SUCCESS -> {
+//            //atualizar live data
+//        }
+//    }
+//}

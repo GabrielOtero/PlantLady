@@ -6,9 +6,10 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import br.com.ladyplant.data.repository.PlantRepository
 import br.com.ladyplant.data.repository.Resource
+import br.com.ladyplant.domain.base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 
-class ByTypeResultListViewModel(private val repository: PlantRepository) : ViewModel() {
+class ByTypeResultListViewModel(private val repository: PlantRepository) : BaseViewModel() {
     private val type = MutableLiveData<Int>()
 
     fun onViewCreated(roomId: Int) {
@@ -16,7 +17,7 @@ class ByTypeResultListViewModel(private val repository: PlantRepository) : ViewM
     }
 
     var typeLV = type.switchMap { idType ->
-        liveData(Dispatchers.IO) {
+        liveData(coroutineContext) {
             emit(Resource.loading(null))
             emit(repository.getPlantsByType(idType))
         }

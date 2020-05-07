@@ -21,8 +21,8 @@ class QuizViewAdapter(
         val question = questions[position]
 
         return QuestionFragment(question, onOptionSelected = { optIdx ->
+            question.answer = optIdx + 1
             onQuesionAnswered(position)
-            question.answer = optIdx
         })
     }
 

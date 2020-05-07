@@ -1,13 +1,14 @@
 package br.com.ladyplant.domain.di
 
 import br.com.ladyplant.BuildConfig.API_END_POINT
-import br.com.ladyplant.view.details.DetailViewModel
 import br.com.ladyplant.data.repository.PlantLadyApi
 import br.com.ladyplant.data.repository.PlantRepository
 import br.com.ladyplant.data.repository.PlantRepositoryImpl
 import br.com.ladyplant.data.repository.ResponseHandler
+import br.com.ladyplant.view.details.DetailViewModel
 import br.com.ladyplant.view.result.byRoom.ByRoomResultListViewModel
 import br.com.ladyplant.view.result.byType.ByTypeResultListViewModel
+import br.com.ladyplant.view.result.quiz.QuizResultViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -25,6 +26,10 @@ val plantLadyModule = module {
 
     viewModel {
         ByRoomResultListViewModel(get<PlantRepository>())
+    }
+
+    viewModel {
+        QuizResultViewModel(get<PlantRepository>())
     }
 
     viewModel {

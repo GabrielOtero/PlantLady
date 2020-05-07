@@ -3,10 +3,11 @@ package br.com.ladyplant.view.quiz
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
-import br.com.ladyplant.domain.base.BaseActivity
 import br.com.ladyplant.R
-import br.com.ladyplant.view.components.toDp
+import br.com.ladyplant.domain.base.BaseActivity
+import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.Question
+import br.com.ladyplant.view.components.toDp
 import br.com.ladyplant.view.result.quiz.QuizResultListActivity
 import kotlinx.android.synthetic.main.activity_quiz.*
 
@@ -88,7 +89,15 @@ class QuizActivity : BaseActivity() {
         quiz_view.adapter =
             QuizViewAdapter(supportFragmentManager, onQuesionAnswered = { questionIdx ->
                 if (questionIdx == questions.size - 1) {
-                    startActivity(Intent(this, QuizResultListActivity::class.java))
+                    val intent = Intent(this, QuizResultListActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_CLIMATE_ID, questions[0].answer)
+                    intent.putExtra(Constants.EXTRA_GARDENCARE_ID, questions[1].answer)
+                    intent.putExtra(Constants.EXTRA_LIGHT_ID, questions[2].answer)
+                    intent.putExtra(Constants.EXTRA_APPEARANCE_ID, questions[3].answer)
+                    intent.putExtra(Constants.EXTRA_INPLACE_ID, questions[4].answer)
+                    intent.putExtra(Constants.EXTRA_PURPOSE_ID, questions[5].answer)
+                    intent.putExtra(Constants.EXTRA_EATABLE_ID, questions[6].answer)
+                    startActivity(intent)
                     finish()
                 } else {
                     quiz_view.goNext()

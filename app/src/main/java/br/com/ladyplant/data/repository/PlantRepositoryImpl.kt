@@ -33,4 +33,21 @@ class PlantRepositoryImpl(
             responseHandler.handleException(e)
         }
     }
+
+    override suspend fun getQuizResult(
+        idClimate: Int,
+        idGardenCare: Int,
+        idAppearance: Int,
+        idLight: Int,
+        idInplace: Int,
+        idPurpose: Int,
+        idEatable: Int
+    ): Resource<List<Plant>> {
+        return try {
+            val response = api.getQuizResult(idClimate, idGardenCare, idAppearance, idLight, idInplace, idPurpose, idEatable)
+            return responseHandler.handleSuccess(PlantMapper().transform(response))
+        } catch (e: Exception) {
+            responseHandler.handleException(e)
+        }
+    }
 }
