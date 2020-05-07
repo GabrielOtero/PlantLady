@@ -1,5 +1,6 @@
 package br.com.ladyplant.domain.di
 
+import br.com.ladyplant.BuildConfig
 import br.com.ladyplant.BuildConfig.API_END_POINT
 import br.com.ladyplant.data.repository.PlantLadyApi
 import br.com.ladyplant.data.repository.PlantRepository
@@ -9,6 +10,8 @@ import br.com.ladyplant.view.details.DetailViewModel
 import br.com.ladyplant.view.result.byRoom.ByRoomResultListViewModel
 import br.com.ladyplant.view.result.byType.ByTypeResultListViewModel
 import br.com.ladyplant.view.result.quiz.QuizResultViewModel
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -40,6 +43,13 @@ val plantLadyModule = module {
         Retrofit.Builder()
             .baseUrl(API_END_POINT)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(
+                OkHttpClient.Builder()
+                    .addInterceptor(HttpLoggingInterceptor().apply {
+                        if (BuildConfig.DEBUG) level = HttpLoggingInterceptor.Level.BODY
+                    })
+                    .build()
+            )
             .build()
     }
 
