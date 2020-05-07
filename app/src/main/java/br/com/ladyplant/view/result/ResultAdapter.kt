@@ -63,29 +63,53 @@ class ResultAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.Vi
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (results[position].resultType) {
+        val itemResult = results[position]
+        when (itemResult.resultType) {
             ResultType.HEADER -> {
-                val header = results[position] as HeaderResult
-                (holder as HeaderViewHolder).title.text = header.title
-                holder.subtitle.text = header.subtitle
+                bindHeader(itemResult, holder)
             }
             ResultType.PLANT -> {
-                (holder as ResultViewHolder).cardContainer.setOnClickListener {
-                    val intent = Intent(this.context, DetailActivity::class.java)
-                    intent.putExtra(Constants.EXTRA_PLANT_ID, 1)
-                    startActivity(context, intent, null)
-                }
+                bindPlant(holder, itemResult)
             }
             ResultType.TAKE_QUIZ_AGAIN -> {
-                (holder as ResultViewHolder).cardContainer.setOnClickListener {
-                    startActivity(context, Intent(this.context, QuizActivity::class.java), null)
-                }
-                val content = SpannableString(results[position].description)
-                content.setSpan(UnderlineSpan(), 0, results[position].description?.length ?: 0, 0)
-                holder.descripton.text = content
+                bindTakeQuizAgain(holder, itemResult)
             }
         }
 
+    }
+
+    private fun bindTakeQuizAgain(
+        holder: RecyclerView.ViewHolder,
+        itemResult: ItemResult
+    ) {
+        (holder as ResultViewHolder).cardContainer.setOnClickListener {
+            startActivity(context, Intent(this.context, QuizActivity::class.java), null)
+        }
+        val content = SpannableString(itemResult.description)
+        content.setSpan(UnderlineSpan(), 0, itemResult.description?.length ?: 0, 0)
+        holder.descripton.text = content
+    }
+
+    private fun bindPlant(
+        holder: RecyclerView.ViewHolder,
+        itemResult: ItemResult
+    ) {
+        (holder as ResultViewHolder).descripton.text = itemResult.description
+
+        holder.cardContainer.setOnClickListener {
+            val intent = Intent(this.context, DetailActivity::class.java)
+            intent.putExtra(Constants.EXTRA_PLANT_ID, itemResult.id)
+            startActivity(context, intent, null)
+        }
+    }
+
+    private fun bindHeader(
+        itemResult: ItemResult,
+        holder: RecyclerView.ViewHolder
+    ) {
+        val header = itemResult as HeaderResult
+        (holder as HeaderViewHolder).title.text = header.title
+        holder.subtitle.text = header.subtitle
     }
 }
 

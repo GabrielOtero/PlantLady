@@ -1,3 +1,3 @@
 package br.com.ladyplant.domain.model
 
-open class ItemResult(val description: String? = null, val resultType: ResultType = ResultType.PLANT)
+open class ItemResult(val id : Int = 0, val description: String? = null, val resultType: ResultType = ResultType.PLANT)

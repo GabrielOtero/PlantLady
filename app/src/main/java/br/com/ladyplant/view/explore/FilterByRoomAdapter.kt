@@ -46,6 +46,7 @@ class FilterByRoomAdapter(val context: Context) : RecyclerView.Adapter<ByRoomVie
         holder.card.setOnClickListener {
             val intent = Intent(this.context, ByRoomResultListActivity::class.java)
             intent.putExtra(Constants.EXTRA_FILTER_NAME, rooms[position].description)
+            intent.putExtra(Constants.EXTRA_FILTER_ID, rooms[position].id)
             ContextCompat.startActivity(context, intent, null)
         }
     }

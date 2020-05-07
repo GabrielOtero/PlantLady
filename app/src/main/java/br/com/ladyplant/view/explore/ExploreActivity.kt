@@ -42,10 +42,10 @@ class ExploreActivity : BaseActivity() {
         )
 
         byRoomAdapter.rooms = mutableListOf(
-            ByRoomFilter("living room", RoomType.LIVING),
-            ByRoomFilter("bedroom", RoomType.BED),
-            ByRoomFilter("bathroom", RoomType.BATH),
-            ByRoomFilter("kitchen", RoomType.DINNING)
+            ByRoomFilter(1,"living room", RoomType.LIVING),
+            ByRoomFilter(2, "bedroom", RoomType.BED),
+            ByRoomFilter(3,"bathroom", RoomType.BATH),
+            ByRoomFilter(4, "kitchen", RoomType.DINNING)
         )
         /////
     }

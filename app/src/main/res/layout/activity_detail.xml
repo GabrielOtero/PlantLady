@@ -121,7 +121,7 @@
             android:layout_marginTop="@dimen/detail_activity_details_container_margin_top"
             android:text="@string/detail_activity_light_desc_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/poisonous" />
+            app:layout_constraintTop_toBottomOf="@id/origin" />
 
         <TextView
             android:id="@+id/light"

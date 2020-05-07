@@ -15,4 +15,13 @@ class PlantRepositoryImpl(
             responseHandler.handleException(e)
         }
     }
+
+    override suspend fun getPlantsByRoom(idRoom: Int): Resource<List<Plant>> {
+        return try {
+            val response = api.getPlantsByRoom(idRoom)
+            return responseHandler.handleSuccess(PlantMapper().transform(response))
+        } catch (e: Exception) {
+            responseHandler.handleException(e)
+        }
+    }
 }

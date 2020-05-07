@@ -1,5 +1,6 @@
 package br.com.ladyplant.view.result
 
+import android.os.Bundle
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.ItemResult
@@ -15,16 +16,20 @@ class ByTypeResultListActivity : BaseResultListActivity() {
         )
     }
 
-    override fun items(): List<ItemResult> {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         val description = getString(R.string.or_take_the_quiz_to_find_your_plant)
-        return mutableListOf(
-            ItemResult(),
-            ItemResult(),
-            ItemResult(),
-            ItemResult(),
-            ItemResult(),
-            ItemResult(),
-            ItemResult(description, ResultType.TAKE_QUIZ_AGAIN)
+        setItems(
+            mutableListOf(
+                ItemResult(),
+                ItemResult(),
+                ItemResult(),
+                ItemResult(),
+                ItemResult(),
+                ItemResult(),
+                ItemResult(0, description, ResultType.TAKE_QUIZ_AGAIN)
+            )
         )
     }
 }

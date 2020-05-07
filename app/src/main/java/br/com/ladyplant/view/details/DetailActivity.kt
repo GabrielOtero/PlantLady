@@ -45,10 +45,6 @@ class DetailActivity : BaseActivity() {
 
     }
 
-    private fun showError(message: String?) {
-        Log.d(TAG, message!!)
-    }
-
     private fun showPlant(plant: Plant?) {
         plant?.let { p ->
             GlideToVectorYou.justLoadImage(

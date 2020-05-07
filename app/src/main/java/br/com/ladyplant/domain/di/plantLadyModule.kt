@@ -6,6 +6,7 @@ import br.com.ladyplant.data.repository.PlantLadyApi
 import br.com.ladyplant.data.repository.PlantRepository
 import br.com.ladyplant.data.repository.PlantRepositoryImpl
 import br.com.ladyplant.data.repository.ResponseHandler
+import br.com.ladyplant.view.result.ResultListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -19,6 +20,10 @@ val plantLadyModule = module {
 
     viewModel {
         DetailViewModel(get<PlantRepository>())
+    }
+
+    viewModel {
+        ResultListViewModel(get<PlantRepository>())
     }
 
     single(named(KOIN_RETROFIT)) {

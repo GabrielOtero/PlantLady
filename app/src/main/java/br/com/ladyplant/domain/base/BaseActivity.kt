@@ -37,6 +37,10 @@ open class BaseActivity : AppCompatActivity() {
         progress_bar.visibility = GONE
     }
 
+    fun showError(message: String?) {
+        Log.d(TAG, message!!)
+    }
+
     companion object {
         private const val TAG = "BaseActivity"
     }
