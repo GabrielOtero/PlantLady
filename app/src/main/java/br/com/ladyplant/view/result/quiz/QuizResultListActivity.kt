@@ -43,7 +43,7 @@ class QuizResultListActivity : BaseResultListActivity() {
                     ItemResult(
                         0,
                         getString(R.string.or_take_the_quiz_again),
-                        ResultType.TAKE_QUIZ_AGAIN
+                        resultType = ResultType.TAKE_QUIZ_AGAIN
                     )
                 )
                 setItems(items)

@@ -9,5 +9,5 @@ data class Plant(
     var light: String,
     var water: String,
     var overview: String,
-    var image: String
+    var image: String?
 )

@@ -39,7 +39,7 @@ class ByRoomResultListActivity : BaseResultListActivity() {
                     ItemResult(
                         0,
                         getString(R.string.or_take_the_quiz_to_find_your_plant),
-                        ResultType.TAKE_QUIZ_AGAIN
+                        resultType = ResultType.TAKE_QUIZ_AGAIN
                     )
                 )
                 setItems(items)

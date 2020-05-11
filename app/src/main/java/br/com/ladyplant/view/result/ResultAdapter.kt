@@ -1,23 +1,28 @@
 package br.com.ladyplant.view.result
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import br.com.ladyplant.BuildConfig
 import br.com.ladyplant.R
-import br.com.ladyplant.view.details.DetailActivity
 import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.HeaderResult
 import br.com.ladyplant.domain.model.ItemResult
 import br.com.ladyplant.domain.model.ResultType
+import br.com.ladyplant.view.details.DetailActivity
 import br.com.ladyplant.view.quiz.QuizActivity
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 
 
 //TODO Context on Adapter?
@@ -44,7 +49,7 @@ class ResultAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.Vi
             ResultType.TAKE_QUIZ_AGAIN.ordinal -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.layout_take_quiz_again_card, parent, false)
-                ResultViewHolder(view)
+                TakeQuizAgainViewHolder(view)
             }
             else -> {
                 val view = LayoutInflater.from(parent.context)
@@ -66,23 +71,22 @@ class ResultAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.Vi
         val itemResult = results[position]
         when (itemResult.resultType) {
             ResultType.HEADER -> {
-                bindHeader(itemResult, holder)
+                bindHeader(holder as HeaderViewHolder, itemResult)
             }
             ResultType.PLANT -> {
-                bindPlant(holder, itemResult)
+                bindPlant(holder as ResultViewHolder, itemResult)
             }
             ResultType.TAKE_QUIZ_AGAIN -> {
-                bindTakeQuizAgain(holder, itemResult)
+                bindTakeQuizAgain(holder as TakeQuizAgainViewHolder, itemResult)
             }
         }
-
     }
 
     private fun bindTakeQuizAgain(
-        holder: RecyclerView.ViewHolder,
+        holder: TakeQuizAgainViewHolder,
         itemResult: ItemResult
     ) {
-        (holder as ResultViewHolder).cardContainer.setOnClickListener {
+        holder.cardContainer.setOnClickListener {
             startActivity(context, Intent(this.context, QuizActivity::class.java), null)
         }
         val content = SpannableString(itemResult.description)
@@ -91,10 +95,18 @@ class ResultAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.Vi
     }
 
     private fun bindPlant(
-        holder: RecyclerView.ViewHolder,
+        holder: ResultViewHolder,
         itemResult: ItemResult
     ) {
-        (holder as ResultViewHolder).descripton.text = itemResult.description
+        holder.descripton.text = itemResult.description
+
+        itemResult.image?.let {
+            GlideToVectorYou.justLoadImage(
+                (context as Activity),
+                Uri.parse(BuildConfig.IMAGES_END_POINT + it),
+                holder.image
+            )
+        }
 
         holder.cardContainer.setOnClickListener {
             val intent = Intent(this.context, DetailActivity::class.java)
@@ -104,16 +116,23 @@ class ResultAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.Vi
     }
 
     private fun bindHeader(
-        itemResult: ItemResult,
-        holder: RecyclerView.ViewHolder
+        holder: HeaderViewHolder,
+        itemResult: ItemResult
+
     ) {
         val header = itemResult as HeaderResult
-        (holder as HeaderViewHolder).title.text = header.title
+        holder.title.text = header.title
         holder.subtitle.text = header.subtitle
     }
 }
 
 class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var cardContainer: ConstraintLayout = itemView.findViewById(R.id.card_container)
+    var descripton: TextView = itemView.findViewById(R.id.description)
+    var image: ImageView = itemView.findViewById(R.id.plant_image)
+}
+
+class TakeQuizAgainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var cardContainer: ConstraintLayout = itemView.findViewById(R.id.card_container)
     var descripton: TextView = itemView.findViewById(R.id.description)
 }

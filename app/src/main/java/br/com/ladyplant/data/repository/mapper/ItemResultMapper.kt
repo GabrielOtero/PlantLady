@@ -7,6 +7,6 @@ import br.com.ladyplant.domain.model.ItemResult
 
 class ItemResultMapper : BaseMapper<Plant, ItemResult>() {
     override fun transform(entity: Plant): ItemResult {
-        return ItemResult(entity.id, entity.name)
+        return ItemResult(entity.id, entity.name, entity.image)
     }
 }

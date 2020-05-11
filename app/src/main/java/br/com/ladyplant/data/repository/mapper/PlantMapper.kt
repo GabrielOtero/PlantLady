@@ -15,7 +15,7 @@ class PlantMapper : BaseMapper<PlantDto, Plant>() {
             entity.light ?: "",
             entity.water ?: "",
             entity.overview ?: "",
-            entity.image ?: ""
+            entity.image
         )
     }
 }

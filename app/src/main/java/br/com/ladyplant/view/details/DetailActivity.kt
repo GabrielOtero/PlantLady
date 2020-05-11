@@ -47,11 +47,13 @@ class DetailActivity : BaseActivity() {
 
     private fun showPlant(plant: Plant?) {
         plant?.let { p ->
-            GlideToVectorYou.justLoadImage(
-                this,
-                Uri.parse(IMAGES_END_POINT + p.image),
-                your_plant_image
-            )
+            p.image?.let{
+                GlideToVectorYou.justLoadImage(
+                    this,
+                    Uri.parse(IMAGES_END_POINT + it),
+                    your_plant_image
+                )
+            }
 
             your_plant.text = p.name.toLowerCase()
             your_plant_is_scientific_name.text = getString(
