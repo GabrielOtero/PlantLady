@@ -6,10 +6,7 @@ import br.com.ladyplant.R
 import br.com.ladyplant.data.repository.Resource
 import br.com.ladyplant.data.repository.Status
 import br.com.ladyplant.data.repository.mapper.ItemResultMapper
-import br.com.ladyplant.domain.model.Constants
-import br.com.ladyplant.domain.model.ItemResult
-import br.com.ladyplant.domain.model.Plant
-import br.com.ladyplant.domain.model.ResultType
+import br.com.ladyplant.domain.model.*
 import br.com.ladyplant.view.result.BaseResultListActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,12 +37,7 @@ class QuizResultListActivity : BaseResultListActivity() {
             Status.SUCCESS -> {
                 val items = ItemResultMapper().transform(it.data).toMutableList()
                 if (items.size > 0) items.add(
-                    ItemResult(
-                        0,
-                        getString(R.string.or_take_the_quiz_again),
-                        resultType = ResultType.TAKE_QUIZ_AGAIN
-                    )
-                )
+                    TakeQuizAgainResult(getString(R.string.or_take_the_quiz_again)))
                 setItems(items)
             }
             Status.ERROR -> showError(it.message)
