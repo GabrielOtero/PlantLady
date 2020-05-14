@@ -36,8 +36,7 @@ class QuizResultListActivity : BaseResultListActivity() {
         when (it.status) {
             Status.SUCCESS -> {
                 val items = ItemResultMapper().transform(it.data).toMutableList()
-                if (items.size > 0) items.add(
-                    TakeQuizAgainResult(getString(R.string.or_take_the_quiz_again)))
+                if (items.size > 0) items.add(TakeQuizAgainResult(getString(R.string.or_take_the_quiz_again)))
                 setItems(items)
             }
             Status.ERROR -> showError(it.message)

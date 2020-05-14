@@ -19,7 +19,7 @@
     <dimen name="activity_padding_top">16dp</dimen>
     <dimen name="explore_activity_margin">24dp</dimen>
     <dimen name="explore_activity_pre_filter_margin_top">24dp</dimen>
-    <dimen name="explore_activity_font_size_title">30sp</dimen>
+    <dimen name="explore_activity_font_size_title">32sp</dimen>
     <dimen name="explore_activity_pre_filter_padding_bottom">24dp</dimen>
     <dimen name="result_activity_header_result_padding_bottom">24dp</dimen>
 

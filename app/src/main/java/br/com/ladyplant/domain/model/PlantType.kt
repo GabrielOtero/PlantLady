@@ -5,5 +5,5 @@ enum class PlantType {
 
     PALMS,
 
-    FRUITS
+    INDOOR
 }

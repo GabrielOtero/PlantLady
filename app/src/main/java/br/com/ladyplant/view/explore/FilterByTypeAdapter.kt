@@ -38,7 +38,7 @@ class FilterByTypeAdapter(val context: Context) : RecyclerView.Adapter<ByTypeVie
                 PlantType.CACTUS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_cactus)
                 PlantType.LIANAS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_lianas)
                 PlantType.PALMS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_palms)
-                PlantType.FRUITS -> holder.img.setImageResource(R.drawable.ic_filter_by_type_fruits)
+                PlantType.INDOOR -> holder.img.setImageResource(R.drawable.ic_filter_by_type_indoor)
             }
             holder.desc.text = description
         }
