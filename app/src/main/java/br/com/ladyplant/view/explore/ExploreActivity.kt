@@ -58,7 +58,8 @@ class ExploreActivity : BaseActivity(), TextView.OnEditorActionListener {
             ByTypeFilter(1, "cactus", PlantType.CACTUS),
             ByTypeFilter(2, "lianas", PlantType.LIANAS),
             ByTypeFilter(3, "palms", PlantType.PALMS),
-            ByTypeFilter(4, "indoor", PlantType.INDOOR)
+            ByTypeFilter(4, "indoor", PlantType.INDOOR),
+            ByTypeFilter(5, "flower", PlantType.FLOWER)
         )
 
         byRoomAdapter.rooms = mutableListOf(
