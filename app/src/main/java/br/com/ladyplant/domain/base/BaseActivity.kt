@@ -39,6 +39,8 @@ open class BaseActivity : AppCompatActivity() {
 
     fun showError(message: String?) {
         Log.d(TAG, message!!)
+        hideLoading()
+        error.visibility = VISIBLE
     }
 
     companion object {
