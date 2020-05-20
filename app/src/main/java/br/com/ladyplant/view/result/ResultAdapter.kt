@@ -3,6 +3,7 @@ package br.com.ladyplant.view.result
 import android.net.Uri
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,9 +87,9 @@ class ResultAdapter(
 }
 
 class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var cardContainer: ConstraintLayout = itemView.findViewById(R.id.card_container)
-    var descripton: TextView = itemView.findViewById(R.id.description)
-    var image: ImageView = itemView.findViewById(R.id.plant_image)
+    private var cardContainer: ConstraintLayout = itemView.findViewById(R.id.card_container)
+    private var descripton: TextView = itemView.findViewById(R.id.description)
+    private var image: ImageView = itemView.findViewById(R.id.plant_image)
 
     fun bind(
         itemResult: ItemResult,
@@ -99,12 +100,16 @@ class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         cardContainer.setOnClickListener {
             itemResultClickListener.onClick(itemResult.id)
         }
-        itemResult.image?.let {
+
+        if (itemResult.image != null) {
             loadImageListener.onLoad(
                 Uri.parse(BuildConfig.IMAGES_END_POINT + itemResult.image),
                 this.image
             )
+        } else {
+                this.image.setImageResource(R.drawable.ic_home_plant5)
         }
+
     }
 }
 
