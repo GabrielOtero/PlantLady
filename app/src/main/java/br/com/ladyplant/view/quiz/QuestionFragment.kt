@@ -41,7 +41,7 @@ class QuestionFragment(
         buttons_container.removeAllViews()
         for (optIdx in question.options.indices) {
             val btnOpt = Button(context, null, R.attr.quizOptionButton)
-
+            btnOpt.tag = optIdx
             question.answer?.let {
                 if (it == optIdx) {
                     btnOpt.setBackgroundResource(R.drawable.quiz_option_selected_shape)

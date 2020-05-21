@@ -2,6 +2,7 @@ package br.com.ladyplant.domain.model
 
 class Constants {
     companion object {
+        const val IDLE_RESOURCE_NAME = "test"
         const val EXTRA_FILTER_TEXT = "EXTRA_FILTER_TEXT"
         const val EXTRA_FILTER_ID = "EXTRA_FILTER_ID"
         const val EXTRA_PLANT_ID = "EXTRA_PLANT_ID"
@@ -14,5 +15,7 @@ class Constants {
         const val EXTRA_INPLACE_ID = "EXTRA_INPLACE_ID"
         const val EXTRA_PURPOSE_ID = "EXTRA_PURPOSE_ID"
         const val EXTRA_EATABLE_ID = "EXTRA_EATABLE_ID"
+
+        const val QUIZ_TRANSITION_DELAY = 500
     }
 }

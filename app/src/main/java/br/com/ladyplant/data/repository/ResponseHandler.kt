@@ -1,5 +1,7 @@
 package br.com.ladyplant.data.repository
 
+import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.idling.CountingIdlingResource
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 

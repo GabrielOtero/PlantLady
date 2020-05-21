@@ -7,6 +7,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.widget.Scroller
 import androidx.viewpager.widget.ViewPager
+import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.view.quiz.QuizViewAdapter
 
 
@@ -68,7 +69,7 @@ private class FixedSpeedScroller(
     interpolator: Interpolator?
 ) : Scroller(context, interpolator) {
 
-    private var mDuration = 500
+    private var mDuration = Constants.QUIZ_TRANSITION_DELAY
 
 
     override fun startScroll(startX: Int, startY: Int, dx: Int, dy: Int, duration: Int) {
