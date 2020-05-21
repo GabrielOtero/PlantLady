@@ -9,6 +9,7 @@ import br.com.ladyplant.domain.model.Constants
 import br.com.ladyplant.domain.model.Question
 import br.com.ladyplant.view.components.toDp
 import br.com.ladyplant.view.result.quiz.QuizResultListActivity
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 
@@ -89,15 +90,8 @@ class QuizActivity : BaseActivity() {
         quiz_view.adapter =
             QuizViewAdapter(supportFragmentManager, onQuesionAnswered = { questionIdx ->
                 if (questionIdx == questions.size - 1) {
-                    val intent = Intent(this, QuizResultListActivity::class.java)
-                    intent.putExtra(Constants.EXTRA_CLIMATE_ID, questions[0].answer)
-                    intent.putExtra(Constants.EXTRA_GARDENCARE_ID, questions[1].answer)
-                    intent.putExtra(Constants.EXTRA_LIGHT_ID, questions[2].answer)
-                    intent.putExtra(Constants.EXTRA_APPEARANCE_ID, questions[3].answer)
-                    intent.putExtra(Constants.EXTRA_INPLACE_ID, questions[4].answer)
-                    intent.putExtra(Constants.EXTRA_PURPOSE_ID, questions[5].answer)
-                    intent.putExtra(Constants.EXTRA_EATABLE_ID, questions[6].answer)
-                    startActivity(intent)
+                    logAnswers(questions)
+                    goToResultActivity(questions)
                     finish()
                 } else {
                     quiz_view.goNext()
@@ -115,5 +109,31 @@ class QuizActivity : BaseActivity() {
         }
 
         quiz_view.adapter?.questions = questions
+    }
+
+    private fun logAnswers(questions: MutableList<Question>) {
+        val firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        questions[0].answer?.let { bundle.putInt("q1", it) }
+        questions[1].answer?.let { bundle.putInt("q2", it) }
+        questions[2].answer?.let { bundle.putInt("q3", it) }
+        questions[3].answer?.let { bundle.putInt("q4", it) }
+        questions[4].answer?.let { bundle.putInt("q5", it) }
+        questions[5].answer?.let { bundle.putInt("q6", it) }
+        questions[6].answer?.let { bundle.putInt("q7", it) }
+        firebaseAnalytics.logEvent("quiz_complete", bundle)
+    }
+
+    private fun goToResultActivity(questions: MutableList<Question>) {
+        val intent = Intent(this, QuizResultListActivity::class.java)
+        intent.putExtra(Constants.EXTRA_CLIMATE_ID, questions[0].answer)
+        intent.putExtra(Constants.EXTRA_GARDENCARE_ID, questions[1].answer)
+        intent.putExtra(Constants.EXTRA_LIGHT_ID, questions[2].answer)
+        intent.putExtra(Constants.EXTRA_APPEARANCE_ID, questions[3].answer)
+        intent.putExtra(Constants.EXTRA_INPLACE_ID, questions[4].answer)
+        intent.putExtra(Constants.EXTRA_PURPOSE_ID, questions[5].answer)
+        intent.putExtra(Constants.EXTRA_EATABLE_ID, questions[6].answer)
+
+        startActivity(intent)
     }
 }
