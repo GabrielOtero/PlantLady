@@ -11,7 +11,7 @@ apply plugin: 'kotlin-kapt'
 android {
     signingConfigs {
         release {
-            storeFile file('/home/gabriel/Desktop/my-release-key.keystore')
+            storeFile file('/Users/gabriel.otero/Desktop/my-release-key.keystore')
             storePassword '321mudar'
             keyAlias = 'alias_name'
             keyPassword '321mudar'
