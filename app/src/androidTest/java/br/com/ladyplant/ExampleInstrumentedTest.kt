@@ -2,8 +2,10 @@ package br.com.ladyplant
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -59,6 +61,67 @@ class ExampleInstrumentedTest {
     fun basicQuizTest() {
         onView(withId(R.id.quizz_btn)).perform(click())
 
+        navigateQuiz()
+
+        onView(Matchers.allOf(withId(R.id.result_title), withText("results"), isDisplayed()))
+
+        onView(
+            Matchers.allOf(
+                withId(R.id.result_subtitle),
+                withText("here are some options for you"),
+                isDisplayed()
+            )
+        )
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.result_list)).perform(actionOnItemAtPosition<ResultViewHolder>(1, click()))
+
+        onView(withText("golden barrel cactus")).check(matches(isDisplayed()))
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.your_plant_image)).check(matches(isCompletelyDisplayed()))
+
+        pressBack()
+
+        onView(withText("Or take the quiz again")).perform(click())
+
+        pressBack()
+        pressBack()
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.explore_btn)).perform(click())
+
+        onView(withText("living room")).perform(scrollTo(), click())
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.result_list)).perform(actionOnItemAtPosition<ResultViewHolder>(1, click()))
+
+        onView(withText("golden barrel cactus")).check(matches(isDisplayed()))
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.your_plant_image)).check(matches(isCompletelyDisplayed()))
+
+        pressBack()
+        pressBack()
+
+        onView(withText("cactus")).perform(scrollTo(), click())
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.result_list)).perform(actionOnItemAtPosition<ResultViewHolder>(1, click()))
+
+        onView(withText("golden barrel cactus")).check(matches(isDisplayed()))
+
+        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
+        onView(withId(R.id.your_plant_image)).check(matches(isCompletelyDisplayed()))
+
+        pressBack()
+
+        onView(withText("Or take the quiz to find your plant")).perform(click())
+
+        navigateQuiz()
+    }
+
+    private fun navigateQuiz() {
         onView(withText("Tropical")).perform(click())
         Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
 
@@ -79,20 +142,5 @@ class ExampleInstrumentedTest {
 
         onView(withText("Nope, it’s all good")).perform(click())
         Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
-
-        onView(Matchers.allOf(withId(R.id.result_title), withText("results"), isDisplayed()))
-
-        onView(
-            Matchers.allOf(
-                withId(R.id.result_subtitle),
-                withText("here are some options for you"),
-                isDisplayed()
-            )
-        )
-
-        Thread.sleep(Constants.QUIZ_TRANSITION_DELAY.toLong())
-        onView(withId(R.id.result_list)).perform(actionOnItemAtPosition<ResultViewHolder>(1, click()))
-
-        onView(withText("golden barrel cactus")).check(matches(isDisplayed()))
     }
 }

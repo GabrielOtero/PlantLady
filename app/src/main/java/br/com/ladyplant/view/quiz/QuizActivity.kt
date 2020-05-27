@@ -113,15 +113,14 @@ class QuizActivity : BaseActivity() {
 
     private fun logAnswers(questions: MutableList<Question>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(this)
-        val bundle = Bundle()
-        questions[0].answer?.let { bundle.putInt("q1", it) }
-        questions[1].answer?.let { bundle.putInt("q2", it) }
-        questions[2].answer?.let { bundle.putInt("q3", it) }
-        questions[3].answer?.let { bundle.putInt("q4", it) }
-        questions[4].answer?.let { bundle.putInt("q5", it) }
-        questions[5].answer?.let { bundle.putInt("q6", it) }
-        questions[6].answer?.let { bundle.putInt("q7", it) }
-        firebaseAnalytics.logEvent("quiz_complete", bundle)
+        firebaseAnalytics.logEvent("quiz_complete", null)
+        firebaseAnalytics.logEvent("q1_ans_" + questions[0].answer.toString(), null)
+        firebaseAnalytics.logEvent("q2_ans_" + questions[1].answer.toString(), null)
+        firebaseAnalytics.logEvent("q3_ans_" + questions[2].answer.toString(), null)
+        firebaseAnalytics.logEvent("q4_ans_" + questions[3].answer.toString(), null)
+        firebaseAnalytics.logEvent("q5_ans_" + questions[4].answer.toString(), null)
+        firebaseAnalytics.logEvent("q6_ans_" + questions[5].answer.toString(), null)
+        firebaseAnalytics.logEvent("q7_ans_" + questions[6].answer.toString(), null)
     }
 
     private fun goToResultActivity(questions: MutableList<Question>) {

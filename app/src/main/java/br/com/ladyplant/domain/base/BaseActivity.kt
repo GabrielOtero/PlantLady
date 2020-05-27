@@ -1,6 +1,8 @@
 package br.com.ladyplant.domain.base
 
 import android.content.Context
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -8,10 +10,18 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import br.com.ladyplant.R
+import com.google.firebase.analytics.FirebaseAnalytics
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_base.*
 
 open class BaseActivity : AppCompatActivity() {
+
+    lateinit var firebaseAnalytics : FirebaseAnalytics
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+    }
 
     override fun setContentView(layoutResID: Int) {
         val constraintLayout =
@@ -39,6 +49,9 @@ open class BaseActivity : AppCompatActivity() {
 
     fun showError(message: String?) {
         Log.d(TAG, message!!)
+        val bundle = Bundle()
+        bundle.putString("msg", message)
+        firebaseAnalytics.logEvent("ops_screen", bundle)
         hideLoading()
         error.visibility = VISIBLE
     }
