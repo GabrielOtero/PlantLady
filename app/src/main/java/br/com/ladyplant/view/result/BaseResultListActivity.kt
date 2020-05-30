@@ -73,6 +73,7 @@ abstract class BaseResultListActivity : BaseActivity() {
         if (show) {
             empty_state_img.visibility = VISIBLE
             empty_state_msg.visibility = VISIBLE
+            firebaseAnalytics.logEvent("empty_state", null)
         } else {
             empty_state_img.visibility = GONE
             empty_state_msg.visibility = GONE

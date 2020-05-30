@@ -107,15 +107,15 @@ class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 this.image
             )
         } else {
-                this.image.setImageResource(R.drawable.ic_home_plant5)
+                this.image.setImageResource(R.drawable.ic_fallback_image)
         }
 
     }
 }
 
 class TakeQuizAgainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var cardContainer: ConstraintLayout = itemView.findViewById(R.id.card_container)
-    var descripton: TextView = itemView.findViewById(R.id.description)
+    private var cardContainer: ConstraintLayout = itemView.findViewById(R.id.card_container)
+    private var descripton: TextView = itemView.findViewById(R.id.description)
 
     fun bind(
         itemResult: TakeQuizAgainResult,

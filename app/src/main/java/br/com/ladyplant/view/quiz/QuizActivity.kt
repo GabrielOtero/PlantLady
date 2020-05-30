@@ -112,7 +112,6 @@ class QuizActivity : BaseActivity() {
     }
 
     private fun logAnswers(questions: MutableList<Question>) {
-        val firebaseAnalytics = FirebaseAnalytics.getInstance(this)
         firebaseAnalytics.logEvent("quiz_complete", null)
         firebaseAnalytics.logEvent("q1_ans_" + questions[0].answer.toString(), null)
         firebaseAnalytics.logEvent("q2_ans_" + questions[1].answer.toString(), null)

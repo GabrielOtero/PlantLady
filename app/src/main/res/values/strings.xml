@@ -37,6 +37,8 @@
     <string name="detail_activity_water_desc_title">water</string>
     <string name="detail_activity_light_desc_title">light</string>
 
+    <string name="base_activity_ops_title">ops</string>
+    <string name="base_activity_something_went_wrong">Something went wrong</string>
 
 
 </resources>

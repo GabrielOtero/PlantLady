@@ -70,7 +70,7 @@
             android:id="@+id/your_plant_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            tools:src="@drawable/ic_your_plant_is"
+            android:src="@drawable/ic_fallback_image"
             app:layout_constraintEnd_toEndOf="@id/image_background"
             app:layout_constraintStart_toStartOf="@id/image_background"
             app:layout_constraintTop_toTopOf="@id/image_background"

@@ -15,7 +15,7 @@
         android:id="@+id/plant_image"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@drawable/ic_home_plant5"
+        android:src="@drawable/ic_fallback_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

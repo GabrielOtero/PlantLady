@@ -16,12 +16,7 @@ import kotlinx.android.synthetic.main.activity_base.*
 
 open class BaseActivity : AppCompatActivity() {
 
-    lateinit var firebaseAnalytics : FirebaseAnalytics
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
-    }
+    var firebaseAnalytics : FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
     override fun setContentView(layoutResID: Int) {
         val constraintLayout =

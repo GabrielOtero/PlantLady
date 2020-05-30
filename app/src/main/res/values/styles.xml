@@ -156,6 +156,18 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="fontPath">fonts/Quicksand-Regular.ttf</item>
     </style>
+
+    <style name="OpsTitle" parent="android:TextAppearance">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontPath">fonts/Quicksand-Bold.ttf</item>
+    </style>
+
+    <style name="SomethingWentWrong" parent="android:TextAppearance">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontPath">fonts/Quicksand-Regular.ttf</item>
+    </style>
 </resources>
 
 
