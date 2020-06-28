@@ -21,6 +21,7 @@ class QuizActivity : BaseActivity() {
 
         initPageView()
         back_arrow.setOnClickListener { onBackPressed() }
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
     }
 
     override fun onBackPressed() {

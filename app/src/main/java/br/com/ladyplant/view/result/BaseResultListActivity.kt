@@ -16,6 +16,7 @@ import br.com.ladyplant.view.components.VerticalSpacingItemDecorator
 import br.com.ladyplant.view.details.DetailActivity
 import br.com.ladyplant.view.quiz.QuizActivity
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_result.*
 
 abstract class BaseResultListActivity : BaseActivity() {
@@ -25,6 +26,7 @@ abstract class BaseResultListActivity : BaseActivity() {
         setContentView(R.layout.activity_result)
 
         initRecyclerView()
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
     }
 
     private fun initRecyclerView() {

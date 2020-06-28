@@ -89,7 +89,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/by_type_list"
-                    style="@style/scrollbarShapeStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/explore_activity_pre_filter_recycler_margin_top"
@@ -113,7 +112,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/by_room_list"
-                    style="@style/scrollbarShapeStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/explore_activity_pre_filter_recycler_margin_top"

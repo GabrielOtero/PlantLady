@@ -93,7 +93,7 @@
         android:id="@+id/back_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/quiz_question_margin"
+        android:padding="@dimen/quiz_question_margin"
         android:src="@drawable/ic_arrow_back_white_24dp"
         app:layout_constraintBottom_toBottomOf="@id/question_count"
         app:layout_constraintLeft_toLeftOf="parent"
