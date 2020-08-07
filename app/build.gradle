@@ -26,7 +26,6 @@ android {
         versionCode 1
         versionName "1.0"
         testApplicationId "br.com.ladyplant.qa.test"
-//        testInstrumentationRunner "br.com.ladyplant.test.Instrumentation"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
