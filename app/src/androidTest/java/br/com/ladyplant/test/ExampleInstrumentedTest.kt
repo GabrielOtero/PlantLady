@@ -14,6 +14,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Constants
+import br.com.ladyplant.test.screens.ResultScreen
+import br.com.ladyplant.test.stepdefinitions.StepDefinition
 import br.com.ladyplant.view.MainActivity
 import br.com.ladyplant.view.result.ResultViewHolder
 import org.hamcrest.Matchers
@@ -30,7 +32,7 @@ import org.junit.runner.RunWith
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class ExampleInstrumentedTest: StepDefinition() {
 
     private var myIdlingResource: CountingIdlingResource =
         CountingIdlingResource(Constants.IDLE_RESOURCE_NAME)
@@ -81,7 +83,11 @@ class ExampleInstrumentedTest {
 
         pressBack()
 
-        onView(withText("Or take the quiz again")).perform(click())
+        scrollAndClickOnElementWithTextOnRecyclerView(
+            ResultScreen.resultListId,
+            ResultScreen.descriptionId,
+            ResultScreen.orTakeTheQuizAgainBtnStg
+        )
 
         pressBack()
         pressBack()
