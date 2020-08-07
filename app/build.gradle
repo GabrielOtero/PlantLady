@@ -25,6 +25,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        testApplicationId "br.com.ladyplant.qa.test"
+//        testInstrumentationRunner "br.com.ladyplant.test.Instrumentation"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
@@ -46,6 +48,12 @@ android {
 
             buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.herokuapp.com/\""
             buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-prod.herokuapp.com/images/plant/\""
+            buildConfigField "String", "TEST_TAGS", "\"${getTestTags()}\""
+            sourceSets {
+                androidTest {
+                    assets.srcDirs = ['src/androidTest/assets']
+                }
+            }
         }
         debug {
             minifyEnabled false
@@ -67,6 +75,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
 
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
@@ -94,9 +103,20 @@ dependencies {
     implementation 'androidx.test:runner:1.2.0'
     implementation 'androidx.test:rules:1.2.0'
 
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    //Cucumber
+    androidTestImplementation 'info.cukes:cucumber-android:1.2.5@jar'
+    androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
+    androidTestImplementation 'com.android.support:support-annotations:27.1.1'
+
     implementation('com.android.support.test.espresso:espresso-contrib:2.0') {
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'recyclerview-v7'
     }
+}
+
+def getTestTags() {
+    return project.hasProperty("tags") ? project.getProperties().get("tags") : ""
 }
