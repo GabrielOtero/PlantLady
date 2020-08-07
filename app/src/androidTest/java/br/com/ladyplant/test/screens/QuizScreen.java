@@ -16,7 +16,7 @@ public class QuizScreen {
     public static final String secondCountStg = " question 2 / 7 ";
     public static final String iCantKeepDirtAliveStg = "I can't keep dirt alive";
     public static final String somewhereCloseToGoodStg = "Somewhere close to good";
-    public static final String iDefinetelyHaveAGreenThumbStg = "I definetely have a green thumb";
+    public static final String iDefinitelyHaveAGreenThumbStg = "I definitely have a green thumb";
     public static final String whatKindOfLightStg = "What kind of light is there where you want to put your plant?";
     public static final String thirdCountStg = " question 3 / 7 ";
     public static final String directSunlightStg = "Direct sunlight";
