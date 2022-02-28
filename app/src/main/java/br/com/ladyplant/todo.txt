@@ -1,0 +1,4 @@
+- Adicionar HILT
+- Fazer layout com compose
+- Testes
+- Arrumar navegação entre fragments
