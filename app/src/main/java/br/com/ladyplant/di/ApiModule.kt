@@ -7,7 +7,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import br.com.ladyplant.BuildConfig.API_END_POINT
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 
 @Module
@@ -15,8 +17,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiModule {
 
     @Provides
+    @Singleton
     fun providePlantLadyApi(): PlantLadyApi = Retrofit.Builder()
-        .baseUrl("https://yardman-prod.herokuapp.com/")
+        .baseUrl(API_END_POINT)
         .addConverterFactory(GsonConverterFactory.create())
         .client(
             OkHttpClient.Builder()

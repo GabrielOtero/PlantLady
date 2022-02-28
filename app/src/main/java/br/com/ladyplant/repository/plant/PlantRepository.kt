@@ -1,4 +1,4 @@
-package br.com.ladyplant.repository
+package br.com.ladyplant.repository.plant
 
 import br.com.ladyplant.repository.dto.PlantDto
 import dagger.Provides

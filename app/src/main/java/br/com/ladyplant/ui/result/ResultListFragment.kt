@@ -1,19 +1,14 @@
 package br.com.ladyplant.ui.result
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import br.com.ladyplant.R
-import androidx.lifecycle.*
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import br.com.ladyplant.ui.base.BaseFragment
 
-class ResultListFragment : Fragment() {
+class ResultListFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = ResultListFragment()
@@ -28,5 +23,28 @@ class ResultListFragment : Fragment() {
         return inflater.inflate(R.layout.result_list_fragment, container, false)
     }
 
+    override fun observeViewState() {
+        viewModel.viewState.loading.observe(
+            viewLifecycleOwner,
+            {
+                loading ->
+                if(loading){
+                    println("@@@ LOADING...")
+                } else {
+                    println("@@@ NOT LOADING!!")
+                }
+            }
+        )
+
+        viewModel.viewState.action.observe(
+            viewLifecycleOwner,
+            { action ->
+                when (action) {
+                    is ResultListViewState.Action.ShowByTypeResult -> println(action.list)
+                    is ResultListViewState.Action.ShowError -> println(action.errorMsg)
+                }
+            }
+        )
+    }
 
 }

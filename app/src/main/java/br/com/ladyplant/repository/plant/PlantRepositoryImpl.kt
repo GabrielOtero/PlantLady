@@ -1,5 +1,6 @@
-package br.com.ladyplant.repository
+package br.com.ladyplant.repository.plant
 
+import br.com.ladyplant.repository.PlantLadyApi
 import br.com.ladyplant.repository.dto.PlantDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

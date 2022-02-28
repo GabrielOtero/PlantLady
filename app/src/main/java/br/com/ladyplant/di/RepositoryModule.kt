@@ -1,7 +1,7 @@
 package br.com.ladyplant.di
 
-import br.com.ladyplant.repository.PlantRepository
-import br.com.ladyplant.repository.PlantRepositoryImpl
+import br.com.ladyplant.repository.plant.PlantRepository
+import br.com.ladyplant.repository.plant.PlantRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,4 +13,5 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindRepository(impl: PlantRepositoryImpl): PlantRepository
+
 }
