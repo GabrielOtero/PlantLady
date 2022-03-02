@@ -40,8 +40,8 @@ class ResultListFragment : BaseFragment() {
             viewLifecycleOwner,
             { action ->
                 when (action) {
-                    is ResultListViewState.Action.ShowByTypeResult -> println(action.list)
-                    is ResultListViewState.Action.ShowError -> println(action.errorMsg)
+                    is ResultListViewState.Action.ShowByTypeResult -> println("@@@" + action.list)
+                    is ResultListViewState.Action.ShowError -> println("@@@" + action.errorMsg)
                 }
             }
         )

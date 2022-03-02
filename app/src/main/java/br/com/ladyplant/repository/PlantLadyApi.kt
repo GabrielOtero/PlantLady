@@ -14,7 +14,7 @@ interface PlantLadyApi {
     suspend fun getPlantsByRoom(@Path("id") idRoom: Int): List<PlantDto>
 
     @GET("plant/type/{id}")
-    suspend fun getPlantsByType(@Path("id") idType: Int): Response<List<PlantDto>>
+    suspend fun getPlantsByType(@Path("id") idType: Int): List<PlantDto>
 
     @GET("quiz")
     suspend fun getQuizResult(

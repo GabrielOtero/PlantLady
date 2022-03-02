@@ -1,15 +1,15 @@
 package br.com.ladyplant.repository.plant
 
 import br.com.ladyplant.repository.dto.PlantDto
-import dagger.Provides
+import br.com.ladyplant.utils.ResultError
+import br.com.ladyplant.utils.Result
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
 
 interface PlantRepository {
 
-//    suspend fun getPlantById(id: Int): Resource<Plant>
+    //    suspend fun getPlantById(id: Int): Resource<Plant>
 //    suspend fun getPlantsByRoom(idRoom: Int): Resource<List<Plant>>
-    suspend fun getPlantsByType(idType: Int): Flow<Response<List<PlantDto>>>
+    suspend fun getPlantsByType(idType: Int): Result<List<PlantDto>, ResultError>
 
 //    suspend fun getQuizResult(
 //        idClimate: Int,
