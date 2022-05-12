@@ -1,7 +1,6 @@
 package br.com.ladyplant.ui.result
 
 import br.com.ladyplant.domain.model.Plant
-import br.com.ladyplant.repository.dto.PlantDto
 import br.com.ladyplant.ui.base.SingleLiveEvent
 
 class ResultListViewState {

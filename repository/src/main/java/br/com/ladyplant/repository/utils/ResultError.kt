@@ -1,4 +1,4 @@
-package br.com.ladyplant.utils
+package br.com.ladyplant.repository.utils
 
 
 sealed class ResultError(open val exceptionMessage: String?) {

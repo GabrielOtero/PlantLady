@@ -17,18 +17,18 @@ class ResultListViewModel @Inject constructor(
         viewState.loading.postValue(true)
 
         viewModelScope.launch {
-            getPlantsByType(1).handleResult(
-                onSuccess = {
+            getPlantsByType(idType = 1,
+                onSuccessCallback = {
                     viewState.action.postValue(
                         ResultListViewState.Action.ShowByTypeResult(it)
                     )
                 },
-                onError = {
+                onErrorCallback = { errorMsg ->
                     viewState.action.postValue(
-                        ResultListViewState.Action.ShowError(it.exceptionMessage.orEmpty())
+                        ResultListViewState.Action.ShowError(errorMsg)
                     )
                 },
-                onFinish = {
+                onFinishCallback = {
                     viewState.loading.postValue(false)
                 }
             )

@@ -1,4 +1,4 @@
-package br.com.ladyplant.utils
+package br.com.ladyplant.repository.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

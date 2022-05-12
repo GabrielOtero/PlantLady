@@ -1,7 +1,5 @@
 package br.com.ladyplant.domain.model
 
-import com.google.gson.annotations.SerializedName
-
 data class Plant(
     var id: Int?,
     var name: String?,

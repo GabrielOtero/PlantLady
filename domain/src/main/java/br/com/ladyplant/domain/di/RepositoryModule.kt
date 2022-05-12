@@ -1,4 +1,4 @@
-package br.com.ladyplant.di
+package br.com.ladyplant.domain.di
 
 import br.com.ladyplant.repository.plant.PlantRepository
 import br.com.ladyplant.repository.plant.PlantRepositoryImpl

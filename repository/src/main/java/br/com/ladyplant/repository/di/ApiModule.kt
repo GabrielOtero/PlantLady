@@ -1,5 +1,6 @@
-package br.com.ladyplant.di
+package br.com.ladyplant.repository.di
 
+import br.com.ladyplant.repository.BuildConfig.API_END_POINT
 import br.com.ladyplant.repository.PlantLadyApi
 import dagger.Module
 import dagger.Provides
@@ -7,7 +8,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import br.com.ladyplant.BuildConfig.API_END_POINT
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 

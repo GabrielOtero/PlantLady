@@ -1,4 +1,4 @@
-package br.com.ladyplant.utils
+package br.com.ladyplant.repository.utils
 
 
 fun Unit.toUnitSuccess() = Result.Success(Unit)
