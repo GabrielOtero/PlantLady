@@ -6,7 +6,9 @@ import br.com.ladyplant.repository.dto.PlantDto
 import br.com.ladyplant.repository.plant.PlantRepository
 import br.com.ladyplant.repository.utils.Result
 import br.com.ladyplant.repository.utils.ResultError
+import br.com.misc.random
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import junit.framework.Assert.assertEquals
 import junit.framework.TestCase.assertTrue
@@ -30,30 +32,33 @@ class GetPlantsByTypeTest {
     @Test
     fun `WHEN repository return 0 plants ASSERT useCase call onSuccess with empty list`() =
         runTest {
-            launch(Dispatchers.Default) {
-                init(Result.Success(listOf()))
-                useCase.invoke(
-                    idType = 1,
-                    onSuccessCallback = {
-                        assertTrue(it.isEmpty())
-                    })
-            }
+            init(Result.Success(listOf()))
+
+            val idType = Int.random()
+            useCase.invoke(
+                idType = idType,
+                onSuccessCallback = {
+                    assertTrue(it.isEmpty())
+                })
+
+            coVerify(exactly = 1) { repository.getPlantsByType(idType) }
         }
 
     @Test
     fun `WHEN repository throws Unavailable Network ASSERT useCase call onError with the exception message`() =
         runTest {
-            launch(Dispatchers.Default) {
-                init(Result.Error(ResultError.UnavailableNetworkConnectionError()))
+            init(Result.Error(ResultError.UnavailableNetworkConnectionError()))
 
-                useCase.invoke(
-                    idType = 1,
-                    onErrorCallback = {
-                        assertEquals(
-                            ResultError.UnavailableNetworkConnectionError().exceptionMessage,
-                            it
-                        )
-                    })
-            }
+            val idType = Int.random()
+            useCase.invoke(
+                idType = idType,
+                onErrorCallback = {
+                    assertEquals(
+                        ResultError.UnavailableNetworkConnectionError().exceptionMessage,
+                        it
+                    )
+                })
+
+            coVerify(exactly = 1) { repository.getPlantsByType(idType) }
         }
 }
