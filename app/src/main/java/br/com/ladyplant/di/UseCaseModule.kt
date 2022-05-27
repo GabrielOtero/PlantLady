@@ -3,7 +3,6 @@ package br.com.ladyplant.di
 import br.com.ladyplant.domain.mapper.PlantDtoToPlantMapper
 import br.com.ladyplant.domain.usecase.GetPlantsByType
 import br.com.ladyplant.domain.usecase.GetPlantsByTypeUseCase
-import br.com.ladyplant.ui.result.ResultListViewState
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -19,7 +18,6 @@ abstract class UseCaseModule {
         impl: GetPlantsByTypeUseCase
     ): GetPlantsByType
 }
-
 
 @Module
 @InstallIn(ViewModelComponent::class)

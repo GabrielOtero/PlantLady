@@ -36,7 +36,8 @@ class GetPlantsByTypeTest {
                 idType = idType,
                 onSuccessCallback = {
                     assertTrue(it.isEmpty())
-                })
+                }
+            )
 
             coVerify(exactly = 1) { repository.getPlantsByType(idType) }
         }
@@ -54,7 +55,8 @@ class GetPlantsByTypeTest {
                         ResultError.UnavailableNetworkConnectionError().exceptionMessage,
                         it
                     )
-                })
+                }
+            )
 
             coVerify(exactly = 1) { repository.getPlantsByType(idType) }
         }

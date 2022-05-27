@@ -17,7 +17,8 @@ class ResultListFragment : BaseFragment() {
     private val viewModel: ResultListViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.result_list_fragment, container, false)
@@ -25,26 +26,21 @@ class ResultListFragment : BaseFragment() {
 
     override fun observeViewState() {
         viewModel.viewState.loading.observe(
-            viewLifecycleOwner,
-            {
-                loading ->
-                if(loading){
-                    println("@@@ LOADING...")
-                } else {
-                    println("@@@ NOT LOADING!!")
-                }
+            viewLifecycleOwner
+        ) { loading ->
+            if (loading) {
+                println("@@@ LOADING...")
+            } else {
+                println("@@@ NOT LOADING!!")
             }
-        )
-
+        }
         viewModel.viewState.action.observe(
-            viewLifecycleOwner,
-            { action ->
-                when (action) {
-                    is ResultListViewState.Action.ShowByTypeResult -> println("@@@" + action.list)
-                    is ResultListViewState.Action.ShowError -> println("@@@" + action.errorMsg)
-                }
+            viewLifecycleOwner
+        ) { action ->
+            when (action) {
+                is ResultListViewState.Action.ShowByTypeResult -> println("@@@" + action.list)
+                is ResultListViewState.Action.ShowError -> println("@@@" + action.errorMsg)
             }
-        )
+        }
     }
-
 }

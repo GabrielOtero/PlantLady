@@ -1,7 +1,7 @@
 package br.com.ladyplant
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import br.com.ladyplant.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 

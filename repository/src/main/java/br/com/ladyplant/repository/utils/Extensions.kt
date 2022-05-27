@@ -2,7 +2,8 @@ package br.com.ladyplant.repository.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import okhttp3.internal.http2.ConnectionShutdownException

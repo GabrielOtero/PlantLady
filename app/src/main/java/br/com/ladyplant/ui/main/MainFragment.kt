@@ -19,7 +19,8 @@ class MainFragment : Fragment(), View.OnClickListener {
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val inflate = inflater.inflate(R.layout.main_fragment, container, false)
@@ -37,5 +38,4 @@ class MainFragment : Fragment(), View.OnClickListener {
                 .commit()
         }
     }
-
 }

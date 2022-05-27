@@ -1,8 +1,8 @@
 package br.com.ladyplant.repository.plant
 
 import br.com.ladyplant.repository.dto.PlantDto
-import br.com.ladyplant.repository.utils.ResultError
 import br.com.ladyplant.repository.utils.Result
+import br.com.ladyplant.repository.utils.ResultError
 
 interface PlantRepository {
 

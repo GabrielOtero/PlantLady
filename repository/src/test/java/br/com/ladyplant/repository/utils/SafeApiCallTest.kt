@@ -3,7 +3,9 @@ package br.com.ladyplant.repository.utils
 import br.com.misc.random
 import io.mockk.coEvery
 import io.mockk.mockk
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertFalse
+import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
@@ -85,5 +87,4 @@ class SafeApiCallTest {
             }
         )
     }
-
 }

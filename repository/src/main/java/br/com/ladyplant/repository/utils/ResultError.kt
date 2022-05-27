@@ -1,6 +1,5 @@
 package br.com.ladyplant.repository.utils
 
-
 sealed class ResultError(open val exceptionMessage: String?) {
     class NetworkError(
         val httpCode: Int = -1,
@@ -35,8 +34,8 @@ sealed class ResultError(open val exceptionMessage: String?) {
     class InvalidFieldsError(val fieldIds: List<String>) : ResultError("Invalid fields ($fieldIds)")
 }
 
-
 interface BBXError {
     val errorDomain: String?
     val errorDescription: String?
 }
+

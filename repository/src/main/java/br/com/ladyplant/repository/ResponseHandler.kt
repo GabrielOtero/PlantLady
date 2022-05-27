@@ -1,8 +1,5 @@
 package br.com.ladyplant.repository
 
-import retrofit2.HttpException
-import java.net.SocketTimeoutException
-
 enum class ErrorCodes(val code: Int) {
     SocketTimeOut(-1)
 }

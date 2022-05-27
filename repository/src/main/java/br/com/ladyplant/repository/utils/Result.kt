@@ -1,6 +1,5 @@
 package br.com.ladyplant.repository.utils
 
-
 fun Unit.toUnitSuccess() = Result.Success(Unit)
 
 sealed class Result<out D, out E> {
