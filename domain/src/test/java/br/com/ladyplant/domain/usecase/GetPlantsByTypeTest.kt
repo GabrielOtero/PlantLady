@@ -1,7 +1,6 @@
 package br.com.ladyplant.domain.usecase
 
 import br.com.ladyplant.domain.mapper.PlantDtoToPlantMapper
-import br.com.ladyplant.domain.usecase.GetPlantsByTypeUseCase
 import br.com.ladyplant.repository.dto.PlantDto
 import br.com.ladyplant.repository.plant.PlantRepository
 import br.com.ladyplant.repository.utils.Result
@@ -10,10 +9,8 @@ import br.com.misc.random
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
