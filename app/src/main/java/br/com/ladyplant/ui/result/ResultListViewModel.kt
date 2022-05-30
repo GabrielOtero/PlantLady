@@ -17,7 +17,8 @@ class ResultListViewModel @Inject constructor(
         viewState.loading.postValue(true)
 
         viewModelScope.launch {
-            getPlantsByType(idType = 1,
+            getPlantsByType(
+                idType = 1,
                 onSuccessCallback = {
                     viewState.action.postValue(
                         ResultListViewState.Action.ShowByTypeResult(it)
@@ -33,7 +34,6 @@ class ResultListViewModel @Inject constructor(
                 }
             )
         }
-
     }
 
     override fun dispatchViewAction(viewAction: ResultListViewAction) {
