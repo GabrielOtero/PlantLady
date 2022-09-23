@@ -3,7 +3,7 @@ package br.com.ladyplant.repository.plant
 import br.com.ladyplant.repository.PlantLadyApi
 import br.com.ladyplant.repository.dto.PlantDto
 import br.com.ladyplant.repository.utils.Result
-import br.com.ladyplant.repository.utils.ResultError
+import br.com.ladyplant.repository.utils.DataErrorResult
 import br.com.misc.random
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -61,7 +61,7 @@ class PlantRepositoryTest {
         assertTrue(plantsByType is Result.Error)
         plantsByType.handleResult(
             onError = {
-                assertTrue(it is ResultError.NetworkError)
+                assertTrue(it is DataErrorResult.NetworkError)
                 assertEquals(exceptionMessage, it.exceptionMessage)
             }
         )

@@ -4,7 +4,7 @@ import br.com.ladyplant.domain.mapper.PlantDtoToPlantMapper
 import br.com.ladyplant.repository.dto.PlantDto
 import br.com.ladyplant.repository.plant.PlantRepository
 import br.com.ladyplant.repository.utils.Result
-import br.com.ladyplant.repository.utils.ResultError
+import br.com.ladyplant.repository.utils.DataErrorResult
 import br.com.misc.random
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -19,7 +19,7 @@ class GetPlantsByTypeTest {
     private lateinit var repository: PlantRepository
     private lateinit var useCase: GetPlantsByTypeUseCase
 
-    private fun init(result: Result<List<PlantDto>, ResultError>) {
+    private fun init(result: Result<List<PlantDto>, DataErrorResult>) {
         repository = mockk()
 
         coEvery { repository.getPlantsByType(any()) } returns result
@@ -45,14 +45,14 @@ class GetPlantsByTypeTest {
     @Test
     fun `WHEN repository throws Unavailable Network ASSERT useCase call onError with the exception message`() =
         runTest {
-            init(Result.Error(ResultError.UnavailableNetworkConnectionError()))
+            init(Result.Error(DataErrorResult.UnavailableNetworkConnectionError()))
 
             val idType = Int.random()
             useCase.invoke(
                 idType = idType,
                 onErrorCallback = {
                     assertEquals(
-                        ResultError.UnavailableNetworkConnectionError().exceptionMessage,
+                        DataErrorResult.UnavailableNetworkConnectionError().exceptionMessage,
                         it
                     )
                 }

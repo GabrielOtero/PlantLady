@@ -1,7 +1,8 @@
 package br.com.ladyplant.ui.result
 
 import androidx.lifecycle.viewModelScope
-import br.com.ladyplant.domain.usecase.GetPlantsByType
+import br.com.ladyplant.domain.model.DomainResult
+import br.com.ladyplant.domain.usecase.interfaces.GetPlantsByType
 import br.com.ladyplant.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,22 +18,18 @@ class ResultListViewModel @Inject constructor(
         viewState.loading.postValue(true)
 
         viewModelScope.launch {
-            getPlantsByType(
-                idType = 1,
-                onSuccessCallback = {
+            when (val plantResult = getPlantsByType(idType = 1)) {
+                is DomainResult.Success -> {
                     viewState.action.postValue(
-                        ResultListViewState.Action.ShowByTypeResult(it)
+                        ResultListViewState.Action.ShowByTypeResult(plantResult.data)
                     )
-                },
-                onErrorCallback = { errorMsg ->
-                    viewState.action.postValue(
-                        ResultListViewState.Action.ShowError(errorMsg)
-                    )
-                },
-                onFinishCallback = {
-                    viewState.loading.postValue(false)
                 }
-            )
+                is DomainResult.Failure -> {
+                    viewState.action.postValue(
+                        ResultListViewState.Action.ShowError(plantResult.errorResult.message)
+                    )
+                }
+            }
         }
     }
 

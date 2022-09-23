@@ -1,8 +1,9 @@
 package br.com.ladyplant.di
 
+import br.com.ladyplant.domain.mapper.DataErrorResultToDomainErrorResultMapper
 import br.com.ladyplant.domain.mapper.PlantDtoToPlantMapper
-import br.com.ladyplant.domain.usecase.GetPlantsByType
 import br.com.ladyplant.domain.usecase.GetPlantsByTypeUseCase
+import br.com.ladyplant.domain.usecase.interfaces.GetPlantsByType
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -24,7 +25,12 @@ abstract class UseCaseModule {
 class MapperModule {
 
     @Provides
-    fun bindMapper(): PlantDtoToPlantMapper {
+    fun bindPlantDtoToPlantMapper(): PlantDtoToPlantMapper {
         return PlantDtoToPlantMapper()
+    }
+
+    @Provides
+    fun bindDataErrorResultToDomainErrorResultMapper(): DataErrorResultToDomainErrorResultMapper {
+        return DataErrorResultToDomainErrorResultMapper()
     }
 }

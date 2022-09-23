@@ -1,17 +1,17 @@
 package br.com.ladyplant.repository.utils
 
-sealed class ResultError(open val exceptionMessage: String?) {
+sealed class DataErrorResult(open val exceptionMessage: String) {
     class NetworkError(
         val httpCode: Int = -1,
-        val httpMessage: String? = null,
+        val httpMessage: String,
         val serverCode: String? = null,
         val serverMessage: String? = null,
         val exceptionTitle: String? = null,
-        override val exceptionMessage: String? = null,
+        override val exceptionMessage: String,
         val localizedMessage: String? = null,
         val isConnectionError: Boolean = false,
         val expectedAction: String? = null,
-    ) : ResultError(httpMessage), BBXError {
+    ) : DataErrorResult(httpMessage), BBXError {
 
         override val errorDomain = if (httpCode != -1) {
             "RequestInvalidCode.${this.httpCode}"
@@ -28,10 +28,10 @@ sealed class ResultError(open val exceptionMessage: String?) {
         val errorDescriptionWithFallback = this.errorDescription ?: this.httpMessage ?: this.exceptionMessage
     }
 
-    class UnavailableNetworkConnectionError : ResultError("Connection unavailable")
-    class UnauthorizedError : ResultError("User not authorized")
-    class UnknownError(val msg: String? = null) : ResultError(msg ?: "Unknown error")
-    class InvalidFieldsError(val fieldIds: List<String>) : ResultError("Invalid fields ($fieldIds)")
+    class UnavailableNetworkConnectionError : DataErrorResult("Connection unavailable")
+    class UnauthorizedError : DataErrorResult("User not authorized")
+    class UnknownError(val msg: String? = null) : DataErrorResult(msg ?: "Unknown error")
+    class InvalidFieldsError(val fieldIds: List<String>) : DataErrorResult("Invalid fields ($fieldIds)")
 }
 
 interface BBXError {

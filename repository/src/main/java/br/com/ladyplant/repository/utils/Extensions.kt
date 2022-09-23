@@ -1,10 +1,5 @@
 package br.com.ladyplant.repository.utils
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import okhttp3.internal.http2.ConnectionShutdownException
 import retrofit2.HttpException
@@ -14,31 +9,24 @@ import java.net.UnknownHostException
 
 
 suspend fun <T> safeApiCall(
-    dispatcher: CoroutineDispatcher = Dispatchers.IO,
     apiCall: suspend () -> T
-): Result<T, ResultError.NetworkError> {
-    return withContext(dispatcher) {
-        flow {
-            emit(
-                try {
-                    mapResponse(apiCall())
-                } catch (exception: Exception) {
-                    if (exception is HttpException) {
-                        mapHttpExceptionToResultError(
-                            exception.response()?.errorBody(),
-                            exception.code(),
-                            exception.message()
-                        )
-                    } else {
-                        mapGenericExceptionToResultError(exception)
-                    }
-                }
+): Result<T, DataErrorResult.NetworkError> {
+    return try {
+        mapResponse(apiCall())
+    } catch (exception: Exception) {
+        if (exception is HttpException) {
+            mapHttpExceptionToResultError(
+                exception.response()?.errorBody(),
+                exception.code(),
+                exception.message()
             )
-        }.single()
+        } else {
+            mapGenericExceptionToResultError(exception)
+        }
     }
 }
 
-fun <T> mapResponse(response: T): Result<T, ResultError.NetworkError> {
+fun <T> mapResponse(response: T): Result<T, DataErrorResult.NetworkError> {
     return if (response !is Response<*>) {
         Result.Success(response)
     } else {
@@ -59,18 +47,20 @@ fun mapHttpExceptionToResultError(
     code: Int,
     message: String
 ) = Result.Error(
-    ResultError.NetworkError(
+    DataErrorResult.NetworkError(
         httpCode = code,
         httpMessage = message,
+        exceptionMessage = message,
     )
 )
 
 private fun mapGenericExceptionToResultError(
     exception: Exception,
 ) = Result.Error(
-    ResultError.NetworkError(
+    DataErrorResult.NetworkError(
         exceptionTitle = exception::class.simpleName,
-        exceptionMessage = exception.message,
+        exceptionMessage = exception.message ?: "",
+        httpMessage = exception.message ?: "",
         isConnectionError = exception.isConnectionException()
     )
 )
