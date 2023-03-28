@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738186350300",
+    "firebase_url": "https://plantlady-prod.firebaseio.com",
+    "project_id": "plantlady-prod",
+    "storage_bucket": "plantlady-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738186350300:android:769ee17ee715424ab1ae19",
+        "android_client_info": {
+          "package_name": "br.com.ladyplant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738186350300-7u1mmg3b1c810kouut5sel49mda7sou2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnbp4zh1dFHtZaewRxsy_moYF9EUAACDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738186350300-7u1mmg3b1c810kouut5sel49mda7sou2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

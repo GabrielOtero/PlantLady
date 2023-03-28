@@ -17,13 +17,13 @@ android {
             keyPassword '321mudar'
         }
     }
-    compileSdkVersion 29
+    compileSdkVersion 33
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "br.com.ladyplant"
         minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
+        targetSdkVersion 33
+        versionCode 2
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
@@ -44,16 +44,16 @@ android {
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.herokuapp.com/\""
-            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-prod.herokuapp.com/images/plant/\""
+            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.glitch.me/\""
+            buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
         }
         debug {
             minifyEnabled false
             debuggable true
             applicationIdSuffix ".qa"
 
-            buildConfigField "String", "API_END_POINT", "\"https://yardman-qa.herokuapp.com/\""
-            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-qa.herokuapp.com/images/plant/\""
+            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.glitch.me/\""
+            buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
         }
     }
 }
@@ -75,7 +75,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-    implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
+    implementation 'com.github.2coffees1team:GlideToVectorYou:v2.0.0'
 
     def koin_version = "2.0.1"
     implementation "org.koin:koin-android:$koin_version"
