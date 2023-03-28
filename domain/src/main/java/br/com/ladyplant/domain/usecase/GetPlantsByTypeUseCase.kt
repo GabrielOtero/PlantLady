@@ -19,7 +19,7 @@ class GetPlantsByTypeUseCase @Inject constructor(
         idType: Int,
     ): DomainResult<List<Plant>> {
         return when (val result = repository.getPlantsByType(idType)) {
-            is Result.Success -> DomainResult.success(mapper.mapFrom(result.value))
+            is Result.Success -> DomainResult.Success(mapper.mapFrom(result.value))
             is Result.Error -> DomainResult.Failure(errorMapper.mapFrom(result .value))
         }
     }

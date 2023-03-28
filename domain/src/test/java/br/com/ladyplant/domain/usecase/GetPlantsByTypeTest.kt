@@ -1,6 +1,8 @@
 package br.com.ladyplant.domain.usecase
 
+import br.com.ladyplant.domain.mapper.DataErrorResultToDomainErrorResultMapper
 import br.com.ladyplant.domain.mapper.PlantDtoToPlantMapper
+import br.com.ladyplant.domain.model.DomainResult
 import br.com.ladyplant.repository.dto.PlantDto
 import br.com.ladyplant.repository.plant.PlantRepository
 import br.com.ladyplant.repository.utils.Result
@@ -23,7 +25,7 @@ class GetPlantsByTypeTest {
         repository = mockk()
 
         coEvery { repository.getPlantsByType(any()) } returns result
-        useCase = GetPlantsByTypeUseCase(repository, PlantDtoToPlantMapper())
+        useCase = GetPlantsByTypeUseCase(repository, PlantDtoToPlantMapper(), DataErrorResultToDomainErrorResultMapper())
     }
 
     @Test
@@ -32,12 +34,10 @@ class GetPlantsByTypeTest {
             init(Result.Success(listOf()))
 
             val idType = Int.random()
-            useCase.invoke(
-                idType = idType,
-                onSuccessCallback = {
-                    assertTrue(it.isEmpty())
-                }
-            )
+            val result = useCase.invoke(idType = idType)
+
+            assertTrue(result is DomainResult.Success)
+            assertEquals(result.getDataOrNull()?.size, 0)
 
             coVerify(exactly = 1) { repository.getPlantsByType(idType) }
         }
@@ -48,15 +48,10 @@ class GetPlantsByTypeTest {
             init(Result.Error(DataErrorResult.UnavailableNetworkConnectionError()))
 
             val idType = Int.random()
-            useCase.invoke(
-                idType = idType,
-                onErrorCallback = {
-                    assertEquals(
-                        DataErrorResult.UnavailableNetworkConnectionError().exceptionMessage,
-                        it
-                    )
-                }
-            )
+            val result = useCase.invoke(idType = idType)
+
+            assertTrue(result is DomainResult.Failure)
+            assertEquals((result as DomainResult.Failure).errorResult.message, "Connection unavailable");
 
             coVerify(exactly = 1) { repository.getPlantsByType(idType) }
         }

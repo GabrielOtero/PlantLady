@@ -25,16 +25,16 @@ android {
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.herokuapp.com/\""
-            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-prod.herokuapp.com/images/plant/\""
+            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.glitch.me/\""
+            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-prod.glitch.me/images/plant/\""
         }
 
         debug {
             minifyEnabled false
             debuggable true
 
-            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.herokuapp.com/\""
-            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-prod.herokuapp.com/images/plant/\""
+            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.glitch.me/\""
+            buildConfigField "String", "IMAGES_END_POINT", "\"https://yardman-prod.glitch.me/images/plant/\""
         }
     }
 
