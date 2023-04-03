@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import br.com.ladyplant.ui.QuizScreen
 import br.com.ladyplant.ui.explore.ExploreScreen
 import br.com.ladyplant.ui.home.HomeScreen
+import br.com.ladyplant.ui.plantDetail.PlantDetailScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -14,5 +15,6 @@ fun NavigationGraph(navController: NavHostController) {
         composable(NavItem.Home.screen_route) { HomeScreen(navController = navController) }
         composable(NavItem.Explore.screen_route) { ExploreScreen() }
         composable(NavItem.Quiz.screen_route) { QuizScreen() }
+        composable(NavItem.PlantDetail.screen_route) { PlantDetailScreen() }
     }
 }
