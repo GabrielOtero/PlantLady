@@ -13,4 +13,10 @@ class PlantRepositoryImpl @Inject constructor(private val api: PlantLadyApi) : P
             api.getPlantsByType(idType)
         }
     }
+
+    override suspend fun getPlantById(idPlant: Int): Result<PlantDto, DataErrorResult> {
+        return safeApiCall {
+            api.getPlantById(idPlant)
+        }
+    }
 }

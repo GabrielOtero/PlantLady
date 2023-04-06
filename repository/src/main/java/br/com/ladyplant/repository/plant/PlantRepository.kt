@@ -9,6 +9,7 @@ interface PlantRepository {
     //    suspend fun getPlantById(id: Int): Resource<Plant>
 //    suspend fun getPlantsByRoom(idRoom: Int): Resource<List<Plant>>
     suspend fun getPlantsByType(idType: Int): Result<List<PlantDto>, DataErrorResult>
+    suspend fun getPlantById(idPlant: Int): Result<PlantDto, DataErrorResult>
 
 //    suspend fun getQuizResult(
 //        idClimate: Int,

@@ -11,7 +11,6 @@ import br.com.ladyplant.R
 import br.com.ladyplant.ui.components.Carousel
 import br.com.ladyplant.ui.components.CarouselItem
 import br.com.ladyplant.ui.components.TitleText
-import br.com.ladyplant.ui.navigation.NavItem
 
 @Composable
 fun HomeScreen(
@@ -53,7 +52,7 @@ fun HomeScreen(
                     .padding(16.dp),
                 onClickItem = { id ->
                     Log.d("", id.toString())
-                    navController.navigate(NavItem.PlantDetail.screen_route)
+                    navController.navigate("plant_detail/$id")
                 },
             )
         }

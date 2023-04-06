@@ -1,5 +1,6 @@
 package br.com.ladyplant.di
 
+import br.com.ladyplant.ui.plantDetail.PlantDetailViewState
 import br.com.ladyplant.ui.result.ResultListViewState
 import dagger.Module
 import dagger.Provides
@@ -13,5 +14,10 @@ class ViewStateModule {
     @Provides
     fun bindResultListViewState(): ResultListViewState {
         return ResultListViewState()
+    }
+
+    @Provides
+    fun bindPlantDetailViewState(): PlantDetailViewState {
+        return PlantDetailViewState()
     }
 }

@@ -21,7 +21,7 @@ class ResultListViewModel @Inject constructor(
             when (val plantResult = getPlantsByType(idType = 1)) {
                 is DomainResult.Success -> {
                     viewState.action.postValue(
-                        ResultListViewState.Action.ShowByTypeResult(plantResult.data)
+                        ResultListViewState.Action.ShowResult(plantResult.data)
                     )
                 }
                 is DomainResult.Failure -> {
