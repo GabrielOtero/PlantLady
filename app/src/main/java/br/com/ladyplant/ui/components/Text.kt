@@ -8,6 +8,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import br.com.ladyplant.R
 
@@ -43,13 +44,17 @@ fun SubTitleText(
 fun DescriptionText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Int = R.color.viridian_green
+    color: Int = R.color.viridian_green,
+    fontSize: TextUnit = 16.sp,
+    fontWeight: FontWeight = FontWeight.Light,
+    letterSpacing: TextUnit = TextUnit.Unspecified
 ) = Text(
-    text = text.uppercase(), modifier = modifier, style = TextStyle(
-        fontSize = 16.sp,
-        fontWeight = FontWeight.Light,
+    text = text, modifier = modifier, style = TextStyle(
+        fontSize = fontSize,
+        fontWeight = fontWeight,
         fontFamily = FontFamily(Font(R.font.quicksand_regular)),
         color = colorResource(id = color),
+        letterSpacing = letterSpacing
     )
 )
 

@@ -25,13 +25,13 @@ fun Carousel(
             text = title,
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 24.dp)
         )
         LazyRow {
             items(spacedItems.size) { index ->
                 val item = spacedItems[index]
                 if (item == null) {
-                    Spacer(modifier = Modifier.width(8.dp)) // Define o tamanho do espaçamento desejado
+                    Spacer(modifier = Modifier.width(16.dp)) // Define o tamanho do espaçamento desejado
                 } else {
                     CarouselCard(item, onClickItem)
                 }
