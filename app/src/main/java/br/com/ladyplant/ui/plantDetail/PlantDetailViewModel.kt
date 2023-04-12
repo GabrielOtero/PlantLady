@@ -18,6 +18,7 @@ class PlantDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     override val viewState: PlantDetailViewState,
 ) : BaseViewModel<PlantDetailViewState, PlantDetailViewAction>() {
+
     private val plantId: Int = checkNotNull(savedStateHandle["plantId"])
     private val _plant = MutableLiveData<Plant>()
     val plant: LiveData<Plant> = _plant

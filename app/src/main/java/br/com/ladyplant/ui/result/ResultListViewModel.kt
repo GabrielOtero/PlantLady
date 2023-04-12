@@ -14,25 +14,6 @@ class ResultListViewModel @Inject constructor(
     override val viewState: ResultListViewState,
 ) : BaseViewModel<ResultListViewState, ResultListViewAction>() {
 
-    init {
-        viewState.loading.postValue(true)
-
-        viewModelScope.launch {
-            when (val plantResult = getPlantsByType(idType = 1)) {
-                is DomainResult.Success -> {
-                    viewState.action.postValue(
-                        ResultListViewState.Action.ShowResult(plantResult.data)
-                    )
-                }
-                is DomainResult.Failure -> {
-                    viewState.action.postValue(
-                        ResultListViewState.Action.ShowError(plantResult.errorResult.message)
-                    )
-                }
-            }
-        }
-    }
-
     override fun dispatchViewAction(viewAction: ResultListViewAction) {
         TODO("Not yet implemented")
     }

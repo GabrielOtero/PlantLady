@@ -17,12 +17,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import br.com.ladyplant.BuildConfig.IMAGES_END_POINT
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.ui.components.DescriptionText
 import br.com.ladyplant.ui.components.SubTitleText
 import br.com.ladyplant.ui.components.TitleText
+import br.com.ladyplant.ui.components.TopBar
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -33,7 +35,7 @@ import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun PlantDetailScreen(
-    viewModel: PlantDetailViewModel = hiltViewModel()
+    viewModel: PlantDetailViewModel = hiltViewModel(), navController: NavHostController
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     var showShimmer by remember { mutableStateOf(true) }
@@ -46,15 +48,22 @@ fun PlantDetailScreen(
             showShimmer = loading
         }
     }
+
     Column(
         Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
-        if (showShimmer) PlantDetailShimmer()
-        else {
-            plant?.let { PlantDetailComponent(it) }
+        TopBar {
+            navController.popBackStack()
+        }
+        Column( Modifier
+            .fillMaxSize()
+            .padding(horizontal = 24.dp, vertical = 16.dp)) {
+            if (showShimmer) PlantDetailShimmer()
+            else {
+                plant?.let { PlantDetailComponent(it) }
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package br.com.ladyplant.di
 
 import br.com.ladyplant.ui.plantDetail.PlantDetailViewState
+import br.com.ladyplant.ui.quizz.QuizViewState
 import br.com.ladyplant.ui.result.ResultListViewState
 import dagger.Module
 import dagger.Provides
@@ -19,5 +20,10 @@ class ViewStateModule {
     @Provides
     fun bindPlantDetailViewState(): PlantDetailViewState {
         return PlantDetailViewState()
+    }
+
+    @Provides
+    fun bindQuizViewState(): QuizViewState {
+        return QuizViewState()
     }
 }

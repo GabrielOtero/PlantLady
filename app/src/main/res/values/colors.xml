@@ -6,6 +6,7 @@
     <color name="gradient1">#48B199</color>
     <color name="gradient2">#29A79C</color>
     <color name="gradient3">#3E8C9C</color>
+    <color name="transparent">#000000FF</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

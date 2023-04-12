@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,13 +47,11 @@ class MainActivity : AppCompatActivity() {
 
         showTopBar = when (navBackStackEntry?.destination?.route) {
             NavItem.PlantDetail.screen_route -> true
-            NavItem.Quiz.screen_route -> true
             else -> false
         }
 
         Scaffold(
             bottomBar = { if (showBottomBar) BottomNavigation(navController = navController) },
-            topBar = { TopBar(showTopBar) { onBackPressedDispatcher.onBackPressed() } },
             backgroundColor = colorResource(id = R.color.white_smoke)
         ) { p ->
             NavigationGraph(navController = navController)

@@ -66,3 +66,17 @@ fun PreFilterLabel(text: String, modifier: Modifier = Modifier) = Text(
         color = colorResource(id = R.color.black),
     )
 )
+
+@Composable
+fun QuizQuestionText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Int = R.color.black
+) = Text(
+    text = text, modifier = modifier, style = TextStyle(
+        fontSize = 20.sp,
+        fontWeight = FontWeight.ExtraBold,
+        fontFamily = FontFamily(Font(R.font.quicksand_regular)),
+        color = colorResource(id = color),
+    )
+)

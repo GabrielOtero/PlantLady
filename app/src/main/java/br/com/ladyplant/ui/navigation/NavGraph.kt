@@ -6,19 +6,28 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import br.com.ladyplant.ui.QuizScreen
 import br.com.ladyplant.ui.explore.ExploreScreen
 import br.com.ladyplant.ui.home.HomeScreen
 import br.com.ladyplant.ui.plantDetail.PlantDetailScreen
+import br.com.ladyplant.ui.quizz.QuizScreen
+import br.com.ladyplant.ui.result.ResultScreen
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(
+    navController: NavHostController
+) {
     NavHost(navController = navController, startDestination = NavItem.Home.screen_route) {
         composable(NavItem.Home.screen_route) { HomeScreen(navController = navController) }
         composable(NavItem.Explore.screen_route) { ExploreScreen() }
-        composable(NavItem.Quiz.screen_route) { QuizScreen() }
-        composable(NavItem.PlantDetail.screen_route,
+        composable(NavItem.Quiz.screen_route) {
+            QuizScreen(
+                navController = navController,
+            )
+        }
+        composable(
+            NavItem.PlantDetail.screen_route,
             arguments = listOf(navArgument("plantId") { type = NavType.IntType })
-        ) { PlantDetailScreen() }
+        ) { PlantDetailScreen(navController = navController) }
+        composable(NavItem.Result.screen_route) { ResultScreen() }
     }
 }

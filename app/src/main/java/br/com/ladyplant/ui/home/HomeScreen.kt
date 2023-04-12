@@ -31,7 +31,7 @@ import br.com.ladyplant.ui.navigation.NavItem
 
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel = viewModel(), navController: NavController
+    viewModel: HomeViewModel = viewModel(), navController: NavController
 ) {
     Box(
         Modifier
