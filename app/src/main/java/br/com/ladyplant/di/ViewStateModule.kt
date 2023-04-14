@@ -1,5 +1,6 @@
 package br.com.ladyplant.di
 
+import br.com.ladyplant.ui.explore.ExploreViewState
 import br.com.ladyplant.ui.plantDetail.PlantDetailViewState
 import br.com.ladyplant.ui.quizz.QuizViewState
 import br.com.ladyplant.ui.result.ResultListViewState
@@ -25,5 +26,10 @@ class ViewStateModule {
     @Provides
     fun bindQuizViewState(): QuizViewState {
         return QuizViewState()
+    }
+
+    @Provides
+    fun bindExploreViewState(): ExploreViewState {
+        return ExploreViewState()
     }
 }

@@ -10,8 +10,7 @@
     <path
         android:pathData="M52,21.204L258,21.204A30,30 0,0 1,288 51.204L288,426A30,30 0,0 1,258 456L52,456A30,30 0,0 1,22 426L22,51.204A30,30 0,0 1,52 21.204z"
         android:strokeAlpha="0.6"
-        android:fillColor="#FFFFFF"
-        android:fillAlpha="0.6"/>
+        android:fillColor="#FFFFFF"/>
     <group>
         <clip-path android:pathData="M80,0h152v350.252h-152z M 0,0"/>
         <path

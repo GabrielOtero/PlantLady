@@ -14,6 +14,12 @@ class PlantRepositoryImpl @Inject constructor(private val api: PlantLadyApi) : P
         }
     }
 
+    override suspend fun getPlantsByRoom(idRoom: Int): Result<List<PlantDto>, DataErrorResult> {
+        return safeApiCall {
+            api.getPlantsByRoom(idRoom)
+        }
+    }
+
     override suspend fun getPlantById(idPlant: Int): Result<PlantDto, DataErrorResult> {
         return safeApiCall {
             api.getPlantById(idPlant)

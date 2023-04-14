@@ -7,6 +7,7 @@ import br.com.ladyplant.repository.utils.Result
 interface PlantRepository {
 
     suspend fun getPlantsByType(idType: Int): Result<List<PlantDto>, DataErrorResult>
+    suspend fun getPlantsByRoom(idRoom: Int): Result<List<PlantDto>, DataErrorResult>
     suspend fun getPlantById(idPlant: Int): Result<PlantDto, DataErrorResult>
 
     suspend fun getQuizResult(

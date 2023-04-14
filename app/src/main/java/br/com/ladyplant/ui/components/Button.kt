@@ -32,7 +32,7 @@ fun QuizOptionButton(
         shape = RoundedCornerShape(50),
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = colorResource(id = R.color.black),
-            backgroundColor = colorResource(R.color.transparent)
+            backgroundColor = colorResource(R.color.light_grey)
         )
     ) {
         Text(

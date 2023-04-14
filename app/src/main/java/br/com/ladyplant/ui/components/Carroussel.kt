@@ -10,10 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import br.com.ladyplant.R
 
 @Composable
 fun Carousel(
     title: String,
+    titleColor: Int = R.color.viridian_green,
     items: List<CarouselItem>,
     modifier: Modifier = Modifier,
     onClickItem: (Int) -> Unit = { }
@@ -23,7 +25,8 @@ fun Carousel(
     Column {
         SubTitleText(
             text = title,
-            Modifier
+            color = titleColor,
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp)
         )
@@ -44,7 +47,7 @@ data class CarouselItem(
     val id: Int,
     val imageRes: Int,
     val title: String,
-    )
+)
 
 @Composable
 fun CarouselCard(

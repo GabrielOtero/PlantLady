@@ -11,5 +11,6 @@ class ExploreViewState {
     sealed class Action {
         data class ShowResult(val plant: Plant) : Action()
         data class ShowError(val errorMsg: String) : Action()
+        data class GoToResultList(val resultList: ArrayList<Plant>) : Action()
     }
 }

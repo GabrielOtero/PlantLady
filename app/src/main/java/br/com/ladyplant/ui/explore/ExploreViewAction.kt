@@ -1,5 +1,6 @@
 package br.com.ladyplant.ui.explore
 
 sealed class ExploreViewAction {
-    object Refresh : ExploreViewAction()
+    class GetPlantByType(val idType: Int) : ExploreViewAction()
+    class GetPlantByRoom(val idRoom: Int) : ExploreViewAction()
 }

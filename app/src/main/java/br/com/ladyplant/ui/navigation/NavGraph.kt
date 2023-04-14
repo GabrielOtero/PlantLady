@@ -18,7 +18,7 @@ fun NavigationGraph(
 ) {
     NavHost(navController = navController, startDestination = NavItem.Home.screen_route) {
         composable(NavItem.Home.screen_route) { HomeScreen(navController = navController) }
-        composable(NavItem.Explore.screen_route) { ExploreScreen() }
+        composable(NavItem.Explore.screen_route) { ExploreScreen(navController = navController,) }
         composable(NavItem.Quiz.screen_route) { backStackEntry ->
             QuizScreen(
                 backStackEntry = backStackEntry,

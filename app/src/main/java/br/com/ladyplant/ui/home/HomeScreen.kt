@@ -1,10 +1,10 @@
 package br.com.ladyplant.ui.home
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
@@ -37,42 +37,51 @@ fun HomeScreen(
         Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .padding(vertical = 16.dp)
     ) {
 
-        Column(
+        LazyColumn(
         ) {
-            TitleText(
-                text = "home",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 24.dp, end = 24.dp, bottom = 24.dp),
-            )
-            Carousel(
-                title = "popular plants",
-                items = listOf(
-                    CarouselItem(
-                        id = 1, imageRes = R.drawable.ic_filter_by_type_cactus, title = "Cactus"
+            item {
+                TitleText(
+                    text = "home",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 24.dp),
+                )
+            }
+            item {
+                Carousel(
+                    title = "popular plants",
+                    items = listOf(
+                        CarouselItem(
+                            id = 1, imageRes = R.drawable.ic_filter_by_type_cactus, title = "Cactus"
+                        ),
+                        CarouselItem(
+                            id = 2,
+                            imageRes = R.drawable.ic_filter_by_type_flower,
+                            title = "Peace Lily"
+                        ),
+                        CarouselItem(
+                            id = 3,
+                            imageRes = R.drawable.ic_filter_by_type_palms,
+                            title = "Areca Palm"
+                        ),
+                        CarouselItem(
+                            id = 4,
+                            imageRes = R.drawable.ic_filter_by_type_lianas,
+                            title = "Peperomia"
+                        ),
                     ),
-                    CarouselItem(
-                        id = 2, imageRes = R.drawable.ic_filter_by_type_flower, title = "Peace Lily"
-                    ),
-                    CarouselItem(
-                        id = 3, imageRes = R.drawable.ic_filter_by_type_palms, title = "Areca Palm"
-                    ),
-                    CarouselItem(
-                        id = 4, imageRes = R.drawable.ic_filter_by_type_lianas, title = "Peperomia"
-                    ),
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                onClickItem = { id ->
-                    navController.navigate("plant_detail/$id")
-                },
-            )
-            Spacer(modifier = Modifier.height(64.dp))
-            QuizCard(navController)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    onClickItem = { id ->
+                        navController.navigate("plant_detail/$id")
+                    },
+                )
+            }
+            item { Spacer(modifier = Modifier.height(64.dp)) }
+            item { QuizCard(navController) }
 
         }
     }
@@ -94,9 +103,9 @@ private fun QuizCard(navController: NavController) {
                 .background(
                     brush = Brush.verticalGradient(
                         colors = listOf(
-                            colorResource(id = R.color.gradient1),
-                            colorResource(id = R.color.gradient2),
-                            colorResource(id = R.color.gradient3),
+                            colorResource(id = R.color.default_gradient_start),
+                            colorResource(id = R.color.default_gradient_middle),
+                            colorResource(id = R.color.default_gradient_end),
                         )
                     )
                 )

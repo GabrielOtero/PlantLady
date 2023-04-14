@@ -1,7 +1,6 @@
 package br.com.ladyplant.ui.quizz
 
 import android.net.Uri
-import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -12,14 +11,21 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
+import br.com.ladyplant.R
 import br.com.ladyplant.ui.components.Quiz
 import br.com.ladyplant.ui.components.QuizPage
+import br.com.ladyplant.ui.components.ResultListShimmer
 import br.com.ladyplant.ui.components.TopBar
 import br.com.ladyplant.ui.navigation.NavItem
 import br.com.ladyplant.ui.navigation.PlantList
@@ -40,7 +46,7 @@ fun QuizScreen(
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
     val items = getUIListFromModel(viewModel, coroutineScope, pagerState, navController)
-
+    var showShimmer by remember { mutableStateOf(false) }
     overwriteOnBackPressed(coroutineScope, pagerState, navController)
 
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -48,8 +54,7 @@ fun QuizScreen(
         viewModel.viewState.loading.observe(
             lifecycleOwner
         ) { loading ->
-            if (loading) Log.d("@@@", "LOADING")
-            else Log.d("@@@", "NOT LOADING")
+            showShimmer = loading
         }
 
         viewModel.viewState.action.observe(
@@ -63,12 +68,14 @@ fun QuizScreen(
             }
         }
     }
-
-    Column(modifier = Modifier.fillMaxSize()) {
-        TopBar(items, navController, coroutineScope, pagerState)
-        Quiz(
-            item = items, pagerState = pagerState, modifier = Modifier.fillMaxWidth()
-        )
+    if (showShimmer) ResultListShimmer()
+    else {
+        Column(modifier = Modifier.fillMaxSize()) {
+            TopBar(items, navController, coroutineScope, pagerState)
+            Quiz(
+                item = items, pagerState = pagerState, modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
@@ -92,7 +99,16 @@ private fun TopBar(
     pagerState: PagerState
 ) {
     TopBar(title = {
-        Text("question ${currentPage.value} / ${items.size}")
+        Text(
+            text = "question ${currentPage.value} / ${items.size}",
+            maxLines = 1,
+            fontSize = 18.sp,
+            fontFamily = FontFamily(Font(R.font.quicksand_regular)),
+            color = colorResource(id = R.color.black),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize(Alignment.Center)
+        )
     }, actions = {
         IconButton(onClick = { navController.popBackStack() }) {
             Icon(Icons.Filled.Close, contentDescription = "Fechar")
