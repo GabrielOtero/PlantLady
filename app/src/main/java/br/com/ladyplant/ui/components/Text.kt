@@ -80,3 +80,17 @@ fun QuizQuestionText(
         color = colorResource(id = color),
     )
 )
+
+@Composable
+fun CardTitleText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Int = R.color.black
+) = Text(
+    text = text, modifier = modifier, style = TextStyle(
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(Font(R.font.quicksand_regular)),
+        color = colorResource(id = color),
+    )
+)

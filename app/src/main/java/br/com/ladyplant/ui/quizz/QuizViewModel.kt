@@ -1,9 +1,10 @@
 package br.com.ladyplant.ui.quizz
 
-import android.util.Log
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import br.com.ladyplant.domain.model.DomainResult
+import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.domain.model.Question
+import br.com.ladyplant.domain.usecase.interfaces.GetQuizResult
 import br.com.ladyplant.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -11,6 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuizViewModel @Inject constructor(
+    private val getQuizResult: GetQuizResult, // TODO
     override val viewState: QuizViewState,
 ) : BaseViewModel<QuizViewState, QuizViewAction>() {
 
@@ -27,7 +29,29 @@ class QuizViewModel @Inject constructor(
             when (viewAction) {
                 is QuizViewAction.GetQuizResult -> {
                     viewState.loading.postValue(true)
-                    Log.d("@@@", questionList.toString())
+
+                    when (val plantResult = getQuizResult(
+                        idClimate = questionList[0].answer?.plus(1) ?: 0,
+                        idGardenCare = questionList[1].answer?.plus(1) ?: 0,
+                        idAppearance = questionList[2].answer?.plus(1) ?: 0,
+                        idLight = questionList[3].answer?.plus(1) ?: 0,
+                        idInplace = questionList[4].answer?.plus(1) ?: 0,
+                        idPurpose = questionList[5].answer?.plus(1) ?: 0,
+                        idEatable = questionList[6].answer?.plus(1) ?: 0
+                    )) {
+                        is DomainResult.Success -> {
+                            viewState.action.postValue(
+                                QuizViewState.Action.GoToResultList(
+                                    plantResult.data as ArrayList<Plant>
+                                )
+                            )
+                            viewState.loading.postValue(false)
+                        }
+                        is DomainResult.Failure -> {
+
+                            viewState.loading.postValue(false)
+                        }
+                    }
                 }
             }
         }

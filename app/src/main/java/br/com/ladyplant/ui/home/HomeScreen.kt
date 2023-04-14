@@ -68,7 +68,6 @@ fun HomeScreen(
                     .fillMaxWidth()
                     .padding(16.dp),
                 onClickItem = { id ->
-                    Log.d("", id.toString())
                     navController.navigate("plant_detail/$id")
                 },
             )

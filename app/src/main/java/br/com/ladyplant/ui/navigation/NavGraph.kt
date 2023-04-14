@@ -19,8 +19,9 @@ fun NavigationGraph(
     NavHost(navController = navController, startDestination = NavItem.Home.screen_route) {
         composable(NavItem.Home.screen_route) { HomeScreen(navController = navController) }
         composable(NavItem.Explore.screen_route) { ExploreScreen() }
-        composable(NavItem.Quiz.screen_route) {
+        composable(NavItem.Quiz.screen_route) { backStackEntry ->
             QuizScreen(
+                backStackEntry = backStackEntry,
                 navController = navController,
             )
         }
@@ -28,6 +29,15 @@ fun NavigationGraph(
             NavItem.PlantDetail.screen_route,
             arguments = listOf(navArgument("plantId") { type = NavType.IntType })
         ) { PlantDetailScreen(navController = navController) }
-        composable(NavItem.Result.screen_route) { ResultScreen() }
+        composable(
+            NavItem.Result.screen_route, arguments = listOf(navArgument("list") {
+                type = PlantListNavType
+                defaultValue = PlantList(emptyList())
+            })
+        ) {
+            ResultScreen(
+                navController = navController,
+            )
+        }
     }
 }

@@ -1,5 +1,6 @@
 package br.com.ladyplant.ui.quizz
 
+import android.net.Uri
 import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
@@ -14,13 +15,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import br.com.ladyplant.ui.components.Quiz
 import br.com.ladyplant.ui.components.QuizPage
 import br.com.ladyplant.ui.components.TopBar
+import br.com.ladyplant.ui.navigation.NavItem
+import br.com.ladyplant.ui.navigation.PlantList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 val currentPage = mutableStateOf("1")
 
@@ -29,6 +35,7 @@ val currentPage = mutableStateOf("1")
 fun QuizScreen(
     viewModel: QuizViewModel = hiltViewModel(),
     navController: NavController,
+    backStackEntry: NavBackStackEntry,
 ) {
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
@@ -41,7 +48,19 @@ fun QuizScreen(
         viewModel.viewState.loading.observe(
             lifecycleOwner
         ) { loading ->
-            Log.d("@@@", "LOADING")
+            if (loading) Log.d("@@@", "LOADING")
+            else Log.d("@@@", "NOT LOADING")
+        }
+
+        viewModel.viewState.action.observe(
+            lifecycleOwner
+        ) { action ->
+            when (action) {
+                is QuizViewState.Action.GoToResultList -> {
+                    goToResultScreen(action, navController)
+                }
+                is QuizViewState.Action.ShowError -> TODO()
+            }
         }
     }
 
@@ -51,6 +70,17 @@ fun QuizScreen(
             item = items, pagerState = pagerState, modifier = Modifier.fillMaxWidth()
         )
     }
+}
+
+private fun goToResultScreen(
+    action: QuizViewState.Action.GoToResultList, navController: NavController
+) {
+    val list = PlantList(action.resultList)
+    val resultListArg = Uri.encode(Json.encodeToString(list))
+    navController.navigate(
+        "result/$resultListArg",
+        NavOptions.Builder().setPopUpTo(NavItem.Quiz.screen_route, true).build()
+    )
 }
 
 @OptIn(ExperimentalFoundationApi::class)
