@@ -1,24 +1,27 @@
 package br.com.ladyplant
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import br.com.ladyplant.ui.components.TopBar
 import br.com.ladyplant.ui.navigation.BottomNavigation
 import br.com.ladyplant.ui.navigation.NavItem
 import br.com.ladyplant.ui.navigation.NavigationGraph
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -28,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MainScreenView()
         }
+
+
     }
 
     @Preview
@@ -37,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         var showBottomBar by rememberSaveable { mutableStateOf(true) }
         var showTopBar by rememberSaveable { mutableStateOf(true) }
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-
+        SetStatusBarColor()
 
         showBottomBar = when (navBackStackEntry?.destination?.route) {
             NavItem.Home.screen_route -> true
@@ -59,4 +64,21 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @Composable
+    fun SetStatusBarColor(color: Color = colorResource(id = R.color.white_smoke)) {
+        val systemUiController = rememberSystemUiController()
+        val useDarkIcons = !isSystemInDarkTheme()
+
+        val navigationColor = colorResource(id = R.color.white_smoke)
+
+        DisposableEffect(systemUiController, useDarkIcons) {
+            systemUiController.setStatusBarColor(
+                color = color, darkIcons = useDarkIcons
+            )
+            systemUiController.setNavigationBarColor(
+                color = navigationColor, darkIcons = useDarkIcons
+            )
+            onDispose {}
+        }
+    }
 }

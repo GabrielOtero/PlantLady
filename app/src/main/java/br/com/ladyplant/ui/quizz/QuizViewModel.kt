@@ -98,7 +98,7 @@ class QuizViewModel @Inject constructor(
             ),
             Question(
                 7,
-                "This one is very important. o you have a small kid or pet that might eat the plant?",
+                "This one is very important. Do you have a small kid or pet that might eat the plant?",
                 listOf(
                     "Yes, that’s a risk", "Nope, it’s all good"
                 )

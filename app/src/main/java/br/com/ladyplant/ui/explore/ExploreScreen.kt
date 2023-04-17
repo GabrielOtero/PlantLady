@@ -96,11 +96,11 @@ private fun ExploreScreenComponent(
                 )
             }
             item { ByTypeCarousel(viewModel) }
-            item { Spacer(modifier = Modifier.height(64.dp)) }
+            item { Spacer(Modifier.height(32.dp)) }
             item { ByRoomCarousel(viewModel) }
-            item { Spacer(modifier = Modifier.height(64.dp)) }
+            item { Spacer(Modifier.height(24.dp)) }
             item { FeelingLostCard(navController) }
-            item { Spacer(modifier = Modifier.height(112.dp)) }
+            item { Spacer(Modifier.height(112.dp)) }
         }
     }
 }
@@ -110,6 +110,7 @@ private fun ByTypeCarousel(viewModel: ExploreViewModel) {
     Carousel(
         title = "BY TYPE",
         titleColor = R.color.white,
+        scrollColor = R.color.light_grey,
         items = listOf(
             CarouselItem(
                 id = 1, imageRes = R.drawable.ic_filter_by_type_cactus, title = "Cactus"
@@ -134,6 +135,7 @@ private fun ByRoomCarousel(viewModel: ExploreViewModel) {
     Carousel(
         title = "BY ROOM",
         titleColor = R.color.white,
+        scrollColor = R.color.light_grey,
         items = listOf(
             CarouselItem(
                 id = 1, imageRes = R.drawable.ic_filter_by_room_living_room, title = "living room"
@@ -145,8 +147,8 @@ private fun ByRoomCarousel(viewModel: ExploreViewModel) {
                 id = 3, imageRes = R.drawable.ic_filter_by_room_bedroom, title = "Bedroom"
             ),
             CarouselItem(
-                id = 4, imageRes = R.drawable.ic_filter_by_room_diningroom, title = "Dining room"
-            ),
+                id = 4, imageRes = R.drawable.ic_filter_by_room_diningroom, title = "Kitchen"
+            )
         ),
     ) {
         viewModel.dispatchViewAction(ExploreViewAction.GetPlantByRoom(it))

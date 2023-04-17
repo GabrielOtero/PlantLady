@@ -27,7 +27,7 @@ fun BottomNavigation(navController: NavController) {
         backgroundColor = colorResource(id = R.color.pale_aqua),
         contentColor = colorResource(id = R.color.viridian_green),
         modifier = Modifier
-            .padding(start = 124.dp, end = 124.dp, top = 8.dp, bottom = 40.dp)
+            .padding(start = 124.dp, end = 124.dp, top = 8.dp, bottom = 24.dp)
             .clip(RoundedCornerShape(48.dp))
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()

@@ -80,15 +80,15 @@ fun HomeScreen(
                     },
                 )
             }
-            item { Spacer(modifier = Modifier.height(64.dp)) }
-            item { QuizCard(navController) }
+            item { Spacer(modifier = Modifier.height(24.dp)) }
+            item { TakeTheQuizCard(navController) }
 
         }
     }
 }
 
 @Composable
-private fun QuizCard(navController: NavController) {
+private fun TakeTheQuizCard(navController: NavController) {
     Box(contentAlignment = Alignment.TopEnd, modifier = Modifier.clickable {
         navController.navigate(NavItem.Quiz.screen_route)
     }) {
