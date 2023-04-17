@@ -1,19 +1,15 @@
 package br.com.ladyplant
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.view.WindowCompat
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.ladyplant.ui.navigation.BottomNavigation
@@ -31,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MainScreenView()
         }
-
-
     }
 
     @Preview

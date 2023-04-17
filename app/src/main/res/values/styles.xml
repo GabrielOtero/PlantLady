@@ -1,6 +1,0 @@
-<resources>
-
-    <style name="TitleText" parent="Widget.MaterialComponents.Button">
-        <item name="android:textSize">18sp</item>
-    </style>
-</resources>
