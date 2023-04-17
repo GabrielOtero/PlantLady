@@ -7,6 +7,7 @@ import br.com.ladyplant.domain.usecase.interfaces.GetPlantsByRoom
 import br.com.ladyplant.domain.usecase.interfaces.GetPlantsByType
 import br.com.ladyplant.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ class ExploreViewModel @Inject constructor(
 ) : BaseViewModel<ExploreViewState, ExploreViewAction>() {
 
     override fun dispatchViewAction(viewAction: ExploreViewAction) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             when (viewAction) {
                 is ExploreViewAction.GetPlantByRoom -> {
                     callGetPlantsByRoom(viewAction)

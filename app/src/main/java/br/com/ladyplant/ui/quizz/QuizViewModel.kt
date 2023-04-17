@@ -7,6 +7,7 @@ import br.com.ladyplant.domain.model.Question
 import br.com.ladyplant.domain.usecase.interfaces.GetQuizResult
 import br.com.ladyplant.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +26,7 @@ class QuizViewModel @Inject constructor(
     }
 
     override fun dispatchViewAction(viewAction: QuizViewAction) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             when (viewAction) {
                 is QuizViewAction.GetQuizResult -> {
                     viewState.loading.postValue(true)

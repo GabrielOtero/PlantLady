@@ -116,13 +116,16 @@ private fun ByTypeCarousel(viewModel: ExploreViewModel) {
                 id = 1, imageRes = R.drawable.ic_filter_by_type_cactus, title = "Cactus"
             ),
             CarouselItem(
-                id = 2, imageRes = R.drawable.ic_filter_by_type_flower, title = "Peace Lily"
+                id = 2, imageRes = R.drawable.ic_filter_by_type_hanging, title = "Hanging"
             ),
             CarouselItem(
-                id = 3, imageRes = R.drawable.ic_filter_by_type_palms, title = "Areca Palm"
+                id = 5, imageRes = R.drawable.ic_filter_by_type_flower, title = "Flowers"
             ),
             CarouselItem(
-                id = 4, imageRes = R.drawable.ic_filter_by_type_lianas, title = "Peperomia"
+                id = 3, imageRes = R.drawable.ic_filter_by_type_palms, title = "Palms"
+            ),
+            CarouselItem(
+                id = 4, imageRes = R.drawable.ic_filter_by_type_indoor, title = "Indoor"
             ),
         ),
     ) {

@@ -57,17 +57,17 @@ fun HomeScreen(
                             id = 1, imageRes = R.drawable.ic_filter_by_type_cactus, title = "Cactus"
                         ),
                         CarouselItem(
-                            id = 2,
-                            imageRes = R.drawable.ic_filter_by_type_flower,
+                            id = 15,
+                            imageRes = R.drawable.ic_papular_plant_peace_lily,
                             title = "Peace Lily"
                         ),
                         CarouselItem(
-                            id = 3,
-                            imageRes = R.drawable.ic_filter_by_type_palms,
+                            id = 8,
+                            imageRes = R.drawable.ic_popular_plant_areca_palm,
                             title = "Areca Palm"
                         ),
                         CarouselItem(
-                            id = 4,
+                            id = 7,
                             imageRes = R.drawable.ic_filter_by_type_lianas,
                             title = "Peperomia"
                         ),
