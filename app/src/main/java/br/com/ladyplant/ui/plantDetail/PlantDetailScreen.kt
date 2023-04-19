@@ -21,6 +21,7 @@ import androidx.navigation.NavHostController
 import br.com.ladyplant.BuildConfig.IMAGES_END_POINT
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Plant
+import br.com.ladyplant.goToSomethingWentWrongScreen
 import br.com.ladyplant.ui.components.DescriptionText
 import br.com.ladyplant.ui.components.SubTitleText
 import br.com.ladyplant.ui.components.TitleText
@@ -47,6 +48,19 @@ fun PlantDetailScreen(
         ) { loading ->
             showShimmer = loading
         }
+
+        viewModel.viewState.action.observe(
+            lifecycleOwner
+        ) { action ->
+            when (action) {
+                is PlantDetailViewState.Action.ShowError -> {
+                    goToSomethingWentWrongScreen(navController)
+                }
+                is PlantDetailViewState.Action.ShowResult -> {
+
+                }
+            }
+        }
     }
 
     Column(
@@ -57,9 +71,10 @@ fun PlantDetailScreen(
         TopBar {
             navController.popBackStack()
         }
-        Column( Modifier
-            .fillMaxSize()
-            .padding(horizontal = 24.dp, vertical = 16.dp)) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(horizontal = 24.dp, vertical = 16.dp)) {
             if (showShimmer) PlantDetailShimmer()
             else {
                 plant?.let { PlantDetailComponent(it) }

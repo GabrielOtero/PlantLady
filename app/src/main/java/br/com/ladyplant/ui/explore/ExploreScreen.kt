@@ -25,6 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Plant
+import br.com.ladyplant.goToSomethingWentWrongScreen
 import br.com.ladyplant.ui.components.*
 import br.com.ladyplant.ui.navigation.NavItem
 import br.com.ladyplant.ui.navigation.PlantList
@@ -51,8 +52,9 @@ fun ExploreScreen(viewModel: ExploreViewModel = hiltViewModel(), navController: 
                 is ExploreViewState.Action.GoToResultList -> {
                     goToResultScreen(action.resultList, navController)
                 }
-                is ExploreViewState.Action.ShowError -> TODO()
-                is ExploreViewState.Action.ShowResult -> TODO()
+                is ExploreViewState.Action.ShowError -> {
+                    goToSomethingWentWrongScreen(navController)
+                }
             }
         }
     }

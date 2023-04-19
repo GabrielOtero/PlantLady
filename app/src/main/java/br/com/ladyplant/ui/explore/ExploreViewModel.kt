@@ -43,6 +43,9 @@ class ExploreViewModel @Inject constructor(
                 viewState.loading.postValue(false)
             }
             is DomainResult.Failure -> {
+                viewState.action.postValue(
+                    ExploreViewState.Action.ShowError("")
+                )
                 viewState.loading.postValue(false)
             }
         }
@@ -60,6 +63,9 @@ class ExploreViewModel @Inject constructor(
                 viewState.loading.postValue(false)
             }
             is DomainResult.Failure -> {
+                viewState.action.postValue(
+                    ExploreViewState.Action.ShowError("")
+                )
                 viewState.loading.postValue(false)
             }
         }

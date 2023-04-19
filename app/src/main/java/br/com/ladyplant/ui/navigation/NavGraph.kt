@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import br.com.ladyplant.ui.result.SomethingWentWrongScreen
 import br.com.ladyplant.ui.explore.ExploreScreen
 import br.com.ladyplant.ui.home.HomeScreen
 import br.com.ladyplant.ui.plantDetail.PlantDetailScreen
@@ -39,5 +40,6 @@ fun NavigationGraph(
                 navController = navController,
             )
         }
+        composable(NavItem.SomethingWentWrong.screen_route) { SomethingWentWrongScreen(navController = navController) }
     }
 }

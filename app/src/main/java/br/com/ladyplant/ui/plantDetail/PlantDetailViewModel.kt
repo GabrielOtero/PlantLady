@@ -8,6 +8,7 @@ import br.com.ladyplant.domain.model.DomainResult
 import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.domain.usecase.interfaces.GetPlantById
 import br.com.ladyplant.ui.base.BaseViewModel
+import br.com.ladyplant.ui.explore.ExploreViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -49,8 +50,10 @@ class PlantDetailViewModel @Inject constructor(
                 viewState.loading.postValue(false)
             }
             is DomainResult.Failure -> {
-
                 viewState.loading.postValue(false)
+                viewState.action.postValue(
+                    PlantDetailViewState.Action.ShowError("")
+                )
             }
         }
     }

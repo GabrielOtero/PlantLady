@@ -16,9 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import br.com.ladyplant.BuildConfig
+import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Plant
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
@@ -32,7 +34,7 @@ fun ResultListCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(120.dp)
-            .padding(vertical = 12.dp, horizontal = 16.dp)
+            .padding(vertical = 8.dp, horizontal = 16.dp)
             .clip(RoundedCornerShape(24.dp))
             .clickable { navController.navigate("plant_detail/${plant.id}") }
             .background(MaterialTheme.colors.surface)) {
@@ -49,20 +51,29 @@ fun ResultListCard(
                         .data(BuildConfig.IMAGES_END_POINT + plant.image)
                         .decoderFactory(SvgDecoder.Factory()).build(),
                     contentDescription = plant.name,
-                    contentScale = ContentScale.FillHeight,
+                    contentScale = ContentScale.Inside,
                     modifier = Modifier
-                        .fillMaxHeight()
-                        .padding(horizontal = 24.dp, vertical = 8.dp)
+                        .height(120.dp)
+                        .width(120.dp)
+                        .padding(horizontal = 0.dp, vertical = 8.dp)
                 )
+                Spacer(Modifier.width(4.dp))
                 CardTitleText(
-                    text = (plant.name), modifier = Modifier.wrapContentSize(Alignment.Center)
+                    text = (plant.name),
+                    modifier = Modifier
+                        .wrapContentSize(Alignment.Center)
+                        .widthIn(0.dp, 170.dp)
                 )
             }
 
             IconButton(
                 onClick = { },
             ) {
-                Icon(Icons.Default.ChevronRight, contentDescription = "Voltar")
+                Icon(
+                    Icons.Default.ChevronRight,
+                    contentDescription = "Voltar",
+                    tint = colorResource(id = R.color.viridian_green),
+                )
             }
         }
 

@@ -68,7 +68,7 @@ fun HomeScreen(
                         ),
                         CarouselItem(
                             id = 7,
-                            imageRes = R.drawable.ic_filter_by_type_lianas,
+                            imageRes = R.drawable.ic_peperomia_sample,
                             title = "Peperomia"
                         ),
                     ),

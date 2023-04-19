@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -13,8 +14,10 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
@@ -23,6 +26,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import br.com.ladyplant.R
+import br.com.ladyplant.goToSomethingWentWrongScreen
 import br.com.ladyplant.ui.components.Quiz
 import br.com.ladyplant.ui.components.QuizPage
 import br.com.ladyplant.ui.components.ResultListShimmer
@@ -64,7 +68,9 @@ fun QuizScreen(
                 is QuizViewState.Action.GoToResultList -> {
                     goToResultScreen(action, navController)
                 }
-                is QuizViewState.Action.ShowError -> TODO()
+                is QuizViewState.Action.ShowError -> {
+                    goToSomethingWentWrongScreen(navController)
+                }
             }
         }
     }
@@ -72,9 +78,18 @@ fun QuizScreen(
     else {
         Column(modifier = Modifier.fillMaxSize()) {
             TopBar(items, navController, coroutineScope, pagerState)
-            Quiz(
-                item = items, pagerState = pagerState, modifier = Modifier.fillMaxWidth()
-            )
+            Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_quiz_background),
+                    contentDescription = "",
+                    contentScale = ContentScale.FillWidth,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+                Quiz(
+                    item = items, pagerState = pagerState, modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }

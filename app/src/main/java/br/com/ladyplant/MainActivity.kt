@@ -10,6 +10,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.ladyplant.ui.navigation.BottomNavigation
@@ -75,4 +77,13 @@ class MainActivity : AppCompatActivity() {
             onDispose {}
         }
     }
+}
+
+fun goToSomethingWentWrongScreen(
+    navController: NavController
+) {
+    navController.navigate(
+        NavItem.SomethingWentWrong.screen_route,
+        NavOptions.Builder().setPopUpTo(NavItem.SomethingWentWrong.screen_route, true).build()
+    )
 }

@@ -8,6 +8,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import br.com.ladyplant.R
@@ -87,8 +88,38 @@ fun CardTitleText(
     modifier: Modifier = Modifier,
     color: Int = R.color.black
 ) = Text(
-    text = text, modifier = modifier, style = TextStyle(
+    text = text,
+    maxLines = 2,
+    overflow = TextOverflow.Ellipsis,
+    modifier = modifier, style = TextStyle(
         fontSize = 20.sp,
+        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(Font(R.font.quicksand_regular)),
+        color = colorResource(id = color),
+    )
+)
+
+@Composable
+fun SomethingWentWrongTitle(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Int = R.color.dark_gray
+) = Text(
+    text = text, modifier = modifier, maxLines = 1, style = TextStyle(
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+        fontFamily = FontFamily(Font(R.font.quicksand_regular)),
+        color = colorResource(id = color),
+    )
+)
+@Composable
+fun SomethingWentWrongSubTitle(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Int = R.color.dark_gray
+) = Text(
+    text = text, modifier = modifier, maxLines = 1, style = TextStyle(
+        fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = FontFamily(Font(R.font.quicksand_regular)),
         color = colorResource(id = color),
