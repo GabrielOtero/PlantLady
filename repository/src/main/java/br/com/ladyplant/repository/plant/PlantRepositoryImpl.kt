@@ -8,6 +8,12 @@ import br.com.ladyplant.repository.utils.safeApiCall
 import javax.inject.Inject
 
 class PlantRepositoryImpl @Inject constructor(private val api: PlantLadyApi) : PlantRepository {
+    override suspend fun init(): Result<Unit, DataErrorResult> {
+        return safeApiCall {
+            api.init()
+        }
+    }
+
     override suspend fun getPlantsByType(idType: Int): Result<List<PlantDto>, DataErrorResult> {
         return safeApiCall {
             api.getPlantsByType(idType)
@@ -37,13 +43,7 @@ class PlantRepositoryImpl @Inject constructor(private val api: PlantLadyApi) : P
     ): Result<List<PlantDto>, DataErrorResult> {
         return safeApiCall {
             api.getQuizResult(
-                idClimate,
-                idGardenCare,
-                idAppearance,
-                idLight,
-                idInplace,
-                idPurpose,
-                idEatable
+                idClimate, idGardenCare, idAppearance, idLight, idInplace, idPurpose, idEatable
             )
         }
     }

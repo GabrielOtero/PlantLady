@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import br.com.ladyplant.R
 import br.com.ladyplant.ui.components.Carousel
@@ -31,7 +31,7 @@ import br.com.ladyplant.ui.navigation.NavItem
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = viewModel(), navController: NavController
+    viewModel: HomeViewModel = hiltViewModel(), navController: NavController
 ) {
     Box(
         Modifier

@@ -6,6 +6,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PlantLadyApi {
+
+    @GET("init")
+    suspend fun init(): Unit
+
     @GET("plant/{id}")
     suspend fun getPlantById(@Path("id") id: Int): PlantDto
 
