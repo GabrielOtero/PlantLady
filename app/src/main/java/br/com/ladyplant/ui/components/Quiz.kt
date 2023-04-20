@@ -1,10 +1,14 @@
 package br.com.ladyplant.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,7 +18,9 @@ import br.com.ladyplant.domain.model.Question
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Quiz(
-    item: List<@Composable () -> Unit>, pagerState: PagerState, modifier: Modifier = Modifier
+    item: List<@Composable () -> Unit>,
+    pagerState: PagerState,
+    modifier: Modifier = Modifier,
 ) {
     Box(modifier = modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {

@@ -10,7 +10,8 @@ import com.google.android.gms.ads.AdView
 
 @Composable
 fun AdViewBanner(
-    adSize: AdSize = AdSize.BANNER, modifier: Modifier = Modifier
+    adSize: AdSize = AdSize.BANNER,
+    modifier: Modifier = Modifier,
 ) {
     val adRequest = AdRequest.Builder().build()
 

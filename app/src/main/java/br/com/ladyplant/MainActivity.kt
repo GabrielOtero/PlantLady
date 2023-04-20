@@ -4,16 +4,18 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -22,15 +24,17 @@ import br.com.ladyplant.ui.navigation.BottomNavigation
 import br.com.ladyplant.ui.navigation.NavItem
 import br.com.ladyplant.ui.navigation.NavigationGraph
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 var mInterstitialAd: InterstitialAd? = null
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -44,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @Preview
     @Composable
     fun MainScreenView() {
         val navController = rememberNavController()
@@ -71,7 +74,6 @@ class MainActivity : AppCompatActivity() {
             NavigationGraph(navController = navController)
         }
     }
-
 
     @Composable
     fun SetStatusBarColor(color: Color = colorResource(id = R.color.white_smoke)) {
@@ -137,7 +139,6 @@ private fun loadInterstitial(context: Context) {
         }
     )
 }
-
 
 fun Context.findActivity(): Activity? = when (this) {
     is Activity -> this

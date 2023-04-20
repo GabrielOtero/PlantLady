@@ -16,6 +16,5 @@ class ResultListViewModel @Inject constructor(
     val plantList: List<Plant> = (checkNotNull(savedStateHandle["list"]) as PlantList).value
 
     override fun dispatchViewAction(viewAction: ResultListViewAction) {
-
     }
 }

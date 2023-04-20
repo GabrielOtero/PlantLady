@@ -1,7 +1,18 @@
 package br.com.ladyplant.ui.components
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -60,7 +71,8 @@ fun Carousel(
                 .align(CenterHorizontally)
 
         ) {
-            val paddingStart = ((parentWidth - 27.dp) / scrollState.maxValue.dp) * scrollState.value.dp
+            val paddingStart =
+                ((parentWidth - 27.dp) / scrollState.maxValue.dp) * scrollState.value.dp
             Text(
                 "ABC",
                 color = colorResource(id = scrollColor),
@@ -68,10 +80,8 @@ fun Carousel(
                     .padding(start = paddingStart)
                     .clip(RoundedCornerShape(10.dp))
                     .background(colorResource(id = scrollColor))
-
             )
         }
-
     }
 }
 
@@ -83,7 +93,8 @@ data class CarouselItem(
 
 @Composable
 fun CarouselCard(
-    item: CarouselItem, onClickItem: (Int) -> Unit
+    item: CarouselItem,
+    onClickItem: (Int) -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -104,4 +115,3 @@ fun CarouselCard(
         )
     }
 }
-

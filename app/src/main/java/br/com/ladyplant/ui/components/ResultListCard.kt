@@ -2,7 +2,15 @@ package br.com.ladyplant.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -28,16 +36,20 @@ import coil.request.ImageRequest
 
 @Composable
 fun ResultListCard(
-    navController: NavHostController, plant: Plant
+    navController: NavHostController,
+    plant: Plant,
 ) {
-    Card(elevation = 30.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(120.dp)
-            .padding(vertical = 8.dp, horizontal = 16.dp)
-            .clip(RoundedCornerShape(24.dp))
-            .clickable { navController.navigate("plant_detail/${plant.id}") }
-            .background(MaterialTheme.colors.surface)) {
+    Card(
+        elevation = 30.dp,
+        modifier = Modifier.run {
+            fillMaxWidth()
+                .height(120.dp)
+                .padding(vertical = 8.dp, horizontal = 16.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .clickable { navController.navigate("plant_detail/${plant.id}") }
+                .background(MaterialTheme.colors.surface)
+        }
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -76,6 +88,5 @@ fun ResultListCard(
                 )
             }
         }
-
     }
 }

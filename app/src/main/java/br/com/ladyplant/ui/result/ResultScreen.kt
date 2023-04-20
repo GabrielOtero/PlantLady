@@ -4,14 +4,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import br.com.ladyplant.R
-import br.com.ladyplant.ui.components.*
+import br.com.ladyplant.ui.components.AdViewBanner
+import br.com.ladyplant.ui.components.ResultListCard
+import br.com.ladyplant.ui.components.SubTitleText
+import br.com.ladyplant.ui.components.TitleText
+import br.com.ladyplant.ui.components.TopBar
 
 @Composable
 fun ResultScreen(

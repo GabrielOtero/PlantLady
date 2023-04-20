@@ -1,11 +1,11 @@
 # PlantLady
 [![Build Status](https://app.bitrise.io/app/b09a046f722fede3/status.svg?token=qaqibsa6gOJ1oiG7kBxlWg&branch=compose_flow_coroutines_hilt)](https://app.bitrise.io/app/b09a046f722fede3)
 
-|                    Home                    |                     Explore                      |                        Result                         |                        Detail                        |                    Quiz                    |
-|:------------------------------------------:|:------------------------------------------------:|:-----------------------------------------------------:|:----------------------------------------------------:|:------------------------------------------:|
-| ![Home Screenshot](readme-images/home.png) | ![Explore Screenshot](readme-images/explore.png) | [Result Screenshot](readme-images/explore-cactus.png) | [Details Screenshot](readme-images/plant-detail.png) | [Quiz Screenshot](readme-images/quiz7.png) |
+|                    Home                    |                     Explore                      |                         Result                         |                        Detail                         |                    Quiz                     |
+|:------------------------------------------:|:------------------------------------------------:|:------------------------------------------------------:|:-----------------------------------------------------:|:-------------------------------------------:|
+| ![Home Screenshot](readme-images/home.png) | ![Explore Screenshot](readme-images/explore.png) | ![Result Screenshot](readme-images/explore-cactus.png) | ![Details Screenshot](readme-images/plant-detail.png) | ![Quiz Screenshot](readme-images/quiz7.png) |
 
-
+## About the code
 
 ### 🏗️ Why MVVM
 - Separation of concerns: MVVM separates the user interface from the business logic and data access, allowing each component to focus on its specific responsibility. This separation makes it easier to test and modify individual components without affecting the others.
