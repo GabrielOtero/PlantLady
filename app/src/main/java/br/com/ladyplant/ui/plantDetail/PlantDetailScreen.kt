@@ -7,7 +7,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
@@ -117,7 +119,7 @@ private fun PlantDetailComponent(plant: Plant) = Column(
 
     }
     Spacer(modifier = Modifier.height(40.dp))
-    AdViewBanner()
+    AdViewBanner(modifier = Modifier.fillMaxWidth())
     Spacer(modifier = Modifier.height(24.dp))
     SubTitleText(
         text = stringResource(R.string.detail_activity_origin_desc_title),
@@ -169,7 +171,7 @@ private fun PlantDetailComponent(plant: Plant) = Column(
         text = plant.overview, color = R.color.dark_gray, modifier = Modifier.fillMaxWidth()
     )
     Spacer(modifier = Modifier.height(24.dp))
-    AdViewBanner(AdSize.LARGE_BANNER)
+    AdViewBanner(AdSize.LARGE_BANNER, modifier = Modifier.fillMaxWidth())
     Spacer(modifier = Modifier.height(24.dp))
 
 

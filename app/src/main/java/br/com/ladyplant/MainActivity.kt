@@ -110,6 +110,7 @@ fun showInterstitial(context: Context, onAdDismissed: () -> Unit) {
         mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
             override fun onAdFailedToShowFullScreenContent(e: AdError) {
                 mInterstitialAd = null
+                onAdDismissed()
             }
 
             override fun onAdDismissedFullScreenContent() {

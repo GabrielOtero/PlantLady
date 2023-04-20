@@ -61,6 +61,8 @@ fun Carousel(
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
+
+        // Carousel Scroll
         val parentWidth = 100.dp
         Row(
             modifier = Modifier
@@ -98,9 +100,9 @@ fun CarouselCard(
 ) {
     Box(
         modifier = Modifier
-            .clickable(onClick = { onClickItem(item.id) })
             .width(136.dp)
             .padding(vertical = 8.dp)
+            .clickable(onClick = { onClickItem(item.id) })
     ) {
         Image(
             painter = painterResource(id = item.imageRes),
