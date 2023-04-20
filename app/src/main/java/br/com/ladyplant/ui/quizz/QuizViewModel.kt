@@ -6,6 +6,8 @@ import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.domain.model.Question
 import br.com.ladyplant.domain.usecase.interfaces.GetQuizResult
 import br.com.ladyplant.ui.base.BaseViewModel
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,20 +27,31 @@ class QuizViewModel @Inject constructor(
         questionList.find { it.id == i }?.answer = ans
     }
 
+    private fun logResult() {
+        Firebase.analytics.logEvent("quiz_complete", null)
+        Firebase.analytics.logEvent("q1_ans_" + questionList[0].answer.toString(), null)
+        Firebase.analytics.logEvent("q2_ans_" + questionList[1].answer.toString(), null)
+        Firebase.analytics.logEvent("q3_ans_" + questionList[2].answer.toString(), null)
+        Firebase.analytics.logEvent("q4_ans_" + questionList[3].answer.toString(), null)
+        Firebase.analytics.logEvent("q5_ans_" + questionList[4].answer.toString(), null)
+        Firebase.analytics.logEvent("q6_ans_" + questionList[5].answer.toString(), null)
+        Firebase.analytics.logEvent("q7_ans_" + questionList[6].answer.toString(), null)
+    }
+
     override fun dispatchViewAction(viewAction: QuizViewAction) {
         viewModelScope.launch(Dispatchers.IO) {
             when (viewAction) {
                 is QuizViewAction.GetQuizResult -> {
                     viewState.loading.postValue(true)
-
+                    logResult()
                     when (val plantResult = getQuizResult(
-                        idClimate = questionList[0].answer?.plus(1) ?: 0,
-                        idGardenCare = questionList[1].answer?.plus(1) ?: 0,
-                        idAppearance = questionList[2].answer?.plus(1) ?: 0,
-                        idLight = questionList[3].answer?.plus(1) ?: 0,
-                        idInplace = questionList[4].answer?.plus(1) ?: 0,
-                        idPurpose = questionList[5].answer?.plus(1) ?: 0,
-                        idEatable = questionList[6].answer?.plus(1) ?: 0
+                        idClimate = questionList[0].answer,
+                        idGardenCare = questionList[1].answer,
+                        idAppearance = questionList[2].answer,
+                        idLight = questionList[3].answer,
+                        idInplace = questionList[4].answer,
+                        idPurpose = questionList[5].answer,
+                        idEatable = questionList[6].answer
                     )) {
                         is DomainResult.Success -> {
                             viewState.action.postValue(

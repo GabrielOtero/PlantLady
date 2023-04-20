@@ -49,7 +49,7 @@ fun QuizPage(question: Question, onClick: (Int) -> Unit) {
 
             QuizOptionButton(
                 text = text, onClick = {
-                    onClick(index)
+                    onClick(index + 1)
                 }, modifier = modifier
             )
         }

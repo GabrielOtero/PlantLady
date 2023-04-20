@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -40,7 +39,7 @@ fun PlantDetailScreen(
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     var showShimmer by remember { mutableStateOf(true) }
-    val plant by viewModel.plant.observeAsState()
+    var plant by remember { mutableStateOf<Plant?>(null) }
 
     LaunchedEffect(Unit) {
         viewModel.viewState.loading.observe(
@@ -51,13 +50,13 @@ fun PlantDetailScreen(
 
         viewModel.viewState.action.observe(
             lifecycleOwner
-        ) { action ->
-            when (action) {
+        ) { viewState ->
+            when (viewState) {
                 is PlantDetailViewState.Action.ShowError -> {
                     goToSomethingWentWrongScreen(navController)
                 }
                 is PlantDetailViewState.Action.ShowResult -> {
-
+                    plant = viewState.plant
                 }
             }
         }
@@ -74,7 +73,8 @@ fun PlantDetailScreen(
         Column(
             Modifier
                 .fillMaxSize()
-                .padding(horizontal = 24.dp, vertical = 16.dp)) {
+                .padding(horizontal = 24.dp, vertical = 16.dp)
+        ) {
             if (showShimmer) PlantDetailShimmer()
             else {
                 plant?.let { PlantDetailComponent(it) }

@@ -26,6 +26,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import br.com.ladyplant.R
+import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.goToSomethingWentWrongScreen
 import br.com.ladyplant.ui.components.Quiz
 import br.com.ladyplant.ui.components.QuizPage
@@ -66,7 +67,7 @@ fun QuizScreen(
         ) { action ->
             when (action) {
                 is QuizViewState.Action.GoToResultList -> {
-                    goToResultScreen(action, navController)
+                    goToResultScreen(action.resultList, navController)
                 }
                 is QuizViewState.Action.ShowError -> {
                     goToSomethingWentWrongScreen(navController)
@@ -83,8 +84,7 @@ fun QuizScreen(
                     painter = painterResource(id = R.drawable.ic_quiz_background),
                     contentDescription = "",
                     contentScale = ContentScale.FillWidth,
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                 )
                 Quiz(
                     item = items, pagerState = pagerState, modifier = Modifier.fillMaxWidth()
@@ -95,9 +95,9 @@ fun QuizScreen(
 }
 
 private fun goToResultScreen(
-    action: QuizViewState.Action.GoToResultList, navController: NavController
+    resultList: ArrayList<Plant>, navController: NavController
 ) {
-    val list = PlantList(action.resultList)
+    val list = PlantList(resultList)
     val resultListArg = Uri.encode(Json.encodeToString(list))
     navController.navigate(
         "result/$resultListArg",

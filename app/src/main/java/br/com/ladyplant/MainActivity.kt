@@ -18,12 +18,14 @@ import br.com.ladyplant.ui.navigation.BottomNavigation
 import br.com.ladyplant.ui.navigation.NavItem
 import br.com.ladyplant.ui.navigation.NavigationGraph
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
