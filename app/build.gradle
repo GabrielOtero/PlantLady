@@ -1,102 +1,137 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'com.google.gms.google-services'
-
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
+    id 'com.google.firebase.appdistribution'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('/Users/gabriel.otero/Desktop/my-release-key.keystore')
-            storePassword '321mudar'
-            keyAlias = 'alias_name'
-            keyPassword '321mudar'
-        }
+    compileSdk 33
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-    compileSdkVersion 33
-    buildToolsVersion "29.0.2"
+
     defaultConfig {
         applicationId "br.com.ladyplant"
-        minSdkVersion 23
-        targetSdkVersion 33
-        versionCode 2
+        minSdk 31
+        targetSdk 33
+        versionCode 1
         versionName "1.0"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        manifestPlaceholders = [adMobAppId: "${properties.getProperty('ad-mob-app-id')}"]
+        
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.release
+    }
+
+    buildTypes {
+        buildTypes {
+            release {
+                minifyEnabled true
+                debuggable false
+
+                firebaseAppDistribution {
+                    releaseNotesFile=""
+                    testers=""
+                }
+
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
+                buildConfigField "String", "BANNER_AD_ID", "\"" + System.getenv("BANNER_AD_ID_PROD") + "\""
+                buildConfigField "String", "INTERSTITIAL_AD_ID", "\"" + System.getenv("INTERSTITIAL_AD_ID_PROD") + "\""
+            }
+            debug {
+                minifyEnabled false
+                debuggable true
+                buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
+                buildConfigField "String", "BANNER_AD_ID", "\"" + System.getenv("BANNER_AD_ID") + "\""
+                buildConfigField "String", "INTERSTITIAL_AD_ID", "\"" + System.getenv("INTERSTITIAL_AD_ID") + "\""
+            }
+        }
+    }
+    buildFeatures {
+        compose true
+        viewBinding = true
+
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    androidExtensions {
-        experimental = true
-    }
-    buildTypes {
-        release {
-            minifyEnabled true
-            debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.glitch.me/\""
-            buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
-        }
-        debug {
-            minifyEnabled false
-            debuggable true
-            applicationIdSuffix ".qa"
-
-            buildConfigField "String", "API_END_POINT", "\"https://yardman-prod.glitch.me/\""
-            buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
-        }
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation project(path: ':domain')
 
-    implementation 'io.github.inflationx:calligraphy3:3.1.1'
-    implementation 'io.github.inflationx:viewpump:2.0.3'
+    implementation 'com.google.dagger:hilt-android:2.42'
+    implementation 'androidx.core:core-ktx:+'
+    kapt 'com.google.dagger:hilt-compiler:2.42'
 
-    def lifecycle_version = "2.2.0-rc01"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
-    implementation 'com.github.2coffees1team:GlideToVectorYou:v2.0.0'
+    implementation "androidx.fragment:fragment-ktx:1.5.6"
+    implementation "androidx.activity:activity-ktx:1.7.0"
 
-    def koin_version = "2.0.1"
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-core:$koin_version"
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.activity:activity-compose:1.3.1'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    implementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation 'androidx.test:runner:1.2.0'
-    implementation 'androidx.test:rules:1.2.0'
+    implementation "androidx.navigation:navigation-compose:2.6.0-alpha08"
+    implementation 'androidx.compose.runtime:runtime:1.4.0'
 
-    implementation('com.android.support.test.espresso:espresso-contrib:2.0') {
-        exclude group: 'com.android.support', module: 'appcompat'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude module: 'recyclerview-v7'
-    }
+    implementation "androidx.compose.compiler:compiler:$compose_version"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+    implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.4'
+    implementation "androidx.compose.runtime:runtime-livedata:1.4.0"
+    implementation "io.coil-kt:coil-compose:2.3.0"
+    implementation "io.coil-kt:coil-svg:2.3.0"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.30.1"
+
+    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+
+
 }
