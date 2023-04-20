@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -28,6 +29,7 @@ import androidx.navigation.NavOptions
 import br.com.ladyplant.R
 import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.goToSomethingWentWrongScreen
+import br.com.ladyplant.showInterstitial
 import br.com.ladyplant.ui.components.Quiz
 import br.com.ladyplant.ui.components.QuizPage
 import br.com.ladyplant.ui.components.ResultListShimmer
@@ -53,6 +55,7 @@ fun QuizScreen(
     val items = getUIListFromModel(viewModel, coroutineScope, pagerState, navController)
     var showShimmer by remember { mutableStateOf(false) }
     overwriteOnBackPressed(coroutineScope, pagerState, navController)
+    val context = LocalContext.current
 
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(Unit) {
@@ -67,7 +70,9 @@ fun QuizScreen(
         ) { action ->
             when (action) {
                 is QuizViewState.Action.GoToResultList -> {
-                    goToResultScreen(action.resultList, navController)
+                    showInterstitial(context) {
+                        goToResultScreen(action.resultList, navController)
+                    }
                 }
                 is QuizViewState.Action.ShowError -> {
                     goToSomethingWentWrongScreen(navController)

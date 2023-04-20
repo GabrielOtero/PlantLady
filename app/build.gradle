@@ -26,6 +26,10 @@ android {
         versionCode 1
         versionName "1.0"
 
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        manifestPlaceholders = [adMobAppId: "${properties.getProperty('ad-mob-app-id')}"]
+        
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -42,11 +46,15 @@ android {
 
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
                 buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
+                buildConfigField "String", "BANNER_AD_ID", "\"" + System.getenv("BANNER_AD_ID_PROD") + "\""
+                buildConfigField "String", "INTERSTITIAL_AD_ID", "\"" + System.getenv("INTERSTITIAL_AD_ID_PROD") + "\""
             }
             debug {
                 minifyEnabled false
                 debuggable true
                 buildConfigField "String", "IMAGES_END_POINT", "\"https://cdn.glitch.global/971136f4-36b7-4045-ae22-30897c92ca17/\""
+                buildConfigField "String", "BANNER_AD_ID", "\"" + System.getenv("BANNER_AD_ID") + "\""
+                buildConfigField "String", "INTERSTITIAL_AD_ID", "\"" + System.getenv("INTERSTITIAL_AD_ID") + "\""
             }
         }
     }
@@ -122,5 +130,8 @@ dependencies {
 
     implementation "androidx.compose.foundation:foundation:$compose_version"
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.30.1"
+
+    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+
 
 }

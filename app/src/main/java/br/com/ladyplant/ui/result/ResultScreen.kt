@@ -4,16 +4,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import br.com.ladyplant.R
-import br.com.ladyplant.ui.components.ResultListCard
-import br.com.ladyplant.ui.components.SubTitleText
-import br.com.ladyplant.ui.components.TitleText
-import br.com.ladyplant.ui.components.TopBar
+import br.com.ladyplant.ui.components.*
 
 @Composable
 fun ResultScreen(
@@ -28,6 +26,12 @@ fun ResultScreen(
         items(viewModel.plantList.size) { index ->
             val plant = viewModel.plantList[index]
             ResultListCard(navController, plant)
+            if ((index + 1) % 3 == 0) //Every 3 cards shows a banner
+                AdViewBanner(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp, horizontal = 16.dp)
+                )
         }
     }
 }

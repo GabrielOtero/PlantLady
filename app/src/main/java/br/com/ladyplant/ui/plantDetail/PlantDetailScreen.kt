@@ -25,9 +25,11 @@ import br.com.ladyplant.ui.components.DescriptionText
 import br.com.ladyplant.ui.components.SubTitleText
 import br.com.ladyplant.ui.components.TitleText
 import br.com.ladyplant.ui.components.TopBar
+import br.com.ladyplant.ui.components.AdViewBanner
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.google.android.gms.ads.AdSize
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.shimmer
@@ -115,6 +117,8 @@ private fun PlantDetailComponent(plant: Plant) = Column(
 
     }
     Spacer(modifier = Modifier.height(40.dp))
+    AdViewBanner()
+    Spacer(modifier = Modifier.height(24.dp))
     SubTitleText(
         text = stringResource(R.string.detail_activity_origin_desc_title),
         color = R.color.dark_gray,
@@ -165,6 +169,9 @@ private fun PlantDetailComponent(plant: Plant) = Column(
         text = plant.overview, color = R.color.dark_gray, modifier = Modifier.fillMaxWidth()
     )
     Spacer(modifier = Modifier.height(24.dp))
+    AdViewBanner(AdSize.LARGE_BANNER)
+    Spacer(modifier = Modifier.height(24.dp))
+
 
 }
 

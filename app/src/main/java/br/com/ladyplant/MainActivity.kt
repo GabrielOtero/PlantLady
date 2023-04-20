@@ -1,6 +1,10 @@
 package br.com.ladyplant
 
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -18,16 +22,23 @@ import br.com.ladyplant.ui.navigation.BottomNavigation
 import br.com.ladyplant.ui.navigation.NavItem
 import br.com.ladyplant.ui.navigation.NavigationGraph
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
-
+var mInterstitialAd: InterstitialAd? = null
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MobileAds.initialize(this)
+
+        loadInterstitial(this)
         setContent {
             MainScreenView()
         }
@@ -88,4 +99,48 @@ fun goToSomethingWentWrongScreen(
         NavItem.SomethingWentWrong.screen_route,
         NavOptions.Builder().setPopUpTo(NavItem.SomethingWentWrong.screen_route, true).build()
     )
+}
+
+fun showInterstitial(context: Context, onAdDismissed: () -> Unit) {
+    val activity = context.findActivity()
+
+    if (mInterstitialAd != null && activity != null) {
+        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdFailedToShowFullScreenContent(e: AdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdDismissedFullScreenContent() {
+                mInterstitialAd = null
+
+                loadInterstitial(context)
+                onAdDismissed()
+            }
+        }
+        mInterstitialAd?.show(activity)
+    }
+}
+
+private fun loadInterstitial(context: Context) {
+    InterstitialAd.load(
+        context,
+        BuildConfig.INTERSTITIAL_AD_ID,
+        AdRequest.Builder().build(),
+        object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                mInterstitialAd = interstitialAd
+            }
+        }
+    )
+}
+
+
+fun Context.findActivity(): Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.findActivity()
+    else -> null
 }
