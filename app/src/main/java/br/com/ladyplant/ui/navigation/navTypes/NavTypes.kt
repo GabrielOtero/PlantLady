@@ -1,7 +1,8 @@
-package br.com.ladyplant.ui.navigation
+package br.com.ladyplant.ui.navigation.navTypes
 
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.annotation.Keep
 import androidx.navigation.NavType
 import br.com.ladyplant.domain.model.Plant
 import kotlinx.parcelize.Parcelize
@@ -9,6 +10,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
+@Keep
 @Serializable
 @Parcelize
 data class PlantList(

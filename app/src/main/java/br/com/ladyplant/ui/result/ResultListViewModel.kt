@@ -3,7 +3,7 @@ package br.com.ladyplant.ui.result
 import androidx.lifecycle.SavedStateHandle
 import br.com.ladyplant.domain.model.Plant
 import br.com.ladyplant.ui.base.BaseViewModel
-import br.com.ladyplant.ui.navigation.PlantList
+import br.com.ladyplant.ui.navigation.navTypes.PlantList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

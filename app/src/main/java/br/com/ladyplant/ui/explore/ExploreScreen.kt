@@ -45,7 +45,7 @@ import br.com.ladyplant.ui.components.DescriptionText
 import br.com.ladyplant.ui.components.ResultListShimmer
 import br.com.ladyplant.ui.components.TitleText
 import br.com.ladyplant.ui.navigation.NavItem
-import br.com.ladyplant.ui.navigation.PlantList
+import br.com.ladyplant.ui.navigation.navTypes.PlantList
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
