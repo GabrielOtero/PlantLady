@@ -1,6 +1,11 @@
 # PlantLady
 [![Build Status](https://app.bitrise.io/app/b09a046f722fede3/status.svg?token=qaqibsa6gOJ1oiG7kBxlWg&branch=compose_flow_coroutines_hilt)](https://app.bitrise.io/app/b09a046f722fede3)
 
+
+### On App Store
+https://play.google.com/store/apps/details?id=br.com.ladyplant
+
+
 |                    Home                    |                     Explore                      |                         Result                         |                        Detail                         |                    Quiz                     |
 |:------------------------------------------:|:------------------------------------------------:|:------------------------------------------------------:|:-----------------------------------------------------:|:-------------------------------------------:|
 | ![Home Screenshot](readme-images/home.png) | ![Explore Screenshot](readme-images/explore.png) | ![Result Screenshot](readme-images/explore-cactus.png) | ![Details Screenshot](readme-images/plant-detail.png) | ![Quiz Screenshot](readme-images/quiz7.png) |
