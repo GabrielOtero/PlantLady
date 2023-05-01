@@ -22,10 +22,10 @@ android {
 
     defaultConfig {
         applicationId "br.com.ladyplant"
-        minSdk 31
+        minSdk 21
         targetSdk 33
-        versionCode 7
-        versionName "2.0.2"
+        versionCode 9
+        versionName "2.2.2"
 
         Properties properties = new Properties()
         properties.load(project.rootProject.file('local.properties').newDataInputStream())
