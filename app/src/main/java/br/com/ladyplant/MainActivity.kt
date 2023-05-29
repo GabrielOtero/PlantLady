@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -16,6 +17,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -32,6 +34,8 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 var mInterstitialAd: InterstitialAd? = null
 
@@ -45,6 +49,12 @@ class MainActivity : AppCompatActivity() {
         loadInterstitial(this)
         setContent {
             MainScreenView()
+        }
+
+        // https://issuetracker.google.com/issues/227926002
+        lifecycleScope.launch {
+            delay(50)
+            window.setBackgroundDrawableResource(android.R.color.transparent)
         }
     }
 
@@ -121,6 +131,8 @@ fun showInterstitial(context: Context, onAdDismissed: () -> Unit) {
             }
         }
         mInterstitialAd?.show(activity)
+    } else {
+        onAdDismissed()
     }
 }
 
@@ -132,6 +144,7 @@ private fun loadInterstitial(context: Context) {
         object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
+                Log.e("LoadAdError", adError.message)
             }
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
