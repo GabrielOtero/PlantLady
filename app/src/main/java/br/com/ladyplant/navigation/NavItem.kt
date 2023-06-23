@@ -1,4 +1,4 @@
-package br.com.ladyplant.ui.navigation
+package br.com.ladyplant.navigation
 
 import br.com.ladyplant.R
 
@@ -10,4 +10,6 @@ sealed class NavItem(var title: String, var icon: Int, var screen_route: String)
     object PlantDetail : NavItem("PlantDetail", R.drawable.ic_search, "plant_detail/{plantId}")
     object Result : NavItem("Result", R.drawable.ic_search, "result/{list}")
     object SomethingWentWrong : NavItem("SomethingWentWrong", R.drawable.ic_search, "somethingWentWrong")
+
+    object Login : NavItem("Login", R.drawable.ic_search, "login")
 }

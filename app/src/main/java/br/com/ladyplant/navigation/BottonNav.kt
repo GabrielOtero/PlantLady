@@ -1,4 +1,4 @@
-package br.com.ladyplant.ui.navigation
+package br.com.ladyplant.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

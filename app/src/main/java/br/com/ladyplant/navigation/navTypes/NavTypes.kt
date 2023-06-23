@@ -1,4 +1,4 @@
-package br.com.ladyplant.ui.navigation.navTypes
+package br.com.ladyplant.navigation.navTypes
 
 import android.os.Bundle
 import android.os.Parcelable

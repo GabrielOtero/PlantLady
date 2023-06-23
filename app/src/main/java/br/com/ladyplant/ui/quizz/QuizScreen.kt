@@ -34,8 +34,8 @@ import br.com.ladyplant.ui.components.Quiz
 import br.com.ladyplant.ui.components.QuizPage
 import br.com.ladyplant.ui.components.ResultListShimmer
 import br.com.ladyplant.ui.components.TopBar
-import br.com.ladyplant.ui.navigation.NavItem
-import br.com.ladyplant.ui.navigation.navTypes.PlantList
+import br.com.ladyplant.navigation.NavItem
+import br.com.ladyplant.navigation.navTypes.PlantList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString

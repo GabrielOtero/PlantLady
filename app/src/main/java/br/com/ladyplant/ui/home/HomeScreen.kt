@@ -1,5 +1,6 @@
 package br.com.ladyplant.ui.home
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +14,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.runtime.Composable
@@ -21,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -29,17 +33,20 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import br.com.ladyplant.R
+import br.com.ladyplant.navigation.NavItem
 import br.com.ladyplant.ui.components.Carousel
 import br.com.ladyplant.ui.components.CarouselItem
 import br.com.ladyplant.ui.components.DescriptionText
 import br.com.ladyplant.ui.components.TitleText
-import br.com.ladyplant.ui.navigation.NavItem
+import br.com.ladyplant.ui.login.ui.login.LoginActivity
 
 
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(), navController: NavController
 ) {
+    val context = LocalContext.current
+
     Box(
         Modifier
             .fillMaxWidth()
@@ -87,7 +94,16 @@ fun HomeScreen(
             }
             item { Spacer(modifier = Modifier.height(24.dp)) }
             item { TakeTheQuizCard(navController) }
-
+            item {
+                Button(
+                    onClick = {
+                        context.startActivity(Intent(context, LoginActivity::class.java))
+                    },
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 36.dp)
+                ) {
+                    Text("Profile Screen")
+                }
+            }
         }
     }
 }

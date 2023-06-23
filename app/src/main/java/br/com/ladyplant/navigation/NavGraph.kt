@@ -1,4 +1,4 @@
-package br.com.ladyplant.ui.navigation
+package br.com.ladyplant.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -8,8 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import br.com.ladyplant.ui.explore.ExploreScreen
 import br.com.ladyplant.ui.home.HomeScreen
-import br.com.ladyplant.ui.navigation.navTypes.PlantList
-import br.com.ladyplant.ui.navigation.navTypes.PlantListNavType
+import br.com.ladyplant.navigation.navTypes.PlantList
+import br.com.ladyplant.navigation.navTypes.PlantListNavType
 import br.com.ladyplant.ui.plantDetail.PlantDetailScreen
 import br.com.ladyplant.ui.quizz.QuizScreen
 import br.com.ladyplant.ui.result.ResultScreen

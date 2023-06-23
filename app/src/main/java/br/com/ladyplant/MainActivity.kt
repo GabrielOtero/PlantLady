@@ -22,9 +22,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import br.com.ladyplant.ui.navigation.BottomNavigation
-import br.com.ladyplant.ui.navigation.NavItem
-import br.com.ladyplant.ui.navigation.NavigationGraph
+import br.com.ladyplant.navigation.BottomNavigation
+import br.com.ladyplant.navigation.NavItem
+import br.com.ladyplant.navigation.NavigationGraph
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
