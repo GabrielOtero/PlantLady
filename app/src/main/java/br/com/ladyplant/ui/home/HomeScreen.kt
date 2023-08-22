@@ -35,10 +35,10 @@ import br.com.ladyplant.ui.components.DescriptionText
 import br.com.ladyplant.ui.components.TitleText
 import br.com.ladyplant.ui.navigation.NavItem
 
-
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel(), navController: NavController
+    viewModel: HomeViewModel = hiltViewModel(),
+    navController: NavController
 ) {
     Box(
         Modifier
@@ -46,8 +46,7 @@ fun HomeScreen(
             .fillMaxHeight()
     ) {
 
-        LazyColumn(
-        ) {
+        LazyColumn() {
             item {
                 TitleText(
                     text = "home",
@@ -87,7 +86,6 @@ fun HomeScreen(
             }
             item { Spacer(modifier = Modifier.height(24.dp)) }
             item { TakeTheQuizCard(navController) }
-
         }
     }
 }
@@ -95,7 +93,8 @@ fun HomeScreen(
 @Composable
 private fun TakeTheQuizCard(navController: NavController) {
     Box(contentAlignment = Alignment.TopEnd) {
-        Column(horizontalAlignment = Alignment.Start,
+        Column(
+            horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Bottom,
             modifier = Modifier
                 .height(210.dp)
@@ -114,9 +113,11 @@ private fun TakeTheQuizCard(navController: NavController) {
                 .clickable {
                     navController.navigate(NavItem.Quiz.screen_route)
                 }
-                .padding(16.dp)) {
+                .padding(16.dp)
+        ) {
             Icon(
-                Icons.Filled.ArrowForward, contentDescription = "Quiz", tint = colorResource(
+                Icons.Filled.ArrowForward, contentDescription = "Quiz",
+                tint = colorResource(
                     id = R.color.white
                 )
             )
@@ -140,4 +141,3 @@ private fun TakeTheQuizCard(navController: NavController) {
         )
     }
 }
-
